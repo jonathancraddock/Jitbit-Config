@@ -47,3 +47,27 @@ Open Guidance Doc
 <em>(Opens in new tab.)</em>
 ```
 ^- *added to category 'description' field*
+
+## User Import CSV
+
+No header row, and use the following fields:
+
+```text
+username,password,email,firstname,lastname,company,phone,location,department
+```
+
+## Ticket Import CSV
+
+No header row, and use the following fields:
+
+```text
+Subject, Body, Email, Category-name or ID, [Company-name, Assignee-username, Ticket-date, Custom-field-1, Custom-field-2...]
+```
+^- *body as HTML*
+
+```html
+"<!--html-->Please send a letter to Eileen Dover, inviting her to the edge of the Grand Canyon.<div><br>
+</div>
+<div>Thanks,</div>
+<div>Random User</div>"
+```

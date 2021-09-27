@@ -35,3 +35,15 @@ span.categoryName {
     background-color: #6495ed2e;
 }
 ```
+
+## Category 'Tooltip'
+
+Testing a pop-up link to a Knowledge Base procedure when selecting a category:
+
+```html
+<a href="https://helpdesk.example.com/KB/View/12345-some-instructions" target="_blank" rel="noopener">
+Open Guidance Doc
+</a><br />
+<em>(Opens in new tab.)</em>
+```
+^- *added to category 'description' field*

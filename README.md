@@ -65,9 +65,24 @@ Subject, Body, Email, Category-name or ID, [Company-name, Assignee-username, Tic
 ```
 ^- *body as HTML*
 
+Normal example:
 ```html
 "<!--html-->Please send a letter to Eileen Dover, inviting her to the edge of the Grand Canyon.<div><br>
 </div>
 <div>Thanks,</div>
 <div>Random User</div>"
 ```
+
+Weird example:
+```html
+"<!--html-->Test of ticket with ""quotes"" in the body.<div><br>
+</div>
+<div>And special characters, &lt;b&gt; and @ and some / \ characters. And what about a &amp;nbsp; or a &lt;script&gt; or a crazy combination of ""'""'""'""'"" or \""'/""""'\/&nbsp;</div>
+<div><br>
+</div>
+<div>And a random "" to finish.</div>
+<div><br>
+</div>
+<div>""</div>"
+```
+^- *single quote (within text) escaped as double-quote*

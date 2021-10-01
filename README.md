@@ -36,6 +36,32 @@ span.categoryName {
 }
 ```
 
+Modify green 'tag' displayed on main tickets view from `upd by tech` to `waiting`.
+
+```CSS
+/* Hide 'upd by tech' from main list view */
+/* proof of concept arising from question raised in demo */
+/* (JC, 01.10.2021) */
+.badge.tech-badge {
+    background-color: #70c45c;
+    position: relative;
+    visibility: hidden;
+}
+
+/* Add wording+background via pseudo-class */
+/* (JC, 01.10.2021) */
+.badge.tech-badge::after {
+    visibility: visible;
+    content: "waiting";
+    background-color: #70c45c;
+    padding: 3px 5px;
+    border-radius: 3px;
+    line-height: 9px;
+    margin: -3px -5px -1px 0;
+    float: right;
+}
+```
+
 ## Category 'Tooltip'
 
 Testing a pop-up link to a Knowledge Base procedure when selecting a category:

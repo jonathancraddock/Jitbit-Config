@@ -1,4 +1,4 @@
-# Jitbit Customisation
+# Jitbit Customisation / Notes
 
 For reference:
 
@@ -33,24 +33,32 @@ Adjust title position:
 
 jQuery (in custom JS panel)
 ```javascript
+// Add '.criticalRow' to parent row that contains a 'critical' priority tag
+// (JC, 4.10.2021)
 $(".priority2").parents('tr').addClass("criticalRow");
 ```
-^-*target parent row that contains a '.priority2' span element*
+^-*target any parent row that contains a '.priority2' span element*
 
 CSS (in custom CSS panel)
 ```css
+/* Pale red background to row with 'critical' priority tag */
+/* (JC, 4.10.2021) */
 table.horizseparated tr.criticalRow td {
+  transition: all 0.2s ease;
   background-color: #ffd0d0;
 }
 
+/* Pale-er red background to row with 'critical' priority tag */
+/* (JC, 4.10.2021) */
 table.horizseparated tr.criticalRow:hover td {
+  transition: all 0.2s ease;
   background-color: #eccfcf;
 }
 ```
 
 -----
 
-Increase focus on section-category in list view:
+Increase emphasis on section-category in list view:
 
 ```CSS
 /* Highlight the Section>Category in main list view */
@@ -58,7 +66,6 @@ Increase focus on section-category in list view:
 span.categoryName {
     color: #12659d;
     font-weight: 900;
-    text-decoration: underline;
     background-color: #6495ed2e;
 }
 ```

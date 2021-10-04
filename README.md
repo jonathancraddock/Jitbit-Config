@@ -56,6 +56,8 @@ table.horizseparated tr.criticalRow:hover td {
 }
 ```
 
+> TIP: In the browser console `typeof jQuery` will return `function` if jQuery is loaded, and `undefined` if it's not loaded.
+
 -----
 
 Increase emphasis on section-category in list view:

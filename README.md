@@ -105,6 +105,8 @@ Open Guidance Doc
 ```
 ^- *added to category 'description' field*
 
+Also note that page will route ok with only the ID specified. Eg/ `https://helpdesk.example.com/KB/View/12345-`. This may help avoid broken links where a title is edited.
+
 ## User Import CSV
 
 No header row, and use the following fields:

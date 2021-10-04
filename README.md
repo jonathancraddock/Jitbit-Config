@@ -56,7 +56,7 @@ table.horizseparated tr.criticalRow:hover td {
 }
 ```
 
-> TIP: In the browser console `typeof jQuery` will return `function` if jQuery is loaded, and `undefined` if it's not loaded.
+> **TIP:** In the browser console `typeof jQuery` will return `function` if jQuery is loaded, and `undefined` if it's not loaded. Seems like a quick and easy check without having to look at the page source.
 
 -----
 
@@ -114,7 +114,7 @@ Open Guidance Doc
 ```
 ^- *added to category 'description' field*
 
-Also note that page will route ok with only the ID specified. Eg/ `https://helpdesk.example.com/KB/View/12345-`. This may help avoid broken links where a title is edited.
+> **TIP:** Note that page will route ok with only the ID specified. Eg/ `https://helpdesk.example.com/KB/View/12345-`. This may help avoid broken links where a title is edited. **UPDATE:** More accurately, it looks like everything after the `-` is ignored, so the actual title doesn't matter, but I'd still stick with the previous tip! ;-) Eg/ Drop the first and last parts of the URI and go with: `/KB/View/12345-`
 
 ## User Import CSV
 

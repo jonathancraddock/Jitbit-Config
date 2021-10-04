@@ -10,6 +10,10 @@ For reference:
 
 ## CSS
 
+Suitable for demo and proof-of-concept only. Additional testing required!
+
+-----
+
 Adjust title position:
 
 ```CSS
@@ -23,6 +27,29 @@ Adjust title position:
 }
 ```
 
+-----
+
+**EXPERIMENTAL - Higlight entire row for "Critical" priority:**
+
+jQuery (in custom JS panel)
+```javascript
+$(".priority2").parents('tr').addClass("criticalRow");
+```
+^-*target parent row that contains a '.priority2' span element*
+
+CSS (in custom CSS panel)
+```css
+table.horizseparated tr.criticalRow td {
+  background-color: #ffd0d0;
+}
+
+table.horizseparated tr.criticalRow:hover td {
+  background-color: #eccfcf;
+}
+```
+
+-----
+
 Increase focus on section-category in list view:
 
 ```CSS
@@ -35,6 +62,8 @@ span.categoryName {
     background-color: #6495ed2e;
 }
 ```
+
+-----
 
 Modify green 'tag' displayed on main tickets view from `upd by tech` to `waiting`.
 
@@ -61,6 +90,8 @@ Modify green 'tag' displayed on main tickets view from `upd by tech` to `waiting
     float: right;
 }
 ```
+
+-----
 
 ## Category 'Tooltip'
 

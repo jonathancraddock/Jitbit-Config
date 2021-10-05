@@ -15,7 +15,7 @@ FAQ and Support:
 * https://support.jitbit.com/helpdesk/KB/View/5491721-customizing-your-ticket-statuses  
 * "Is approver" -> https://support.jitbit.com/helpdesk/Ideas/9551  
 
-## CSS
+## Custom CSS and JS
 
 Suitable for demo and proof-of-concept only. Additional testing required!
 
@@ -42,7 +42,7 @@ In this example, it was to ensure the baseline of the text was better aligned wi
 
 Critical is indicated via a coloured badge icon, and this was a test to draw additional attention to the row.
 
-> **TIP:** See also the proposed `:has` selector -> https://css-tricks.com/did-you-know-about-the-has-css-selector/
+> **TIP:** See also, the proposed `:has` selector -> https://css-tricks.com/did-you-know-about-the-has-css-selector/ although doesn't seem to be supported by any browsers yet?
 
 jQuery (in custom JS panel)
 ```javascript
@@ -69,7 +69,11 @@ table.horizseparated tr.criticalRow:hover td {
 }
 ```
 
-> **TIP:** In the browser console `typeof jQuery` will return `function` if jQuery is loaded, and `undefined` if it's not loaded. Quick and easy without having to look at the page source.
+Example of row highlighting, using jQuery to target the 'parent' element of any row that contains a 'critical' span.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/afe3387eac7dd48100cef5731666e82079bd460f/screencap/highlight-row.png "example row highlight")
+
+> **TIP:** In the browser console, entering `typeof jQuery` will return `function` if jQuery is loaded, and `undefined` if it's not loaded. Quick and easy, without having to look at the page source...
 
 -----
 
@@ -84,6 +88,9 @@ span.categoryName {
     background-color: #6495ed2e;
 }
 ```
+In this example, placing pale blue highlight on section/category.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/a9614d2dccec8c450f8e5fd0f36e933a2c49c198/screencap/highlight-category.png "category highlight")
 
 -----
 

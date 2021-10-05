@@ -14,7 +14,9 @@ Suitable for demo and proof-of-concept only. Additional testing required!
 
 -----
 
-Adjust title position:
+**Adjust title position:**
+
+In this example, it was to ensure the baseline of the text was better aligned with the shape of the logo.
 
 ```CSS
 /* Adjust alignment of "Helpdesk Title" */
@@ -31,6 +33,10 @@ Adjust title position:
 
 **EXPERIMENTAL - Higlight entire row for "Critical" priority:**
 
+Critical is indicated via a coloured badge icon, and this was a test to draw additional attention to the row.
+
+> **TIP:** See also the proposed `:has` selector -> https://css-tricks.com/did-you-know-about-the-has-css-selector/
+
 jQuery (in custom JS panel)
 ```javascript
 // Add '.criticalRow' to parent row that contains a 'critical' priority tag
@@ -41,26 +47,26 @@ $(".priority2").parents('tr').addClass("criticalRow");
 
 CSS (in custom CSS panel)
 ```css
-/* Pale red background to row with 'critical' priority tag */
+/* Amber background to row with 'critical' priority tag */
 /* (JC, 4.10.2021) */
 table.horizseparated tr.criticalRow td {
   transition: all 0.2s ease;
-  background-color: #ffd0d0;
+  background-color: #fbb32b40;
 }
 
-/* Pale-er red background to row with 'critical' priority tag */
+/* Pale-Amber background to row (hover) with 'critical' priority tag */
 /* (JC, 4.10.2021) */
 table.horizseparated tr.criticalRow:hover td {
   transition: all 0.2s ease;
-  background-color: #eccfcf;
+  background-color: #fbb32b20;
 }
 ```
 
-> **TIP:** In the browser console `typeof jQuery` will return `function` if jQuery is loaded, and `undefined` if it's not loaded. Seems like a quick and easy check without having to look at the page source.
+> **TIP:** In the browser console `typeof jQuery` will return `function` if jQuery is loaded, and `undefined` if it's not loaded. Quick and easy without having to look at the page source.
 
 -----
 
-Increase emphasis on section-category in list view:
+**Increase emphasis on section-category in list view:**
 
 ```CSS
 /* Highlight the Section>Category in main list view */
@@ -74,7 +80,7 @@ span.categoryName {
 
 -----
 
-Modify green 'tag' displayed on main tickets view from `upd by tech` to `waiting`.
+**Modify green 'tag' displayed on main tickets view from `upd by tech` to `waiting`.**
 
 ```CSS
 /* Hide 'upd by tech' from main list view */

@@ -3,6 +3,7 @@
 For reference:
 
 * Homepage -> https://www.jitbit.com/ 
+* Github -> https://github.com/jitbit  
 * Support -> https://www.jitbit.com/support/ 
 * FAQ -> https://www.jitbit.com/helpdesk/faq/ 
 * API Ref -> https://www.jitbit.com/helpdesk/helpdesk-api/#/

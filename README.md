@@ -9,6 +9,12 @@ For reference:
 * API Ref -> https://www.jitbit.com/helpdesk/helpdesk-api/#/
 * On-Prem Guide -> https://www.jitbit.com/docs/helpdesk/!!!helpdesk-software-readme.htm
 
+FAQ and Support:
+
+* https://support.jitbit.com/helpdesk/KB/View/3618726-how-to-escalate-a-ticket-and-create-slas-in-jitbit-helpdesk  
+* https://support.jitbit.com/helpdesk/KB/View/5491721-customizing-your-ticket-statuses  
+* "Is approver" -> https://support.jitbit.com/helpdesk/Ideas/9551  
+
 ## CSS
 
 Suitable for demo and proof-of-concept only. Additional testing required!

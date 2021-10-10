@@ -45,6 +45,30 @@ In this example, it was to ensure the baseline of the text was better aligned wi
 
 -----
 
+**The rounded box that surrounds custom fields on 'new ticket' page**
+
+For example, to draw additional attention to custom fields, particularly for new tech staff.
+
+```css
+#trCustomFields td .outerroundedbox {
+  background-color: #4a6c9182;
+}
+```
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/99f6f543f9bab1427c39fd9dd1809f006ffdd888/screencap/custom-field-background.png)
+
+Or, to add a border to a specified ID...
+
+```css
+#CustomFieldValue44285 {
+  border-style: solid;
+  border-color: #eaea6d;
+  border-width: 3px;
+}
+```
+
+-----
+
 **EXPERIMENTAL - Higlight entire row for "Critical" priority:**
 
 Critical is indicated via a coloured badge icon, and this was a test to draw additional attention to the row.

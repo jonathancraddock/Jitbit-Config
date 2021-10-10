@@ -57,7 +57,9 @@ For example, to draw additional attention to custom fields, particularly for new
 
 ![](https://github.com/jonathancraddock/Jitbit-Custom/blob/99f6f543f9bab1427c39fd9dd1809f006ffdd888/screencap/custom-field-background.png)
 
-Or, to add a border to a specified ID...
+Or, to add a border to draw attention towards a specified ID:
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/e32a30f62d490a6afd4fc9cf5658eabaa85cce58/screencap/yellow-input-highlight.png)
 
 ```css
 #CustomFieldValue44285 {
@@ -66,6 +68,21 @@ Or, to add a border to a specified ID...
   border-width: 3px;
 }
 ```
+
+Or for a yellow/black border on "focused" text fields:
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/9a59a937d359f3b49a167b799ce216c6eb8edb22/screencap/yellow-black-border.png)
+
+```css
+[id^="CustomFieldValue"]:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
+}
+```
+
+There's no 'class' directly applied to these fields, but could consider "starts with" selectors such as `[id^="CustomFieldValue"]:focus`, whilst also remembering to take into account existing selectors, such as `input[type="text"]`, etc.
 
 -----
 

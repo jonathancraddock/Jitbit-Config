@@ -16,6 +16,12 @@ FAQ and Support:
 * https://support.jitbit.com/helpdesk/KB/View/5491721-customizing-your-ticket-statuses  
 * "Is approver" -> https://support.jitbit.com/helpdesk/Ideas/9551  
 
+## Automation Rule Notes
+
+> "Timer-based automation rules are checked twice an hour randomly; if the condition of the rule are met, it fires. If not, the check is postponed."  
+^- *explains some minor time discrepencies I had been noticing with emails triggered by due-date related rules...*
+
+
 ## Custom CSS and JS
 
 Suitable for demo and proof-of-concept only. Additional testing required!

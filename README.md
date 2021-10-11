@@ -84,6 +84,17 @@ Or for a yellow/black border on "focused" text fields:
 
 There's no 'class' directly applied to these fields, but could consider "starts with" selectors such as `[id^="CustomFieldValue"]:focus`, whilst also remembering to take into account existing selectors, such as `input[type="text"]`, etc.
 
+Target background colour of mandatory custom fields:
+
+```css
+select.required, .report-input input.required, textarea.required {
+  background-color: #f9e9dd;
+}
+```
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/2698f9cb9377b1a859bc0be2774270d7f4886847/screencap/mandatory-background.png)  
+^- *example*
+
 -----
 
 **EXPERIMENTAL - Higlight entire row for "Critical" priority:**

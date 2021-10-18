@@ -16,6 +16,33 @@ FAQ and Support:
 * https://support.jitbit.com/helpdesk/KB/View/5491721-customizing-your-ticket-statuses  
 * "Is approver" -> https://support.jitbit.com/helpdesk/Ideas/9551  
 
+-----
+
+**Test calls to API via NodeRED**
+
+Confirm authorisation, and query a ticket:
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/7eca828954c4e2addc8cb96253adc04a6df38a25/screencap/nodered-api-test-01.png)
+
+* `/api/Authorization`  
+* `/api/ticket?id=40xxxx54`
+
+This initial test was via my own user token, which you can query at: `/User/Token`
+
+In NodeRED, built the header as follows:
+
+```javascript
+msg.payload = "";
+msg.headers = {};
+msg.headers['Authorization'] = 'Bearer xxxxxxxxxxxx';
+return msg;
+```
+
+A successful authorisation returns the user's name and other details, the ticket appears to be returned without custom fields, but there is a separate call, `/api/TicketCustomFields?id=`, which returns them as an array of objects.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/ca13ec309df3c8d2f582e683624f49db950e0e69/screencap/api-custom-fields.png)
+
+-----
 
 ## Custom CSS and JS
 
@@ -143,7 +170,7 @@ Text returns to default black when fields are in use.
 
 **EXPERIMENTAL - Higlight entire row for "Critical" priority:**
 
-Critical is indicated via a coloured badge icon, and this was a test to draw additional attention to the row.
+Critical is normally indicated via a small coloured badge icon, towards the right of the affected row, and this was a test to draw additional attention to the entire row.
 
 > **TIP:** See also, the proposed `:has` selector -> https://css-tricks.com/did-you-know-about-the-has-css-selector/ although doesn't seem to be supported by any browsers yet?
 

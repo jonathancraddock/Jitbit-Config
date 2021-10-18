@@ -16,15 +16,10 @@ FAQ and Support:
 * https://support.jitbit.com/helpdesk/KB/View/5491721-customizing-your-ticket-statuses  
 * "Is approver" -> https://support.jitbit.com/helpdesk/Ideas/9551  
 
-## Automation Rule Notes
-
-> "Timer-based automation rules are checked twice an hour randomly; if the condition of the rule are met, it fires. If not, the check is postponed."  
-^- *explains some minor time discrepencies I had been noticing with emails triggered by due-date related rules...*
-
 
 ## Custom CSS and JS
 
-Suitable for demo and proof-of-concept only. Additional testing required!
+The following sections and notes are suitable for demo and proof-of-concept only. Additional testing is required. In particular, I know there are several conditions that will not be matched by these CSS selectors. (Input field types that are not in use by this instance, etc, and the selectors would need to be modified to target those elements.)
 
 -----
 
@@ -47,7 +42,7 @@ In this example, it was to ensure the baseline of the text was better aligned wi
 
 **The rounded box that surrounds custom fields on 'new ticket' page**
 
-For example, to draw additional attention to custom fields, particularly for new tech staff.
+For example, to draw additional attention to custom fields, particularly for new tech staff, who may not be familiar with Jitbit.
 
 ```css
 #trCustomFields td .outerroundedbox {
@@ -84,7 +79,7 @@ Or for a yellow/black border on "focused" text fields:
 
 There's no 'class' directly applied to these fields, but could consider "starts with" selectors such as `[id^="CustomFieldValue"]:focus`, whilst also remembering to take into account existing selectors, such as `input[type="text"]`, etc.
 
-Target background colour of mandatory custom fields:
+Along similar lines, target the background colour of mandatory custom fields:
 
 ```css
 select.required, .report-input input.required, textarea.required {
@@ -99,7 +94,7 @@ select.required, .report-input input.required, textarea.required {
 
 **Custom Fields Stacked Vertically**
 
-If users are more comfortable with vertical fields there may be a simple CSS tweak to alter the default horizontal format.
+If users are more comfortable with vertical fields, there may be a simple CSS tweak to alter the default horizontal format.
 
 ![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0ce50883325879d8dd6a8c6851b2c4d26c9fbf6d/screencap/fields-as-blocks_anon.PNG)
 
@@ -125,6 +120,24 @@ div.report-settings div.report-input textarea {
   width: 60% !important;
 }
 ```
+
+-----
+
+**Red placeholder text on mandatory custom fields**
+
+To highlight the `placeholder` of a custom field, eg/ not other required fields such as 'subject'.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0446d216e583d5953b165a61ae337f697c3817ec/screencap/mandatory-custom-empty.png)
+
+```css
+div.report-input .required::placeholder {
+  color: #ff00005c;
+}
+```
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0446d216e583d5953b165a61ae337f697c3817ec/screencap/mandatory-custom-filled.png)
+
+Text returns to default black when fields are in use.
 
 -----
 
@@ -225,6 +238,15 @@ Open Guidance Doc
 ^- *added to category 'description' field*
 
 > **TIP:** Note that page will route ok with only the ID specified. Eg/ `https://helpdesk.example.com/KB/View/12345-`. This may help avoid broken links where a title is edited. **UPDATE:** More accurately, it looks like everything after the `-` is ignored, so the actual title doesn't matter, but I'd still stick with the previous tip! ;-) Eg/ Drop the first and last parts of the URI and go with: `/KB/View/12345-`
+
+-----
+
+## Automation Rule Notes
+
+> "Timer-based automation rules are checked twice an hour randomly; if the condition of the rule are met, it fires. If not, the check is postponed."  
+^- *explains some minor time discrepencies I had been noticing with emails triggered by due-date related rules...*
+
+-----
 
 ## User Import CSV
 

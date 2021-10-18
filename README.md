@@ -97,6 +97,37 @@ select.required, .report-input input.required, textarea.required {
 
 -----
 
+**Custom Fields Stacked Vertically**
+
+If users are more comfortable with vertical fields there may be a simple CSS tweak to alter the default horizontal format.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0ce50883325879d8dd6a8c6851b2c4d26c9fbf6d/screencap/fields-as-blocks_anon.PNG)
+
+Custom CSS:
+
+```css
+.report-settings div.report-input {
+  clear: both;
+  width: 100%;
+}
+
+label {
+  float: left;
+  width: 10em;
+  margin-right: 1em;
+}
+
+.report-settings div.report-input input[type="text"], .report-settings div.report-input select, div.report-input textarea {
+  width: 60%;
+}
+
+div.report-settings div.report-input textarea {
+  width: 60% !important;
+}
+```
+
+-----
+
 **EXPERIMENTAL - Higlight entire row for "Critical" priority:**
 
 Critical is indicated via a coloured badge icon, and this was a test to draw additional attention to the row.

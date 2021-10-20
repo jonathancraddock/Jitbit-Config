@@ -169,7 +169,7 @@ Custom CSS:
   width: 100%;
 }
 
-label {
+.report-settings div.report-input label {
   float: left;
   width: 10em;
   margin-right: 1em;

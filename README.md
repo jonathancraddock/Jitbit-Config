@@ -18,7 +18,7 @@ FAQ and Support:
 
 -----
 
-**Test calls to API via NodeRED**
+## Initial test calls to API via NodeRED
 
 Confirm authorisation, and query a ticket:
 
@@ -41,6 +41,24 @@ return msg;
 A successful authorisation returns the user's name and other details, the ticket appears to be returned without custom fields, but there is a separate call, `/api/TicketCustomFields?id=`, which returns them as an array of objects.
 
 ![](https://github.com/jonathancraddock/Jitbit-Custom/blob/ca13ec309df3c8d2f582e683624f49db950e0e69/screencap/api-custom-fields.png)
+
+-----
+
+## Automation rule POST new ticket and use NodeRED to GET a field
+
+As a proof of concept, this Jitbit automation rule is triggered whenever a new ticket is created in a specified category.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0f25a6b41ff5d54b5500f57219339b02717322de/screencap/jitbit-new-ticket-post.png)
+
+The ticket ID is sent to a NodeRED prototype flow - essentially an HTTP endpoint which waits for a second, and then pulls a couple of fields from the ticket.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0f25a6b41ff5d54b5500f57219339b02717322de/screencap/nodered-query-new-ticket.png)
+
+In this case, looking for the company name and the creation date of the ticket, but same principle for any field on the ticket, and (with a small tweak) any custom field too.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0f25a6b41ff5d54b5500f57219339b02717322de/screencap/nodered-new-ticket-debug.png)
+
+Not 100% sure how this is useful, but demonstrates a function could be written to feed an external dashboard system, or for use with an external notification system (SMS or a push notification service), or if pre-defined alerts are required with more precise timings than Jitbit can deliver internally...
 
 -----
 

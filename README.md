@@ -62,6 +62,24 @@ Not 100% sure how this is useful, but demonstrates a function could be written t
 
 -----
 
+**Trigger based on age of ticket (*concept*)**
+
+So far as I can tell, there is no trigger to target a ticket that has reached a certain age; say, 20 days old, regardless of its due-date (if any). However, using an admin-only custom field (hidden, in effect), a scheduled API call could be used to trigger a sequence of rules after a specified delay. (A change of status could be a potential trigger, but if you want to ignore 'closed' tickets, using a custom field may be safer.)
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/b5b00941ab4962a00577b67e3dcad4f5b169a815/screencap/trigger-custom-edit.png)
+
+In this example, the custom field `44566` named "Aged-20" is a combo-dropdown, **no** or **yes**, with no set as the default. The automation rule will only target tickets that are not already closed, and that conditions could be expanded - perhaps only a specified category requires this 20 day rule?
+
+With a simple API call:
+
+```text
+/helpdesk/api/SetCustomField?ticketId=xxxxxx&fieldId=44566&value=yes
+```
+
+...the rule is triggered, the status and priority are updated, and the email is sent to all subscribers.
+
+-----
+
 ## Custom CSS and JS
 
 The following sections and notes are suitable for demo and proof-of-concept only. Additional testing is required. In particular, I know there are several conditions that will not be matched by these CSS selectors. (Input field types that are not in use by this instance, etc, and the selectors would need to be modified to target those elements.)

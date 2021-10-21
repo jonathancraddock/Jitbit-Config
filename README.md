@@ -62,13 +62,59 @@ Not 100% sure how this is useful, but demonstrates a function could be written t
 
 -----
 
+**Create a ticket and update a custom field (*test*)**
+
+I believe this needs to be a two stage process:
+
+* create the ticket (get the ID number)
+* update the custom field
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/56f561db7395a6ab424269b4fecfdf5fb1d1b479/screencap/new-ticket-custom-field.png)
+
+Creating the ticket is straightforward. Specify the ID numbers of the **category** and **user**, and supply the **body**, **subject** and **tags** as strings. You can supply a `priorityId` if you like. (https://www.jitbit.com/helpdesk/helpdesk-api/#/?id=ticket-post)
+
+```javascript
+msg.headers = {};
+msg.headers.Authorization = 'Bearer xxxxxxxxxxxx';
+
+msg.payload = {
+ "categoryId": "4xxxx3",
+ "body": "This is a test from NodeRED. (008)",
+ "subject": "Test 008",
+ "userId": "1xxxxxx4",
+ "tags": "NodeRED"
+};
+
+msg.url = "https://your-domain.jitbit.com/helpdesk/api/ticket";
+return msg;
+```
+
+The API call returns the ticket number, so save that, and then update the custom field.
+
+```javascript
+var ticketId = msg.payload;
+var fieldId = "4xxx7";
+var customVal = "D123456";
+
+msg.url = "https://your-domain.jitbit.com/helpdesk/api/SetCustomField?ticketId="+ticketId+"&fieldId="+fieldId+"&value="+customVal;
+
+msg.payload="";
+return msg;
+```
+
+And ideally confirm the `msg.statusCode` (not the msg.payload) and it should be `200`.
+
+-----
+
 **Trigger based on age of ticket (*concept*)**
 
 So far as I can tell, there is no trigger to target a ticket that has reached a certain age; say, 20 days old, regardless of its due-date (if any). However, using an admin-only custom field (hidden, in effect), a scheduled API call could be used to trigger a sequence of rules after a specified delay. (A change of status could be a potential trigger, but if you want to ignore 'closed' tickets, using a custom field may be safer.)
 
 ![](https://github.com/jonathancraddock/Jitbit-Custom/blob/b5b00941ab4962a00577b67e3dcad4f5b169a815/screencap/trigger-custom-edit.png)
 
-In this example, the custom field `44566` named "Aged-20" is a combo-dropdown, **no** or **yes**, with no set as the default. The automation rule will only target tickets that are not already closed, and that conditions could be expanded - perhaps only a specified category requires this 20 day rule?
+In this example, the custom field `44566` named "Aged-20" is a combo-dropdown, **no** or **yes**, with no set as the default. The automation rule will only target tickets that are not already closed, and those conditions could be expanded - perhaps only a specified category requires this 20 day rule?
+
+> Also consider impact if **other** custom fields are edited on the same ticket. Perhaps add an additional `status isn't escalated` condition, to prevent it being triggered repeatedly?
 
 With a simple API call:
 

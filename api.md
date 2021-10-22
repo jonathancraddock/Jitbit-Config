@@ -132,12 +132,15 @@ if (endsAt-starts<3) { msg.payload = "yaml : null"; } else
 
 return msg;
 ```
+^- *test script to prove the `indexOf` combo!*
 
-Jitbit automation triggers an HTTP POST when new ticket is created in specified category.
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/9a080ab923b42a99ad7cfcd7736c8ae2a40998f6/screencap/jitbit-post-yaml.png)
+
+Jitbit automation rule triggers an HTTP POST when a new ticket is created in a specified category.
 
 ![](https://github.com/jonathancraddock/Jitbit-Custom/blob/84fba9338730ef51c56dfde7c988fdc8f03cf94d/screencap/nodered-yaml-to-custom.png)
 
-Grab the ticket ID and extract the blcok of YAML.
+Grab the ticket ID and extract the block of YAML.
 
 ```javascript
 // Store ID and Body
@@ -157,6 +160,8 @@ msg.headers.Authorization = 'Bearer xxxxxxxxxxxx';
 
 return msg;
 ```
+
+> There's no meaningful validation here, unless it's missing altogether...
 
 Using the NodeRED YAML node to turn that into a JSON object makes it easy to pick up the values required for the custom field data.
 
@@ -189,4 +194,4 @@ And the fields are populated almost immediately:
 
 ![](https://github.com/jonathancraddock/Jitbit-Custom/blob/b15694b179c750294337e550294e5f679dbd2964/screencap/yaml-custom-fields-filled.png)
 
-A niche requirement perhaps, but could be handy if there's a requirement to accept data from a 3rd party who cant directly call the API.
+A niche requirement perhaps, but could be handy if there's a requirement to accept data from a 3rd party who can't directly call the API.

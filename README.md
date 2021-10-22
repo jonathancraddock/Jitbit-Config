@@ -1,15 +1,15 @@
 # Jitbit Customisation / Notes
 
-* [API Experiments](https://github.com/jonathancraddock/Jitbit-Custom/blob/79c134fd55338850465aa03d626fc0f3dd597a65/api.md)  
+* [API Experiments](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/api.md)  
 ^- *mix of experiments while trying out the API, and some prototypes built in NodeRED*
 
-* [Styles, CSS, and Javascript](https://github.com/jonathancraddock/Jitbit-Custom/blob/79c134fd55338850465aa03d626fc0f3dd597a65/styles.md)  
+* [Styles, CSS, and Javascript](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/styles.md)  
 ^- *styles and minor theme modifications*
 
-* [Automation Notes](https://github.com/jonathancraddock/Jitbit-Custom/blob/79c134fd55338850465aa03d626fc0f3dd597a65/automation.md)  
+* [Automation Notes](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/automation.md)  
 ^- *automation notes*
 
-* [References](https://github.com/jonathancraddock/Jitbit-Custom/blob/79c134fd55338850465aa03d626fc0f3dd597a65/reference.md)  
+* [References](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/reference.md)  
 ^- *some notes on imports, CSV format, email template fields*
 
 -----

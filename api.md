@@ -1,3 +1,11 @@
+# API Experiments
+
+* [Initial test calls to API via NodeRED](#initial-test-calls-to-api-via-nodered)  
+* [Automation rule POST new ticket and use NodeRED to GET a field](#automation-rule-post-new-ticket-and-use-nodered-to-get-a-field)  
+* [Create a ticket and update a custom field](#create-a-ticket-and-update-a-custom-field)  
+* [Trigger based on age of ticket](#trigger-based-on-age-of-ticket)  
+* [Submit YAML via Email](#submit-yaml-via-email)  
+
 -----
 
 ## Initial test calls to API via NodeRED
@@ -44,7 +52,7 @@ Not 100% sure how this is useful, but demonstrates a function could be written t
 
 -----
 
-**Create a ticket and update a custom field (*test*)**
+## Create a ticket and update a custom field
 
 I believe this needs to be a two stage process:
 
@@ -88,7 +96,7 @@ And ideally confirm the `msg.statusCode` (not the msg.payload) and it should be 
 
 -----
 
-**Trigger based on age of ticket (*concept*)**
+## Trigger based on age of ticket
 
 So far as I can tell, there is no trigger to target a ticket that has reached a certain age; say, 20 days old, regardless of its due-date (if any). However, using an admin-only custom field (hidden, in effect), a scheduled API call could be used to trigger a sequence of rules after a specified delay. (A change of status could be a potential trigger, but if you want to ignore 'closed' tickets, using a custom field may be safer.)
 
@@ -107,3 +115,44 @@ With a simple API call:
 ...the rule is triggered, the status and priority are updated, and the email is sent to all subscribers.
 
 -----
+
+## Submit YAML via Email
+
+Experiment to pull a block of YAML data from an email, and write it to custom fields. Following a 'front-matter' style of syntax, placing the YAML between a header `---` and a footer `---`. Strict front-matter should begin on line one (I believe) but in this case it makes no difference. Also, the Jitbit API returns the ticket Body as HTML, and hence the regex/replace to strip out the tags.
+
+```javascript
+var emailBody = msg.payload.Body;
+var emailYaml = emailBody.replace(/<(.|\n)*?>/g, '');
+
+var starts = emailYaml.indexOf("---")+3;
+var endsAt = emailYaml.indexOf("---", emailYaml.indexOf("---") + 1);
+
+if (endsAt-starts<3) { msg.payload = "yaml : null"; } else
+  { msg.payload = emailYaml.substring(starts,endsAt); }
+
+return msg;
+```
+
+Text such as:
+
+```text
+Yaml Test 3
+---
+field1 : this
+field2 : that
+field3 : other
+---
+
+Some message here!
+```
+
+Becomes:
+
+```text
+22/10/2021, 18:36:28   node: 1xxxxx2.fxxxxx2
+msg.payload : Object
+>object
+  field1: "this"
+  field2: "that"
+  field3: "other"
+```

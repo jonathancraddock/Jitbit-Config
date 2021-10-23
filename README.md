@@ -1,7 +1,11 @@
 # Jitbit Customisation / Notes
 
+A collection of notes, links and resources, while looking at Jitbit functionality.
+
 * [API Experiments](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/api.md)  
-^- *mix of experiments while trying out the API, and some prototypes built in NodeRED*
+^- *various experiments while trying out the API, and some prototypes built in NodeRED*
+
+> One of the more intersting tests so far was this [Submit YAML via Email](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/api.md#submit-yaml-via-email) prototype, which parses an email for a block of YAML and writes it into Jitbit custom fields.
 
 * [Styles, CSS, and Javascript](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/styles.md)  
 ^- *styles and minor theme modifications*

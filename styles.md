@@ -2,11 +2,11 @@
 
 ## Custom CSS and JS
 
-The following sections and notes are suitable for demo and proof-of-concept only. Additional testing is required. In particular, I know there are several conditions that will not be matched by these CSS selectors. (Input field types that are not in use by this instance, etc, and the selectors would need to be modified to target those elements.)
+The following sections and notes are intended for demo and proof-of-concept. Additional testing is required. In particular, I know there are potential conditions that may not be matched by these CSS selectors. (Input field types that are not in use by this instance, etc, and the selectors would need to be modified to target those elements.)
 
 -----
 
-**Adjust title position:**
+### Adjust title position
 
 In this example, it was to ensure the baseline of the text was better aligned with the shape of the logo.
 
@@ -23,7 +23,23 @@ In this example, it was to ensure the baseline of the text was better aligned wi
 
 -----
 
-**The rounded box that surrounds custom fields on 'new ticket' page**
+### Additional (colour) emphasis on "overdue" ticket
+
+The default highlighting for the row displaying an overdue ticket is a delicate shade of pink! It's quite subtle, and if additional emphasis is required, the following CSS would target those rows:
+
+```CSS
+table.horizseparated tr.overdue td {
+    background-color: #fffadf;
+}
+```
+
+This example is a pale orange.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/bfba28aef24cd8a9f1eb2bb92634803ff95225b2/screencap/orange-overdue-row.png)
+
+-----
+
+### The rounded box that surrounds custom fields on 'new ticket' page
 
 For example, to draw additional attention to custom fields, particularly for new tech staff, who may not be familiar with Jitbit.
 
@@ -75,7 +91,7 @@ select.required, .report-input input.required, textarea.required {
 
 -----
 
-**Custom Fields Stacked Vertically**
+### Custom Fields Stacked Vertically
 
 If users are more comfortable with vertical fields, there may be a simple CSS tweak to alter the default horizontal format.
 
@@ -106,7 +122,7 @@ div.report-settings div.report-input textarea {
 
 -----
 
-**Red placeholder text on mandatory custom fields**
+### Red placeholder text on mandatory custom fields
 
 To highlight the `placeholder` of a custom field, eg/ not other required fields such as 'subject'.
 
@@ -124,7 +140,7 @@ Text returns to default black when fields are in use.
 
 -----
 
-**EXPERIMENTAL - Higlight entire row for "Critical" priority:**
+### EXPERIMENTAL - Higlight entire row for "Critical" priority:
 
 Critical is normally indicated via a small coloured badge icon, towards the right of the affected row, and this was a test to draw additional attention to the entire row.
 
@@ -163,7 +179,7 @@ Example of row highlighting, using jQuery to target the 'parent' element of any 
 
 -----
 
-**Increase emphasis on section-category in list view:**
+### Increase emphasis on section-category in list view:
 
 ```CSS
 /* Highlight the Section>Category in main list view */
@@ -180,7 +196,7 @@ In this example, placing pale blue highlight on section/category.
 
 -----
 
-**Modify green 'tag' displayed on main tickets view from `upd by tech` to `waiting`.**
+### Modify green 'tag' displayed on main tickets view from `upd by tech` to `waiting`.
 
 ```CSS
 /* Hide 'upd by tech' from main list view */
@@ -208,7 +224,7 @@ In this example, placing pale blue highlight on section/category.
 
 -----
 
-## Category 'Tooltip'
+### Category 'Tooltip'
 
 Testing a pop-up link to a Knowledge Base procedure when selecting a category:
 

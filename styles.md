@@ -39,6 +39,26 @@ This example is a pale orange.
 
 -----
 
+### Alternative aesthetic for custom fields
+
+In this demo, custom fields are stacked vertically with some additional behaviours:
+
+* font size is increased
+* field widths are extended/matched
+* mandatory fields have their placeholder coloured red
+* the field with focus has a bold yellow/black border
+* the background is pale grey
+* white-space is increased for improved clarity
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/ee7337a306532c7b446063ddb67d9f83e7d9ccf8/screencap/vertical-fields-yellow-focus.png)
+
+```css
+(css in review...)
+```
+^- *demo is functional, but current custom CSS syntax can be simplified*
+
+-----
+
 ### The rounded box that surrounds custom fields on 'new ticket' page
 
 For example, to draw additional attention to custom fields, particularly for new tech staff, who may not be familiar with Jitbit.

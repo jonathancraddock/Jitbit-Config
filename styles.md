@@ -59,6 +59,30 @@ In this demo, custom fields are stacked vertically with some additional behaviou
 
 -----
 
+### Gradient vs Plain colour on menu/tab bar
+
+If for example your corporate colour scheme required a named colour code and no gradient.
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/a64b86d1f402ee1b9c75ad2d1bdb456ca3b79cd3/screencap/tab-menu-gradient.png)  
+^- *default*
+
+```css
+/* Set menu/tab bar background colour */
+.tabmenu2, .tabmenu li.active a, .blueheader {
+    background-color: #667280;
+}
+
+/* Remove shaded gradient from menu/tab bar */
+.tabmenu2 {
+  background-image: none;
+}
+```
+
+![](https://github.com/jonathancraddock/Jitbit-Custom/blob/a64b86d1f402ee1b9c75ad2d1bdb456ca3b79cd3/screencap/tab-menu-plain.png)  
+^- *plain colour and no gradient*
+
+-----
+
 ### The rounded box that surrounds custom fields on 'new ticket' page
 
 For example, to draw additional attention to custom fields, particularly for new tech staff, who may not be familiar with Jitbit.

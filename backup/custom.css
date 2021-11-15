@@ -1,0 +1,99 @@
+/* Set menu/tab bar background colour */
+.tabmenu2, .tabmenu li.active a, .blueheader {
+    background-color: #667280;
+}
+
+/* Remove shaded gradient from menu-tab bar */
+.tabmenu2 {
+  background-image: none;
+}
+
+/* test to target specific field ID */
+#CustomFieldValue44285 {
+  border-style: solid;
+  border-color: #eaea6d;
+  border-width: 3px;
+}
+
+/* outer box for custom fields */
+#trCustomFields td .outerroundedbox {
+    background-color: #e3e5e6;
+    padding-bottom: 32px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d0d0d0;
+    border-radius: 3px;
+}
+
+/* custom field with focus */
+[id^="CustomFieldValue"]:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
+}
+
+/* placeholder text within a custom field */
+div.report-input .required::placeholder {
+  color: #ff00005c;
+}
+
+/* Colour of row with 'critical' priority, see custom.js */
+table.horizseparated tr.criticalRow td {
+  transition: all 0.2s ease;
+  background-color: #fbb32b40;
+}
+
+/* Colour of row with 'critical' priority, see custom.js */
+table.horizseparated tr.criticalRow:hover td {
+  transition: all 0.2s ease;
+  background-color: #fbb32b20;
+}
+
+/* highlight section category on each row */
+span.categoryName {
+    color: #12659d;
+    font-weight: 900;
+    background-color: #6495ed2e;
+}
+
+/* - - - - - */
+/* test stacking custom fields vertically */
+/* - - - - - */
+
+.report-settings div.report-input {
+  clear: both;
+  width: 100%;
+}
+
+.report-settings div.report-input label {
+  width: 20em;
+  margin-right: 5em;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: block;
+  margin-top: 10px;
+}
+
+.report-settings div.report-input input[type="text"], div.report-input input[type="number"], .report-settings div.report-input select, div.report-input textarea {
+  width: 100%;
+  line-height: 2;
+  padding-left: 8px;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+div.report-settings div.report-input textarea {
+  width: 100% !important;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* - - - - - */
+
+/* change 'overdue' row background colour */
+table.horizseparated tr.overdue td {
+    background-color: #fffadf;
+}

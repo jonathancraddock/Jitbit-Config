@@ -223,6 +223,22 @@ Example of row highlighting, using jQuery to target the 'parent' element of any 
 
 -----
 
+### Edit Tab Menu Headings
+
+Alter menu headings:
+
+![](https://github.com/jonathancraddock/Jitbit-Config/blob/main/screencap/tab-menu-edit.png)
+
+> **NOTE:** Jitbit support responded there's no supported method for modifying these headings.
+
+```
+$('.tabmenu2 li:nth-child(1) a').text($('.tabmenu2 li:nth-child(1) a').text().replace('Unanswered','New'));
+$('.tabmenu2 li:nth-child(2) a').text($('.tabmenu2 li:nth-child(2) a').text().replace('Unclosed','Open'));
+```
+^- *unanswered becomes new, unclosed becomes open...*
+
+-----
+
 ### Increase emphasis on section-category in list view:
 
 ```CSS

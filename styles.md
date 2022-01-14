@@ -178,6 +178,13 @@ div.report-input .required::placeholder {
 }
 ```
 
+Dropdowns appear more tricky to target, by their nature, but also because of the use of inline styles. The following displays the default placeholder in red, and reverts to black when a selection is made. (Works because the inline styling is rewritten on a mouse-down event.)
+```css
+.report-settings div.report-input select.required[style*="color:#aaa;"] {
+    color: #faafaf !important;
+}
+```
+
 ![](https://github.com/jonathancraddock/Jitbit-Custom/blob/0446d216e583d5953b165a61ae337f697c3817ec/screencap/mandatory-custom-filled.png)
 
 Text returns to default black when fields are in use.

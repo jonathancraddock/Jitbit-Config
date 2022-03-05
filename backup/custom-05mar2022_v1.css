@@ -1,0 +1,135 @@
+/* Adjust alignment of "Helpdesk Title". */
+/* (JC, 24.9.2021) */
+#divBigHeader .topheader #logo #spanTitle {
+    font-family: sans-serif;
+    margin-left: -14px;
+    position: relative;
+    top: 4px;
+}
+
+/* Use gov.uk blue for menu bar */
+/* (JC, 24.9.2021) */
+.tabmenu2, .tabmenu li.active a, .blueheader {
+    background-color: #1d70b8;
+}
+
+/* Remove shaded gradient from menu bar */
+/* (JC, 5.11.2021) */
+.tabmenu2 {
+    background-image: none;
+}
+
+/* Highlight the Section>Category in main list view */
+/* (JC, 24.9.2021) */
+span.categoryName {
+    color: #12659d;
+    font-weight: 900;
+    background-color: #6495ed2e;
+}
+
+/* Change pale-pink "overdue" row highlight to a yellow/orange */
+/* (JC, 4.11.2021) */
+table.horizseparated tr.overdue td {
+    background-color: #fff7ccaa;
+}
+
+/* Present updated by tech for Case Admin staff */
+/* Hide default badge and position it 'relative' */
+/* (JC, 1.10.2021) */
+.badge.tech-badge {
+    background-color: #70c45c;
+    position: relative;
+    visibility: hidden;
+}
+
+/* Append 'upd by admin' badge */
+/* (JC, 1.10.2021) */
+.badge.tech-badge::after {
+    visibility: visible;
+    content: "upd by admin";
+    background-color: #70c45c;
+    padding: 3px 5px;
+    border-radius: 3px;
+    line-height: 9px;
+    margin: -3px -5px -1px 0;
+    float: right;
+}
+
+/* Highlight user profile name in gov.uk blue */
+/* (JC, 19.11.2021) */
+#divBigHeader .topheader #userinfo button {
+    border: 1px solid #1f6fb8;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+/* Design edit to stack custom fields vertically */
+/* (JC, 15.11.2021)                              */
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* outer pale-grey box for custom fields */
+#trCustomFields td .outerroundedbox {
+    background-color: #e3e5e6;
+    padding-bottom: 32px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d0d0d0;
+    border-radius: 3px;
+}
+
+/* display custom fields on separate lines */
+.report-settings div.report-input {
+  /* clear: both; <- comment'd out due to date alignment issue, 3.12.2021 */
+  width: 100%;
+}
+
+/* modify custom field label */
+.report-settings div.report-input label {
+  width: 20em;
+  margin-right: 5em;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: block;
+  margin-top: 10px;
+}
+
+/* match the widths of all custom fields */
+/* (JC, 15.11.2021) */
+/* (JC, 22.11.2021 - edit line height, 2 -> 1.5em) */
+.report-settings div.report-input input[type="text"], div.report-input input[type="number"], .report-settings div.report-input select, div.report-input textarea {
+  width: 100%;
+  line-height: 1.5em;
+  padding-left: 8px;
+  min-width: 300px;
+  max-width: 600px;
+  height: 34px;
+}
+
+/* use red placeholder text for 'required' fields */
+div.report-input .required::placeholder {
+  color: #ff00005c;
+}
+
+/* use gov.uk style highlighting on custom field with focus */
+[id^="CustomFieldValue"]:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
+}
+
+/* width override for multiline text fields */
+div.report-settings div.report-input textarea {
+  width: 100% !important;
+  height: 180px;
+}
+
+/* - - - - - */
+
+/* Add date-picker icon to date field text boxes */
+/* (JC, 22.11.2021) */
+.report-settings div.report-input input.datepick {
+  background-image: url(/images/calendar.png);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position-x: right;
+}

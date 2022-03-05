@@ -1,13 +1,10 @@
-/* Amending and Testing - for better accessibility */
-
-
 /* Adjust alignment of "Helpdesk Title". */
 /* (JC, 24.9.2021) */
 #divBigHeader .topheader #logo #spanTitle {
     font-family: sans-serif;
     margin-left: -14px;
     position: relative;
-    top: 4px;
+    top: 2px;
 }
 
 /* Use gov.uk blue for menu bar */
@@ -157,16 +154,40 @@ a.button.newbutton {
   color: #fff;
 }
 
+/* Move newTicket DIV/button left of search input */
+/* NOTE: see jquery 'insertbefore' method in custom js below */
+/* JC, 5/2/22 */
+#divBigHeader #newTicket {
+  float: left;
+}
+
 /* - - - - - */
 /* Focus indicator */
 
-#divBigHeader .topheader #logo>a:focus span {
-    color: black !important;
-    outline: 3px solid transparent;
-    background-color: #fd0;
-    padding: 4px;
+/* Add yellow highlight to logo/title */
+/* JC, 4/3/22 */
+#divBigHeader .topheader #logo > a:focus {
+  outline: 3px solid transparent;
+  background-color: #fd0;
+  padding: 15px 4px 4px 4px;
+  margin-left: -4px;
 }
 
+/* Invert colour of Crown logo when it has focus */
+/* JC, 5/3/22 */
+#divBigHeader .topheader #logo a:focus img {
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+/* Invert colour of Title span when logo link has focus */
+/* JC, 4/3/22 */
+#divBigHeader .topheader #logo > a:focus span {
+  color: #34383E !important;
+}
+
+/* Yellow/Black border highlight for plain fields and text buttons */
+/* JC, 4/3/22 */
 #divBigHeader .topheader #userinfo button:focus, #divBigHeader .divSearch input:focus, select#ddlSortBy:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
@@ -174,6 +195,67 @@ a.button.newbutton {
     border-radius: 0;
 }
 
+/* Primary tabs, eg/ Tickets, Knowledge Base */
+/* JC, 4/3/22 */
+.tabmenu li a:focus {
+    color: black !important;
+    outline: 3px solid transparent;
+    background-color: #fd0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Primary tabs, prevent left-tab moving when focus lost */
+/* JC, 4/3/22 */
+.tabmenu li:first-child>a {
+    padding-left: 15px;
+}
+
+/* Secondary menu tabs, unclosed, unanswered, etc */
+/* JC, 4/3/22 */
+.tabmenu2 li a:focus {
+    color: black !important;
+    outline: 3px solid transparent;
+    background-color: #fd0;
+    padding: 13px;
+    margin: -13px;
+    display: block;
+}
+
+/* Target the "funnel" filter when it has focus */
+/* JC, 4/3/22 */
+#toggleFilter:focus {
+    color: black !important;
+    outline: 3px solid transparent;
+    background-color: #fd0;
+}
+
+/* Fields with focus when filter panel is open */
+/* JC, 5/3/22 */
+#filterForm table.grey input:focus, #filterForm table.grey select:focus, #filterForm table.grey button:focus, .ui-corner-all:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+.ui-multiselect-checkboxes label input:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+/* Left sidebar category list, with focus */
+/* JC, 4/3/22 */
+.categories .treeList li>a:focus {
+    color: black !important;
+    outline: 3px solid transparent;
+    background-color: #fd0;
+}
+
+/* Target the A-Z sort filter when it has focus */
+/* JC, 4/3/22 */
 #sorting span.outerroundedborder a:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
@@ -183,34 +265,39 @@ a.button.newbutton {
     margin: 0 -3px;
 }
 
-.tabmenu li a:focus {
-    color: black !important;
-    outline: 3px solid transparent;
-    background-color: #fd0;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+/* Small grey text label at bottom of filter panel */
+#sorting div a.grey2:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px #8a8a8a;
+  border-radius: 0;
+  padding: 0 5px;
+  margin-right: -5px;
 }
 
-.tabmenu li:first-child>a {
-    padding-left: 15px;
+/* Grey 'quick' filters below main filter panel */
+#divStats a {
+  display: block;
+  padding: 4px;
 }
 
-.tabmenu2 li a:focus {
-    color: black !important;
-    outline: 3px solid transparent;
-    background-color: #fd0;
-    padding: 13px;
-    margin: -13px;
+#divStats.grey2 a:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px #8a8a8a;
+  border-radius: 0;
+  display: block;
 }
 
-#toggleFilter:focus {
-    color: black !important;
-    outline: 3px solid transparent;
-    background-color: #fd0;
+a[title="Real-time dashboard"] {
+  margin-top: -12px;
 }
 
-.categories .treeList li>a:focus {
-    color: black !important;
-    outline: 3px solid transparent;
-    background-color: #fd0;
+a[title="Real-time dashboard"]:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px #8a8a8a;
+  border-radius: 0;
+  display: inline-block;
+  padding: 12px 16px;
 }

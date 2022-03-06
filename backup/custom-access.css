@@ -173,27 +173,34 @@ a.button.newbutton {
   margin-left: -4px;
 }
 
-/* Invert colour of Crown logo when it has focus */
+/* Invert colour of Crown logo (image) when it has focus */
 /* JC, 5/3/22 */
 #divBigHeader .topheader #logo a:focus img {
   filter: invert(100%);
   -webkit-filter: invert(100%);
 }
 
-/* Invert colour of Title span when logo link has focus */
+/* Invert colour of Title (text) span when logo link has focus */
 /* JC, 4/3/22 */
 #divBigHeader .topheader #logo > a:focus span {
   color: #34383E !important;
 }
 
 /* Yellow/Black border highlight for plain fields and text buttons */
-/* JC, 4/3/22 */
-#divBigHeader .topheader #userinfo button:focus, #divBigHeader .divSearch input:focus, select#ddlSortBy:focus {
+/* JC, 6/3/22 */
+#divBigHeader .topheader #userinfo button:focus, #divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px #000;
     border-radius: 0;
 }
+
+/*
+#divBigHeader .topheader #userinfo button:focus = "user profile" button
+#divBigHeader .divSearch input:focus = "search" input text box
+select#ddlSortBy:focus = "sort by" dropdown field
+#spanLoggedIn span.grey a:focus = "upgrade" text link
+*/
 
 /* Primary tabs, eg/ Tickets, Knowledge Base */
 /* JC, 4/3/22 */

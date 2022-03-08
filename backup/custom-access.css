@@ -7,6 +7,38 @@
     top: 2px;
 }
 
+/* "Skip to New Ticket" tab shortcut above header */
+/* (JC, 8/3/2022) */
+
+/* Yellow 'skip' bar at top of page */
+#skipNew:focus {
+  background: #ffdd00;
+  color: #000;
+  font-weight: 700;
+  padding: 8px 16px;
+  font-size: large;
+  display: block;
+  position: relative;
+}
+
+/* Hidden when not in focus */
+#skipNew {
+  position: absolute;
+}
+
+/* Skip to New Ticket - text link */
+#skipNew:focus span {
+  display: block;
+  text-decoration: underline;
+}
+
+/* Hide when <a> not in focus */
+#skipNew span {
+  display: none;
+}
+
+/* - - - - - */
+
 /* Use gov.uk blue for menu bar */
 /* (JC, 24.9.2021) */
 /* (JC, 3.3.2022) */
@@ -173,14 +205,14 @@ a.button.newbutton {
   margin-left: -4px;
 }
 
-/* Invert colour of Crown logo (image) when it has focus */
+/* Invert colour of Crown logo when it has focus */
 /* JC, 5/3/22 */
 #divBigHeader .topheader #logo a:focus img {
   filter: invert(100%);
   -webkit-filter: invert(100%);
 }
 
-/* Invert colour of Title (text) span when logo link has focus */
+/* Invert colour of Title span when logo link has focus */
 /* JC, 4/3/22 */
 #divBigHeader .topheader #logo > a:focus span {
   color: #34383E !important;
@@ -198,7 +230,7 @@ a.button.newbutton {
 /*
 #divBigHeader .topheader #userinfo button:focus = "user profile" button
 #divBigHeader .divSearch input:focus = "search" input text box
-select#ddlSortBy:focus = "sort by" dropdown field
+select#ddlSortBy:focus = ?
 #spanLoggedIn span.grey a:focus = "upgrade" text link
 */
 
@@ -315,4 +347,10 @@ a[title="Real-time dashboard"]:focus {
   display: inline-block;
   background-color: #F7F7F7;
   padding: 14px 18px;
+}
+
+/* TEST - idendifying tab/focus points within ticket grid view */
+/* (JC, 8/3/2022) */
+.ticketrowMeta + a:focus, .ticketAttr a.uPopup:focus, span.categoryName:focus, #tblTickets th a:focus {
+  border: 2px black solid;
 }

@@ -1,15 +1,24 @@
+// Current Focus
+var currFoc = 'none';
+
 // Test (changing placeholder colour in dropdown custom field)
 $('#CustomFieldValue47181').css('color','red');
 
 // Insert div for "skip to new ticket"
-$('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.getElementById(\'newTkt\').focus();"><span>Skip to New Ticket</span></a>');
+// yellow 'bar' at top of page on first <tab>
+// (JC, 8/3/2022)
+$('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.getElementById(\'newTkt\').focus();" aria-labelledby="Skip to New Ticket"><span>Skip to New Ticket</span></a>');
 
 // Hide "skip" on new ticket page
+// no 'new ticket' button on the new ticket page
+// (JC, 8/3/2022)
 var url = window.location.href;
 if(url.includes('/New')) { $('#skipNew').css('display','none'); }
 
-// Add an ID to the header (green) new ticket button
+// Add missing IDs where required
 $('#divBigHeader #newTicket a.button').prop('id','newTkt');
+$('#logo a').prop('id','logoLink');
+$('#statusId').next().prop('id','statusIdButton');
 
 // Set aria labels where missing
 $('#newTicket a').attr('aria-label', 'button to create new ticket');
@@ -21,9 +30,40 @@ $('#tbQuery').attr('aria-label', 'search');
 $('.topheader').attr('role', 'banner');
 $('#tbQuery').attr('role', 'search');
 
-// Set alt text where missing
-
-
 // Reverse order of newTicket and divSearch DIV elements
 // NOTE: requires a float: left in custom CSS above
 $('#newTicket').insertBefore('.divSearch');
+
+// Keystroke Shortcuts
+// -------------------
+// (JC, 10/3/2022)
+
+document.addEventListener('keydown', e => {
+
+$(':input').on('focus', function() {
+  currFoc = this.id;
+  // extract parent ID from current focus point
+  // eg- "ui-multiselect-statusId-option-0" -> "statusId"
+  currFocId = currFoc.replace('ui-multiselect-','');
+  currFocId = currFocId.substring(0,currFocId.search('-'));
+});
+
+// using <alt>+<p> to 'jump' back to top of page
+if (e.key.toLowerCase() === 'p' && e.altKey) {
+  $('#content').click();
+    // use 'logo' as a known point, top-left of page
+    document.getElementById('logoLink').focus();
+  }
+
+// using <alt>+<q> to 'quit' out of modal/dropdown elements
+// simulates a mouse user having to click-away from the element to close it 
+if (e.key.toLowerCase() === 'q' && e.altKey) {
+  $('body').click();
+  $('.datepick').datetimepicker('hide');
+  // if the user is in a multiselect combo, close it and return the focus
+    if ( currFoc.includes('ui-multiselect-') ) {
+      $('.ui-multiselect-menu').css('display','none');
+      $('#'+currFocId).next().focus();
+    }
+  }
+});

@@ -2,6 +2,9 @@
 
 A collection of notes, links and resources, while looking at Jitbit functionality.
 
+* [Notes on Accessibility](https://github.com/jonathancraddock/Jitbit-Config/blob/main/access.md)  
+^- *colour contrast, font size, focus indicators, keyboard-only navigation, etc*
+
 * [API Experiments](https://github.com/jonathancraddock/Jitbit-Custom/blob/main/api.md)  
 ^- *various experiments while trying out the API, and some prototypes built in NodeRED*
 

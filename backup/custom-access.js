@@ -25,6 +25,7 @@ $('#newTicket a').attr('aria-label', 'button to create new ticket');
 $('.report-input input.datepick').attr('aria-label', 'enter day slash month and a 4 digit year');
 $('#filterForm input.datepick').attr('aria-label', 'enter four digit year hyphen month hyphen day');
 $('#tbQuery').attr('aria-label', 'search');
+$('#ddlSortBy').attr('aria-label', 'choose the ticket column to sort by');
 
 // Set roles where missing
 $('.topheader').attr('role', 'banner');
@@ -40,6 +41,7 @@ $('#newTicket').insertBefore('.divSearch');
 
 document.addEventListener('keydown', e => {
 
+// when focus moves, save the ID with current focus
 $(':input').on('focus', function() {
   currFoc = this.id;
   // extract parent ID from current focus point
@@ -55,7 +57,7 @@ if (e.key.toLowerCase() === 'p' && e.altKey) {
     document.getElementById('logoLink').focus();
   }
 
-// using <alt>+<q> to 'quit' out of modal/dropdown elements
+// using <alt>+<q> to 'quit' out of modal/dropdown/trap elements
 // simulates a mouse user having to click-away from the element to close it 
 if (e.key.toLowerCase() === 'q' && e.altKey) {
   $('body').click();

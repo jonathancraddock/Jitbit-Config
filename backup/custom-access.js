@@ -1,5 +1,8 @@
 // Current Focus
 var currFoc = 'none';
+var url = window.location.href;
+
+console.log('url='+url);
 
 // Test (changing placeholder colour in dropdown custom field)
 $('#CustomFieldValue47181').css('color','red');
@@ -12,8 +15,10 @@ $('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.
 // Hide "skip" on new ticket page
 // no 'new ticket' button on the new ticket page
 // (JC, 8/3/2022)
-var url = window.location.href;
 if(url.includes('/New')) { $('#skipNew').css('display','none'); }
+
+// Test (add caption to main ticket table list)
+if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') ) { $('#tblTickets').prepend('<caption><h1>Tickets Demo</h1></caption>'); }
 
 // Add missing IDs where required
 $('#divBigHeader #newTicket a.button').prop('id','newTkt');
@@ -21,11 +26,12 @@ $('#logo a').prop('id','logoLink');
 $('#statusId').next().prop('id','statusIdButton');
 
 // Set aria labels where missing
-$('#newTicket a').attr('aria-label', 'button to create new ticket');
+$('#newTicket a').attr('aria-label', 'create new ticket');
 $('.report-input input.datepick').attr('aria-label', 'enter day slash month and a 4 digit year');
 $('#filterForm input.datepick').attr('aria-label', 'enter four digit year hyphen month hyphen day');
 $('#tbQuery').attr('aria-label', 'search');
 $('#ddlSortBy').attr('aria-label', 'choose the ticket column to sort by');
+$('table.horizseparated tr.overdue').attr('aria-label', 'ticket is overdue');
 
 // Set roles where missing
 $('.topheader').attr('role', 'banner');
@@ -34,6 +40,7 @@ $('#tbQuery').attr('role', 'search');
 // Reverse order of newTicket and divSearch DIV elements
 // NOTE: requires a float: left in custom CSS above
 $('#newTicket').insertBefore('.divSearch');
+
 
 // Keystroke Shortcuts
 // -------------------
@@ -68,4 +75,13 @@ if (e.key.toLowerCase() === 'q' && e.altKey) {
       $('#'+currFocId).next().focus();
     }
   }
+});
+
+// Shift focus, filter -> reset ??
+// ----------------------------
+// (JC, 11/3/2022)
+
+$('#filterForm button[type="submit"]').click(function(){
+  $('#btnResetFilter').focus();
+  currFoc = 'btnResetFilter';
 });

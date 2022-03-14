@@ -217,6 +217,8 @@ a.ticketLink, a.ticketLink:visited {
 .grey { color: #444; }
 .grey2 { color: #444; }
 a.grey2 { color: #444; }
+table.issueDetails .grey { color: #444; }
+th { color: #444; }
 
 /* stats below the ticket filter */
 /* (JC, 11/3/22) */
@@ -422,8 +424,63 @@ a[title="Real-time dashboard"]:focus {
   padding: 14px 18px;
 }
 
+/* TEST - add an H1 heading to the main ticket view table */
+/* (JC, 14/3/2022) */
+#tblTickets caption h1 {
+  font-size: 24px;
+  padding-bottom: 8px;
+  float: left;
+}
+
 /* TEST - idendifying tab/focus points within ticket grid view */
 /* (JC, 8/3/2022) */
-.ticketrowMeta + a:focus, .ticketAttr a.uPopup:focus, span.categoryName:focus, #tblTickets th a:focus {
-  border: 2px black solid;
+span.categoryName:focus, #tblTickets th a:focus {
+  border-bottom: 2px black solid;
+  padding: 9px 6px 6px 10px;
+  float: left;
+  background-color: #fd0;
+  margin: -9px -6px -8px -10px;
+  color: black;
+}
+
+.ticketAttr a.uPopup {
+  margin-right: 6px;
+}
+
+.ticketAttr a.uPopup:focus {
+  border-bottom: 2px black solid;
+  background-color: #fd0;
+  margin-right: 6px;
+  color: black;
+}
+
+.ticketAttr a.cPopup:focus {
+  border-bottom: 2px black solid;
+  background-color: #fd0;
+  color: black;
+}
+
+td.techTd a.uPopup:focus {
+  border-bottom: 2px black solid;
+  background-color: #fd0;
+  color: black;
+  min-width: 50px;
+  min-height: 15px;
+  display: inline-block;
+  margin-bottom: -2px;
+}
+
+.ticketrowMeta + a:focus {
+  border-bottom: 2px black solid;
+  padding: 1px 3px;
+  background-color: #fd0;
+  margin: -1px -3px;
+  color: black;
+}
+
+#tblTickets input[type="checkbox"]:focus {
+  opacity: 1;
+  outline: 2px #fd0 solid;
+  outline-offset: 1px;
+  box-shadow: 0 0 1px 3px black;
 }

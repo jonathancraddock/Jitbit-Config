@@ -1,8 +1,6 @@
-// Current Focus
+// Current Focus/URL
 var currFoc = 'none';
 var url = window.location.href;
-
-console.log('url='+url);
 
 // Test (changing placeholder colour in dropdown custom field)
 $('#CustomFieldValue47181').css('color','red');
@@ -17,8 +15,9 @@ $('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.
 // (JC, 8/3/2022)
 if(url.includes('/New')) { $('#skipNew').css('display','none'); }
 
-// Test (add caption to main ticket table list)
-if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') ) { $('#tblTickets').prepend('<caption><h1>Tickets Demo</h1></caption>'); }
+// Test (add caption/heading to main ticket table list)
+if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') ) { $('#tblTickets').prepend('<caption><h1>Tickets List</h1></caption>'); 
+$('#maintable > tbody > tr > td:first-child').prepend('<h2>Categories and Filters</h2>'); }
 
 // Add missing IDs where required
 $('#divBigHeader #newTicket a.button').prop('id','newTkt');
@@ -76,6 +75,7 @@ if (e.key.toLowerCase() === 'q' && e.altKey) {
     }
   }
 });
+
 
 // Shift focus, filter -> reset ??
 // ----------------------------

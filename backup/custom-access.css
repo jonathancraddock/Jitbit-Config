@@ -61,6 +61,19 @@ span.categoryName {
     background-color: #6495ed2e;
 }
 
+.fa-folder-open::before {
+  content: "\f07c";
+  margin-left: -6px;
+}
+
+/* Display the Section>Category in main list view on new-line */
+/* (JC, 14/3/22) */
+.ticketAttr a.cPopup::after {
+  display: block;
+  content: '\A';
+  margin-top: 4px;
+}
+
 /* Change pale-pink "overdue" row highlight to a yellow/orange */
 /* (JC, 4.11.2021) */
 table.horizseparated tr.overdue td {
@@ -187,7 +200,7 @@ div.report-settings div.report-input textarea {
 }
 
 a.button.newbutton {
-  background-color: #597c35;
+  background-color: #3b8719;
   color: #fff;
   border-bottom: 2px #aab79c solid;
   border-radius: 0;
@@ -200,6 +213,8 @@ a.button.newbutton {
 
 a.ticketLink, a.ticketLink:visited {
   color: #269;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 #tblTickets th a, #tblTickets th a:visited {
@@ -210,6 +225,20 @@ a.ticketLink, a.ticketLink:visited {
 
 .categories .treeList li.category a, .categories .treeList li.category a:visited {
   color: #585858;
+}
+
+/* selected category in treelist */
+/* (JC, 14/3/2022) */
+.categories .treeList li > a.selected {
+  background: #3b8719;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* selected category ticket-count in treelist */
+/* (JC, 14/3/2022) */
+.categories .treeList li > a.selected span.catCount {
+  background-color: #112e49;
 }
 
 /* grey fonts often used in list and field labels */
@@ -424,12 +453,19 @@ a[title="Real-time dashboard"]:focus {
   padding: 14px 18px;
 }
 
-/* TEST - add an H1 heading to the main ticket view table */
+/* TEST - add an headings to the main ticket view table */
 /* (JC, 14/3/2022) */
 #tblTickets caption h1 {
   font-size: 24px;
   padding-bottom: 8px;
   float: left;
+}
+
+#maintable h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #000;
+  margin-top: 6px;
 }
 
 /* TEST - idendifying tab/focus points within ticket grid view */
@@ -464,7 +500,7 @@ td.techTd a.uPopup:focus {
   border-bottom: 2px black solid;
   background-color: #fd0;
   color: black;
-  min-width: 50px;
+  min-width: 33px;
   min-height: 15px;
   display: inline-block;
   margin-bottom: -2px;
@@ -474,7 +510,7 @@ td.techTd a.uPopup:focus {
   border-bottom: 2px black solid;
   padding: 1px 3px;
   background-color: #fd0;
-  margin: -1px -3px;
+  margin: -1px -3px 7px -3px;
   color: black;
 }
 

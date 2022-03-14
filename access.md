@@ -2,7 +2,8 @@
 
 Some resources:
 
-* Accessibility Insights for Web -> https://accessibilityinsights.io/docs/en/web/overview/
+* Accessibility Insights for Web -> https://accessibilityinsights.io/docs/en/web/overview/  
+* GDS Styles -> https://design-system.service.gov.uk/styles/  
 
 ## Focus Indicators / Keyboard Navigation
 

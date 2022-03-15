@@ -77,6 +77,16 @@ if (e.key.toLowerCase() === 'q' && e.altKey) {
 });
 
 
+// Shift focus, category -> subject
+// --------------------------------
+// (JC, 15/3/2022)
+
+$("#CategoryID").change(function(){
+  console.log('changed category on new ticket');
+  $('#Subject').focus();
+});
+
+
 // Shift focus, filter -> reset ??
 // ----------------------------
 // (JC, 11/3/2022)

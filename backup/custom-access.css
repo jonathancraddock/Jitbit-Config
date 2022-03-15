@@ -61,6 +61,8 @@ span.categoryName {
     background-color: #6495ed2e;
 }
 
+/* Reduce left-margin beside "folder" icon shown in ticket list */
+/* (JC, 14/3/2022) */
 .fa-folder-open::before {
   content: "\f07c";
   margin-left: -6px;
@@ -80,7 +82,7 @@ table.horizseparated tr.overdue td {
     background-color: #fff7ccaa;
 }
 
-/* Present updated by tech for Case Admin staff */
+/* Present "updated by tech" for Case Admin staff */
 /* Hide default badge and position it 'relative' */
 /* (JC, 1.10.2021) */
 .badge.tech-badge {
@@ -114,18 +116,15 @@ table.horizseparated tr.overdue td {
 /* - - - - - - - - - - - - - - - - - - - - - - - */
 
 /* outer pale-grey box for custom fields */
+/* (removed grey effects for better contrast, 15/2/2022) */
 #trCustomFields td .outerroundedbox {
-    background-color: #e3e5e6;
-    padding-bottom: 32px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #d0d0d0;
-    border-radius: 3px;
+  box-shadow: none;
+  border: 0;
+  padding: 2px 2px 32px 2px;
 }
 
 /* display custom fields on separate lines */
 .report-settings div.report-input {
-  /* clear: both; <- comment'd out due to date alignment issue, 3.12.2021 */
   width: 100%;
 }
 
@@ -170,6 +169,86 @@ div.report-settings div.report-input textarea {
   height: 180px;
 }
 
+/* - ticket default fields,  - */
+/* - - - - - - - - - - - - - - */
+
+/* darker (square) border for input fields */
+/* (JC, 15/3/2022) */
+input[type="text"], input[type="number"], input[type="password"], input[type="email"], input[type="file"], input[type="url"], select, textarea, input.ac_input {
+  border: 1px solid #bbb;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+/* ticket category select toggle/dropdown */
+/* (use of '!important' due to override by jquery css styles */
+/* (JC, 15/3/2022) */
+.dropdownSelect .dropdown-toggle {
+  font-size: 14px !important;
+  line-height: 2em !important;
+  height: 32px !important;
+  border: 1px solid #bbb !important;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+/* yellow focus highlight */
+/* (use of '!important' due to override by jquery css styles */
+/* (JC, 15/3/2022) */
+.dropdownSelect .dropdown-toggle:focus, select#PriorityID:focus, input#Subject.required:focus, div.richeditor div[contenteditable="true"]:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000 !important;
+  border-radius: 0;
+}
+
+/* match priority dropdown to style of custom fields */
+/* (JC, 15/3/2022) */
+select#PriorityID {
+  height: 34px;
+  padding-left: 4px;
+}
+
+/* match subject line input box to style of custom fields */
+/* (JC, 15/3/2022) */
+input#Subject.required {
+  line-height: 2em;
+  box-shadow: none;
+}
+
+/* pad sides of body to match custom fields */
+#rteBody {
+  padding: 6px 10px;
+}
+
+/* submit button on new ticket screen */
+/* (JC, 15/3/2022) */
+input[type="submit"], button, a.button {
+  font-size: 14px;
+  line-height: 2em;
+  height: 34px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid black;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  color: #fff;
+  padding: 0 15px;
+  background: #00703c;
+}
+
+/* advanced button on new ticket screen */
+/* (JC, 15/3/2022) */
+.graybutton, input[type="submit"].graybutton, a.graybutton {
+  background-color: #cecece;
+  color: #000;
+  border-bottom: 2px #505a5f solid;
+}
+
 /* - - - - - */
 
 /* Add date-picker icon to date field text boxes */
@@ -184,6 +263,20 @@ div.report-settings div.report-input textarea {
 /* - - - - - - - - - - - - - - - - - - - - - - */
 /* From Edge "Accessibility Insights Web" tool */
 /* - - - - - - - - - - - - - - - - - - - - - - */
+
+/* improve contrast of placeholders to meet WCAG tool guide */
+/* (JC, 15/3/2022) */
+::placeholder {
+  color: #747474 !important;
+  font-style: italic;
+}
+
+/* custom placeholders used in 'body' of ticket */
+/* (JC, 15/3/2022) */
+#placeholderspan {
+  color: #747474;
+  font-style: italic;
+}
 
 #noTicketsMessage > a[href$="New"] {
   color: #2679af;
@@ -517,6 +610,6 @@ td.techTd a.uPopup:focus {
 #tblTickets input[type="checkbox"]:focus {
   opacity: 1;
   outline: 2px #fd0 solid;
-  outline-offset: 1px;
-  box-shadow: 0 0 1px 3px black;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #444 !important;
 }

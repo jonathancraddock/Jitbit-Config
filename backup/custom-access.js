@@ -5,6 +5,9 @@ var url = window.location.href;
 // Test (changing placeholder colour in dropdown custom field)
 $('#CustomFieldValue47181').css('color','red');
 
+// Change placeholder colour overridden by inline jquery style
+$('#placeholderspan').css('color','#555');
+
 // Insert div for "skip to new ticket"
 // yellow 'bar' at top of page on first <tab>
 // (JC, 8/3/2022)
@@ -32,20 +35,41 @@ $('#filterForm input.datepick').attr('aria-label', 'enter four digit year hyphen
 $('#tbQuery').attr('aria-label', 'search');
 $('#ddlSortBy').attr('aria-label', 'choose the ticket column to sort by');
 $('table.horizseparated tr.overdue').attr('aria-label', 'ticket is overdue');
+$('form#filterForm table button[type="submit"]').attr('aria-label', 'apply filters');
+
+//$('table.outerroundedbox.menulist div a').attr('aria-label', $('table.outerroundedbox.menulist div a').text());
+//^-fail... look at an 'each' ?
 
 // Set roles where missing
 $('.topheader').attr('role', 'banner');
 $('#tbQuery').attr('role', 'search');
 
+// remove font awesome icons from tabindex on Reports page
+$('i.icon').parent('a').attr('tabindex', '-1');
+
 // TEST - does screen reader now read the h2 and the body?
 $('#ticketBody').attr('role', 'main');
-
 
 // TEST - mark mis-used "layout" tables as ARIA presentation
 $('#maintable').attr('role', 'presentation'); // page layout
 $('#filterForm > table.grey').attr('role', 'presentation'); // filters
 $('#divStats').attr('role', 'presentation'); // stats
+$('.rightsidebar > .issueDetails').attr('role', 'presentation'); // details sidebar
 
+
+// TEST - mark active tab title as H1...
+$('div#divBigHeader ul.tabmenu li.active a').html( function() {
+  let value = $('div#divBigHeader ul.tabmenu li.active').html();
+  let innerHtml = value.substring(value.search('</i>')+5,value.length-4);
+  let allHtml = value.replace(innerHtml,'<h1>'+innerHtml+'</h1>');
+  let newHtml = allHtml.substring(allHtml.search('>')+1,allHtml.length-4);
+  console.log( newHtml );
+  $('div#divBigHeader ul.tabmenu li.active a').html(newHtml);
+});
+
+
+// add meaningful text label to button
+$('#toolbar #status li button[title="Reply"]').append('Create Reply');
 
 // Reverse order of newTicket and divSearch DIV elements
 // NOTE: requires a float: left in custom CSS above

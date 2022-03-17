@@ -47,6 +47,7 @@
     box-shadow: none;
 }
 
+
 .tabmenu {
   height: 38px;
 }
@@ -118,6 +119,12 @@ table.horizseparated tr.overdue td {
 /* (JC, 17/3/2022) */
 caption {
   text-align: left;
+}
+
+/* Space before "reply" text inserted into reply button */
+/* (JC, 17/3/2022) */
+.fa.fa-reply {
+  margin-right: 8px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - */
@@ -305,14 +312,36 @@ input[type="submit"]:focus, button:focus, a.button:focus {
 /* improve contrast of placeholders to meet WCAG tool guide */
 /* (JC, 15/3/2022) */
 ::placeholder {
-  color: #747474 !important;
+  color: #555 !important;
   font-style: italic;
+}
+
+/* testing additional cross-browser placeholder syntax */
+/* (JC, 17/3/2022) */
+::-webkit-input-placeholder { color: #555; }
+::-moz-placeholder { color: #555; }
+:-ms-input-placeholder { color: #555; }
+:-moz-placeholder { color: #555; }
+
+/* ticket details, who logged the ticket */
+#lnkFrom, #lnkFromCompany {
+  color: #2679af;
+}
+
+/* ticket details, who logged the ticket - under the body */
+a.uPopup {
+    color: #226c9d;
+}
+
+/* ticket details, date - under the body/reply */
+span.commentDate a {
+    color: #555;
 }
 
 /* custom placeholders used in 'body' of ticket */
 /* (JC, 15/3/2022) */
 #placeholderspan {
-  color: #747474;
+  color: #555 !important;
   font-style: italic;
 }
 
@@ -403,6 +432,11 @@ th { color: #444; }
   background-color: #5fa44f;
 }
 
+/* blue on comment for tech only badge */
+.badge.fortech-badge {
+  background-color: #457896;
+}
+
 /* orange colour on 'cust' badge */
 .badge.cust-badge {
   background-color: #986944;
@@ -413,6 +447,39 @@ th { color: #444; }
 /* JC, 5/2/22 */
 #divBigHeader #newTicket {
   float: left;
+}
+
+/* jQueryUI dropdown placeholder text */
+/* (JC, 17/3/2022) */
+.dropdown-text {
+  color: #555;
+}
+
+/* footer links on cloud  trial */
+#anchorHelp, .poweredBy a {
+  color: #226c9d;
+}
+
+/* header link on cloud  trial */
+#spanLoggedIn > .grey {
+  color: #acacac;
+}
+
+/* header link on cloud  trial */
+#spanLoggedIn > .grey a {
+  color: #acacac;
+  text-decoration: underline;
+}
+
+/* links on report and admin page */
+table.outerroundedbox.menulist div a {
+    color: #2679af;
+}
+
+/* headings on admin page */
+h2.breadcrumbs {
+    text-align: center;
+    color: #555;
 }
 
 /* - - - - - - - - - */
@@ -455,7 +522,7 @@ th { color: #444; }
 #divBigHeader #newTicket a.button {
   background-color: #00703c;
   color: #fff;
-  border-bottom: 2px #d2d2d2 solid;
+  border-bottom: 1px #d2d2d2 solid;
   border-radius: 0;
   border-left: 0;
   border-top: 0;
@@ -471,7 +538,7 @@ th { color: #444; }
 #divBigHeader #newTicket a.button:focus {
   color: black !important;
   background-color: #fd0;
-  border-bottom: 3px #fff solid;
+  border-bottom: 2px #fff solid;
   border-radius: 0;
 }
 
@@ -585,6 +652,12 @@ select#ddlSortBy:focus = ?
   background-color: #F7F7F7;
 }
 
+/* apply a CSS filter to make the "divStats" icons appear darker */
+/* (JC, 17/3/2022) */
+#leftsidebar img {
+    filter: brightness(20%);
+}
+
 a[title="Real-time dashboard"] {
   margin-top: -14px;
 }
@@ -605,6 +678,13 @@ a[title="Real-time dashboard"]:focus {
   font-size: 24px;
   padding-bottom: 8px;
   float: left;
+}
+
+/* match H1 to defaul tab text */
+h1 {
+  font-size: 13px;
+  padding-bottom: 0;
+  display: inline-block;
 }
 
 #maintable h2 {

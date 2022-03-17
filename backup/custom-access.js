@@ -15,14 +15,15 @@ $('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.
 // (JC, 8/3/2022)
 if(url.includes('/New')) { $('#skipNew').css('display','none'); }
 
-// Test (add caption/heading to main ticket table list)
-if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') ) { $('#tblTickets').prepend('<caption><h1>Tickets List</h1></caption>'); 
+// TEST - add caption/heading to main ticket table list
+if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') ) { $('#tblTickets').prepend('<caption><h2>Tickets List</h2></caption>'); 
 $('#maintable > tbody > tr > td:first-child').prepend('<h2>Categories and Filters</h2>'); }
 
 // Add missing IDs where required
 $('#divBigHeader #newTicket a.button').prop('id','newTkt');
 $('#logo a').prop('id','logoLink');
 $('#statusId').next().prop('id','statusIdButton');
+$('.dropdownSelect a.dropdown-toggle').prop('id','catDrop');
 
 // Set aria labels where missing
 $('#newTicket a').attr('aria-label', 'create new ticket');
@@ -35,6 +36,16 @@ $('table.horizseparated tr.overdue').attr('aria-label', 'ticket is overdue');
 // Set roles where missing
 $('.topheader').attr('role', 'banner');
 $('#tbQuery').attr('role', 'search');
+
+// TEST - does screen reader now read the h2 and the body?
+$('#ticketBody').attr('role', 'main');
+
+
+// TEST - mark mis-used "layout" tables as ARIA presentation
+$('#maintable').attr('role', 'presentation'); // page layout
+$('#filterForm > table.grey').attr('role', 'presentation'); // filters
+$('#divStats').attr('role', 'presentation'); // stats
+
 
 // Reverse order of newTicket and divSearch DIV elements
 // NOTE: requires a float: left in custom CSS above
@@ -82,7 +93,6 @@ if (e.key.toLowerCase() === 'q' && e.altKey) {
 // (JC, 15/3/2022)
 
 $("#CategoryID").change(function(){
-  console.log('changed category on new ticket');
   $('#Subject').focus();
 });
 

@@ -186,7 +186,8 @@ div.report-settings div.report-input textarea {
   height: 180px;
 }
 
-/* - ticket default fields,  - */
+/* - - - - - - - - - - - - - - */
+/* -  ticket default fields  - */
 /* - - - - - - - - - - - - - - */
 
 /* darker (square) border for input fields */
@@ -195,6 +196,22 @@ input[type="text"], input[type="number"], input[type="password"], input[type="em
   border: 1px solid #bbb;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
+  border-radius: 0;
+height: 34px;
+line-height: 2em;
+font-size: 14px;
+}
+
+/* tighter formating for 'filter' dropdown pane */
+/* (JC, 18/3/2022) */
+.filterBox input {
+  height: 23px;
+  border-radius: 0;
+}
+
+.filterBox .ui-multiselect {
+  height: 23px;
+  width: 100% !important;
   border-radius: 0;
 }
 
@@ -269,7 +286,7 @@ input[type="submit"], button:not(.editButton, .graybutton, .redbutton, .ui-widge
   -webkit-border-radius: 0;
   border-radius: 0;
   color: #fff;
-  background-color: #cc1a19;
+  background-color: #d4351c;
 }
 
 /* submit button on new ticket screen - with focus */
@@ -291,8 +308,24 @@ input[type="submit"]:focus, button:focus, a.button:focus {
   background-color: #cecece;
   color: #000;
   border-bottom: 2px #505a5f solid;
+  border-width: 0 0 2px 0;
+  padding-top: 1px;
 }
 
+/* reset button on general settings, and reset templates */
+/* (JC, 15/3/2022) */
+table.admintable input[name="btnResetDesign"], table.admintable input[name="btnResetTemplate"] {
+  font-size: 14px;
+  line-height: 2em;
+  height: 34px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background-color: #d4351c;
+  color: #FFF;
+  border-bottom: 2px solid black;
+  border-width: 0 0 2px 0;
+}
 
 /* - - - - - */
 
@@ -311,7 +344,7 @@ input[type="submit"]:focus, button:focus, a.button:focus {
 
 /* improve contrast of placeholders to meet WCAG tool guide */
 /* (JC, 15/3/2022) */
-::placeholder {
+::placeholder, .selectPlaceholder {
   color: #555 !important;
   font-style: italic;
 }
@@ -482,6 +515,12 @@ h2.breadcrumbs {
     color: #555;
 }
 
+/* Add contrast to font awesome icons */
+.fa {
+  opacity: .9;
+}
+
+
 /* - - - - - - - - - */
 /*  Focus indicator  */
 /* - - - - - - - - - */
@@ -527,7 +566,7 @@ h2.breadcrumbs {
   border-left: 0;
   border-top: 0;
   border-right: 0;
-  height: 34px;
+  height: 33px;
   padding: 2px 20px 0 20px;
   line-height: 2em;
   font-size: 14px;
@@ -672,7 +711,7 @@ a[title="Real-time dashboard"]:focus {
   padding: 14px 18px;
 }
 
-/* TEST - add an headings to the main ticket view table */
+/* TEST - add headings to the main ticket view table */
 /* (JC, 14/3/2022) */
 #tblTickets caption h1 {
   font-size: 24px;
@@ -692,6 +731,25 @@ h1 {
   margin-bottom: 10px;
   color: #000;
   margin-top: 6px;
+}
+
+/* focus highlight on reports and admin page */
+/* (JC, 17/3/2022) */
+table.outerroundedbox.menulist div a:focus {
+  background-color: #fd0;
+  color: black;
+  padding: 2px 8px 1px 8px;
+  margin: -2px -8px -1px -8px;
+  border-bottom: 2px solid black;
+}
+
+/* Highlight body of ticket on details page, while in focus */
+/* (JC, 18/3/22) */
+#ticketBody #body:focus-visible {
+    border: 2px green dashed;
+    outline: none;
+    padding: 5px;
+    margin: -7px;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - */
@@ -775,4 +833,14 @@ table.issueDetails .editButton {
 table.issueDetails .editButton:focus {
   background-color: #fd0;
   box-shadow: none;
+}
+
+
+/* - - - - - - -  */
+/* Admin          */
+/* - - - - - - -  */
+
+textarea#CustomJS, textarea#CustomCSS {
+  height: 440px;
+  line-height: 1.2em;
 }

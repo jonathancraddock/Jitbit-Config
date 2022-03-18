@@ -89,6 +89,16 @@ $('#ticketBody').attr('role', 'main');
 $('#ticketBody #body').attr('tabindex', '0');
 
 
+// set role textbox on ticket/reply body
+// =====================================
+$('#txtNewComment').focus(function(){
+  $('#txtNewComment').attr('role', 'textbox');
+  $('#rtetbNewComment').attr('role', 'textbox');
+});
+$('#Subject').focus(function(){
+  $('#rteBody').attr('role', 'textbox');
+});
+
 // remove font awesome icons from tabindex
 // =======================================
 // (was causing double-tab for keyboard only navigation)

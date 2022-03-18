@@ -47,6 +47,33 @@
     box-shadow: none;
 }
 
+/* default link colours and decoration in 'body' text */
+/* (JC, 18/3/2022) */
+#ticketBody a, .articleslist a, #articles a, #divIdeas a {
+  color: #1d70b8;
+  outline: 0;
+  padding: 0 2px;
+  margin: 0 -2px;
+  border-bottom: 1px solid #1d70b8;
+}
+
+#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover {
+  color: #003078;
+  border-bottom: 2px solid #003078;
+}
+
+#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus {
+  color: #000;
+  background-color: #fd0;
+  border-bottom: 2px solid #555;
+}
+
+#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active {
+  color: #000;
+  background-color: #fd0;
+  border-bottom: 1px solid #555;
+}
+
 
 .tabmenu {
   height: 38px;

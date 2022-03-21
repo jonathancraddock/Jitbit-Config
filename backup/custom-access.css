@@ -39,6 +39,11 @@
 
 /* - - - - - */
 
+/* Darker 'a' default color, to comply with WCAG 2 AA */
+a label, a {
+    color: #2679af;
+}
+
 /* Use gov.uk blue for menu bar */
 /* (JC, 24.9.2021) */
 /* (JC, 3.3.2022) - darker, for improved contrast ratio */
@@ -192,11 +197,6 @@ caption {
   min-width: 300px;
   max-width: 600px;
   height: 34px;
-}
-
-/* use red placeholder text for 'required' fields */
-div.report-input .required::placeholder {
-  color: #ff00005c;
 }
 
 /* use gov.uk style highlighting on custom field with focus */
@@ -371,17 +371,59 @@ table.admintable input[name="btnResetDesign"], table.admintable input[name="btnR
 
 /* improve contrast of placeholders to meet WCAG tool guide */
 /* (JC, 15/3/2022) */
-::placeholder, .selectPlaceholder {
+/*
+::placeholder:not(.required), .selectPlaceholder:not(.required) {
   color: #555 !important;
   font-style: italic;
 }
+*/
+
+/* JC TEST - prevent placeholder being overridden with #a2a2a2 ?? 
+input[id^="CustomFieldValue"]::placeholder {
+  color: #555;
+}
+*/
+
+/* JC TEST3 - test with "placeholder-shown" in Edge ?? */
+:placeholder-shown {
+    color: #555;
+}
 
 /* testing additional cross-browser placeholder syntax */
-/* (JC, 17/3/2022) */
-::-webkit-input-placeholder { color: #555; }
-::-moz-placeholder { color: #555; }
-:-ms-input-placeholder { color: #555; }
-:-moz-placeholder { color: #555; }
+/* (JC, 21/3/2022) */
+input[id^="CustomFieldValue"]::-webkit-input-placeholder { color: #555 !important;font-style: italic; }
+input[id^="CustomFieldValue"]::-moz-placeholder { color: #555 !important;font-style: italic; }
+input[id^="CustomFieldValue"]:-ms-input-placeholder { color: #555 !important;font-style: italic; }
+input[id^="CustomFieldValue"]::-ms-input-placeholder { color: #555 !important;font-style: italic; }
+
+#Subject::placeholder {
+  color: #d4351c;
+  opacity: 1;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* custom placeholders used in 'body' of ticket */
+/* (JC, 15/3/2022) */
+#placeholderspan {
+  color: #d4351c !important;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* use red placeholder text for 'required' fields */
+div.report-input .required::placeholder {
+  color: #d4351c;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* use red placeholder text for 'required' dropdown fields */
+.report-settings div.report-input select.required[style*="color:#aaa;"] {
+  color: #d4351c !important;
+  font-weight: bold;
+  font-style: italic;
+}
 
 /* ticket details, who logged the ticket */
 #lnkFrom, #lnkFromCompany {
@@ -396,13 +438,6 @@ a.uPopup {
 /* ticket details, date - under the body/reply */
 span.commentDate a {
     color: #555;
-}
-
-/* custom placeholders used in 'body' of ticket */
-/* (JC, 15/3/2022) */
-#placeholderspan {
-  color: #555 !important;
-  font-style: italic;
 }
 
 #noTicketsMessage > a[href$="New"] {
@@ -659,6 +694,14 @@ select#ddlSortBy:focus = ?
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px #000;
     border-radius: 0;
+}
+
+/* Focus on "report" screen */
+/* (JC 21/3/22, check rule above, why separated on #filterForm?) */
+select:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px #000;
 }
 
 .ui-multiselect-checkboxes label input:focus {

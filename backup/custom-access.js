@@ -52,6 +52,7 @@ $('#divBigHeader #newTicket a.button').prop('id','newTkt');
 $('#logo a').prop('id','logoLink');
 $('#statusId').next().prop('id','statusIdButton');
 $('.dropdownSelect a.dropdown-toggle').prop('id','catDrop');
+$('#toolbar #status li button[title="Reply"]').prop('id','newReply');
 
 
 // Set aria labels where missing
@@ -92,6 +93,10 @@ $('#ticketBody #body').attr('tabindex', '0');
 // set role textbox on ticket/reply body
 // =====================================
 $('#txtNewComment').focus(function(){
+  $('#txtNewComment').attr('role', 'textbox');
+  $('#rtetbNewComment').attr('role', 'textbox');
+});
+$('#newReply').click(function(){
   $('#txtNewComment').attr('role', 'textbox');
   $('#rtetbNewComment').attr('role', 'textbox');
 });

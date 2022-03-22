@@ -39,12 +39,7 @@
 
 /* - - - - - */
 
-/* Darker 'a' default color, to comply with WCAG 2 AA */
-a label, a {
-    color: #2679af;
-}
-
-/* Use gov.uk blue for menu bar */
+/* Use gov.uk blue (#1d70b8) for menu bar */
 /* (JC, 24.9.2021) */
 /* (JC, 3.3.2022) - darker, for improved contrast ratio */
 .tabmenu2, .tabmenu li.active a, .blueheader {
@@ -52,9 +47,17 @@ a label, a {
     box-shadow: none;
 }
 
-/* default link colours and decoration in 'body' text */
-/* (JC, 18/3/2022) */
-#ticketBody a, .articleslist a, #articles a, #divIdeas a {
+.tabmenu {
+  height: 38px;
+}
+
+/* ----------------------------------------------------- */
+/* default link colours and decoration in 'body' text    */
+/* https://design-system.service.gov.uk/styles/colour/   */
+/* (JC, 18/3/2022)                                       */
+/* ----------------------------------------------------- */
+
+#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a {
   color: #1d70b8;
   outline: 0;
   padding: 0 2px;
@@ -62,26 +65,26 @@ a label, a {
   border-bottom: 1px solid #1d70b8;
 }
 
-#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover {
+#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover {
   color: #003078;
   border-bottom: 2px solid #003078;
 }
 
-#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus {
+#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus {
   color: #000;
   background-color: #fd0;
   border-bottom: 2px solid #555;
 }
 
-#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active {
+#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active {
   color: #000;
   background-color: #fd0;
   border-bottom: 1px solid #555;
 }
 
-
-.tabmenu {
-  height: 38px;
+/* needs a darker blue "a" link colour due to grey background */
+#fileUploadLbl, #aCapture {
+  color: #2679af;
 }
 
 /* Remove shaded gradient from blue menu bar */
@@ -224,9 +227,9 @@ input[type="text"], input[type="number"], input[type="password"], input[type="em
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
-height: 34px;
-line-height: 2em;
-font-size: 14px;
+  height: 34px;
+  line-height: 2em;
+  font-size: 14px;
 }
 
 /* tighter formating for 'filter' dropdown pane */
@@ -252,7 +255,7 @@ font-size: 14px;
   border: 1px solid #bbb !important;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 /* yellow focus highlight */
@@ -263,6 +266,28 @@ font-size: 14px;
   outline-offset: 0;
   box-shadow: inset 0 0 0 2px #000 !important;
   border-radius: 0;
+}
+
+/* Tag box on ticket details page */
+#tbTags_tag {
+  border: 1px solid #bbb;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  height: 34px;
+  line-height: 2em;
+  font-size: 14px;
+  margin: 2px 1px 2px 4px;
+  padding: 0 6px;
+  width: 100%;
+}
+#tbTags_tag:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000 !important;
+  margin: 2px 1px 2px 4px;
+  padding: 0 6px;
+  width: 100%;
 }
 
 /* match priority dropdown to style of custom fields */
@@ -339,6 +364,13 @@ input[type="submit"]:focus, button:focus, a.button:focus {
   padding-top: 1px;
 }
 
+/* New ticket, advanced fields, correct 1px tag offset */
+/* (radius was being overridden by jquery style)       */
+.tagsinput {
+  margin-top: -1px;
+  border-radius: 0 !important;
+}
+
 /* reset button on general settings, and reset templates */
 /* (JC, 15/3/2022) */
 table.admintable input[name="btnResetDesign"], table.admintable input[name="btnResetTemplate"] {
@@ -383,6 +415,10 @@ input[id^="CustomFieldValue"]::placeholder {
   color: #555;
 }
 */
+
+#divAdvanced input::placeholder {
+  color: #555;
+}
 
 /* JC TEST3 - test with "placeholder-shown" in Edge ?? */
 :placeholder-shown {
@@ -537,6 +573,11 @@ th { color: #444; }
   background-color: #986944;
 }
 
+/* orange/white link colour on 'cust' badge */
+.badge.cust-badge a {
+  color: #fff;
+}
+
 /* Move newTicket DIV/button left of search input */
 /* NOTE: see jquery 'insertbefore' method in custom js below */
 /* JC, 5/2/22 */
@@ -611,7 +652,7 @@ h2.breadcrumbs {
 
 /* Yellow/Black border highlight for plain fields and text buttons */
 /* JC, 6/3/22 */
-#divBigHeader .topheader #userinfo button:focus, #divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus {
+#divBigHeader .topheader #userinfo button:focus, #divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus, #Subscribers_tag {
     outline: 3px solid #fd0;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px #000;

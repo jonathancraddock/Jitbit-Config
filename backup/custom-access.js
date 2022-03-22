@@ -3,23 +3,23 @@ var currFoc = 'none';
 var url = window.location.href;
 
 // Test (changing placeholder colour in dropdown custom field)
-$('#CustomFieldValue47181').css('color','red');
+// $( "input[id^='CustomFieldValue']" ).css('color','#d4351c');
 
-// Change placeholder colour overridden by inline jquery style
-$('#placeholderspan').css('color','#555');
+// Test (change placeholder overridden by inline jquery style)
+// $('#placeholderspan').css('color','#555');
 
 
 // Insert div for "skip to new ticket"
 // ===================================
-
 // yellow 'bar' at top of page on first <tab>
 // (JC, 8/3/2022)
-$('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.getElementById(\'newTkt\').focus();" aria-labelledby="Skip to New Ticket"><span>Skip to New Ticket</span></a>');
-
+$('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.getElementById(\'newTkt\').focus();" aria-label="Skip to New Ticket"><span>Skip to New Ticket</span></a>');
 // Hide "skip" on new ticket page
 // no 'new ticket' button on the new ticket page
 // (JC, 8/3/2022)
-if(url.includes('/New')) { $('#skipNew').css('display','none'); }
+if(url.includes('/New')) {
+  $('#skipNew').css('display','none');
+}
 
 
 // Reverse order of newTicket and divSearch DIV elements
@@ -62,7 +62,6 @@ $('.report-input input.datepick').attr('aria-label', 'enter day slash month and 
 $('#tbQuery').attr('aria-label', 'search');
 $('#ddlSortBy').attr('aria-label', 'choose the ticket column to sort by');
 $('table.horizseparated tr.overdue').attr('aria-label', 'ticket is overdue');
-
 // filter pane
 $('form#filterForm table button[type="submit"]').attr('aria-label', 'apply filters');
 $('#toggleFilter').attr('aria-label', 'Toggle button. Press enter for filter options, or tab for categories list');
@@ -72,13 +71,15 @@ $('#updFrom').attr('aria-label', 'ticket updated from date, four digit year hyph
 $('#updTo').attr('aria-label', 'ticket updated to date, four digit year hyphen month hyphen day');
 $('#fromDepartmentId').attr('aria-label', 'choose department');
 $('#filterForm select[name="badge"]').attr('aria-label', 'last updated by');
+$('#PriorityID').attr('aria-label', 'press space to open priority dropdown');
+$('#btnAdd').attr('aria-label', 'submit ticket button');
 
 
 // Add pseudo-placeholders where missing on <select>
 // =================================================
 //$('#fromDepartmentId').prepend('<option class="selectPlaceholder" value="" disabled selected hidden>department name</option>');
 //$('#filterForm select[name="badge"]').prepend('<option class="selectPlaceholder" value="" disabled selected hidden>updated by</option>');
-// ^- not working consistently ???
+// ^- disabled, not working consistently ???
 
 
 // Set roles where missing
@@ -87,26 +88,31 @@ $('.topheader').attr('role', 'banner');
 $('#tbQuery').attr('role', 'search');
 // make body the 'main' region on ticket details page
 $('#ticketBody').attr('role', 'main');
+// add 'tab' to ticket body text to allow screen reader user to tab
 $('#ticketBody #body').attr('tabindex', '0');
+$('#btnAdd').attr('role', 'button');
 
 
 // set role textbox on ticket/reply body
+// add ARIA label
 // =====================================
 $('#txtNewComment').focus(function(){
   $('#txtNewComment').attr('role', 'textbox');
   $('#rtetbNewComment').attr('role', 'textbox');
-});
+}); // ^- clicking or tabbing into field
 $('#newReply').click(function(){
   $('#txtNewComment').attr('role', 'textbox');
   $('#rtetbNewComment').attr('role', 'textbox');
-});
+}); // ^- using new reply button
 $('#Subject').focus(function(){
   $('#rteBody').attr('role', 'textbox');
-});
+  $('#rteBody').attr('aria-label', 'ticket body');
+}); // ^- body on new ticket page
+
 
 // remove font awesome icons from tabindex
-// =======================================
 // (was causing double-tab for keyboard only navigation)
+// =======================================
 $('i.icon').parent('a').attr('tabindex', '-1');
 
 
@@ -117,6 +123,7 @@ $('#maintable').attr('role', 'presentation'); // page layout
 $('#filterForm > table.grey').attr('role', 'presentation'); // filters
 $('#divStats').attr('role', 'presentation'); // stats
 $('.rightsidebar > .issueDetails').attr('role', 'presentation'); // details sidebar
+$('#new-ticket-form table').attr('role', 'presentation'); // new ticket
 
 
 // add meaningful text labels to buttons

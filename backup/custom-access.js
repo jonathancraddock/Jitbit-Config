@@ -72,7 +72,7 @@ $('#updTo').attr('aria-label', 'ticket updated to date, four digit year hyphen m
 $('#fromDepartmentId').attr('aria-label', 'choose department');
 $('#filterForm select[name="badge"]').attr('aria-label', 'last updated by');
 $('#PriorityID').attr('aria-label', 'press space to open priority dropdown');
-$('#btnAdd').attr('aria-label', 'submit ticket button');
+$('#btnAdd').attr('aria-label', 'submit ticket');
 
 
 // Add pseudo-placeholders where missing on <select>
@@ -85,12 +85,12 @@ $('#btnAdd').attr('aria-label', 'submit ticket button');
 // Set roles where missing
 // =======================
 $('.topheader').attr('role', 'banner');
-$('#tbQuery').attr('role', 'search');
+//$('#tbQuery').attr('role', 'search');
 // make body the 'main' region on ticket details page
 $('#ticketBody').attr('role', 'main');
 // add 'tab' to ticket body text to allow screen reader user to tab
 $('#ticketBody #body').attr('tabindex', '0');
-$('#btnAdd').attr('role', 'button');
+//$('#btnAdd').attr('role', 'button');
 
 
 // set role textbox on ticket/reply body

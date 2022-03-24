@@ -51,6 +51,13 @@
   height: 38px;
 }
 
+/* red (warn) colour on logout button */
+/* (JC, 24/3/2022) */
+#divRecent a.button.graybutton.logoutButton {
+  background-color: #d4351c;
+  color: white;
+}
+
 /* ----------------------------------------------------- */
 /* default link colours and decoration in 'body' text    */
 /* https://design-system.service.gov.uk/styles/colour/   */

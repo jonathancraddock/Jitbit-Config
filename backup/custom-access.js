@@ -2,12 +2,10 @@
 var currFoc = 'none';
 var url = window.location.href;
 
-// Test (changing placeholder colour in dropdown custom field)
-// $( "input[id^='CustomFieldValue']" ).css('color','#d4351c');
-
-// Test (change placeholder overridden by inline jquery style)
-// $('#placeholderspan').css('color','#555');
-
+// provide simple async delay function
+function sleep(milliseconds) {  
+  return new Promise(resolve => setTimeout(resolve, milliseconds));  
+}
 
 // Insert div for "skip to new ticket"
 // ===================================
@@ -182,6 +180,12 @@ if (e.key.toLowerCase() === 'q' && e.altKey) {
 $("#CategoryID").change(function(){
   $('#Subject').focus();
 });
+
+
+// TEST - Delayed actions
+sleep(250).then(() => {  
+  $('#tbTags_tag').attr('title', 'tags');  
+}) // write 'tags' into title of tags input field on ticket details
 
 
 // TEST Shift focus, filter -> reset ??

@@ -110,7 +110,7 @@ $('#Subject').focus(function(){
 
 // remove font awesome icons from tabindex
 // (was causing double-tab for keyboard only navigation)
-// =======================================
+// =====================================================
 $('i.icon').parent('a').attr('tabindex', '-1');
 
 
@@ -180,8 +180,9 @@ if (e.key.toLowerCase() === 'p' && e.altKey) {
   }
 
 // using <alt>+<q> to 'quit' out of modal/dropdown/trap elements
-// (simulates a mouse user having to click-away from the element to close it) 
-if (e.key.toLowerCase() === 'q' && e.altKey) {
+// added <Esc> key-press to same rule
+// (simulates a mouse user clicking "away" from the element to close it) 
+if (( e.key.toLowerCase() === 'q' && e.altKey) || e.key === 'Escape' ) {
   $('body').click();
   $('.datepick').datetimepicker('hide');
   // if the user is in a multiselect combo, close it and return the focus

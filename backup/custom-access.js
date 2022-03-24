@@ -147,7 +147,7 @@ $('#btnUser').click( function() {
     console.log('button required');
     $('#divRecent a.graybutton').addClass('logoutButton');
     $('#divRecent').append('<a class="button graybutton" id="closeButton">Close</a>');
-    //$('#btnUser').focus();
+    $('#btnUser').focus();
     document.getElementById('btnUser').focus();
   }
 });
@@ -155,6 +155,7 @@ $('#btnUser').click( function() {
 $('#closeButton').click( function() {
  $('body').click();
 });
+
 
 // Keystroke Shortcuts
 // ===================
@@ -204,5 +205,3 @@ sleep(250).then(() => {
   $("#CategoryID + .dropdownSelect a.dropdown-toggle").focus();
 
 })
-
-

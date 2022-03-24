@@ -455,8 +455,10 @@ div.report-input .required::placeholder {
 }
 
 /* use red placeholder text for 'required' dropdown fields */
-.report-settings div.report-input select.required[style*="color:#aaa;"] {
+/* (JC, 24/3/2022) */
+.report-settings div.report-input select.required[style="color:#aaa;"] {
   color: #d4351c !important;
+  opacity: 1;
   font-weight: bold;
   font-style: italic;
 }

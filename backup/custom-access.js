@@ -44,6 +44,13 @@ if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/he
 $('#maintable > tbody > tr > td:first-child').prepend('<h2>Categories and Filters</h2>'); }
 
 
+// shift focus to first ticket after filter is applied
+// ===================================================
+if( url.includes('?mode=') && !url.includes('resetFilter=True') ) {
+  $('tbody > tr:first-child > td:first-child a.ticketLink').focus();
+}
+
+
 // Add missing IDs where required
 // ==============================
 $('#divBigHeader #newTicket a.button').prop('id','newTkt');
@@ -122,7 +129,7 @@ $('#Subject').focus(function(){
 // (prevents 'double-tab' for keyboard only navigation)
 // =====================================================
 $('i.icon').parent('a').attr('tabindex', '-1');      // report icons
-$('.kbHeader .fa.fa-search').attr('tabindex', '-1'); // magnif. glass
+$('.kbHeader .fa.fa-search').attr('tabindex', '-1'); // magnif glass
 
 
 // mark mis-used "layout" tables as ARIA presentation
@@ -158,12 +165,14 @@ $('#btnUser').click( function() {
     console.log('button required');
     $('#divRecent a.graybutton').addClass('logoutButton');
     $('#divRecent').append('<button class="button graybutton" id="closeButton" tabindex="0">Close</button>');
-    document.getElementById('btnUser').focus();
   }
 });
 
 $('#closeButton').click( function() {
- $('body').click();
+  $('body').click();
+  $('#btnUser').focus();
+  document.getElementById('btnUser').focus();
+  console.log('close');
 });
 
 
@@ -212,9 +221,18 @@ $("#CategoryID").change(function(){
 });
 
 
+
+//$('#filterForm button[type="submit"]').click(function(){
+//  $('tbody > tr:first-child > td:first-child a.ticketLink').focus();
+//});
+
+
+
 // Delayed Actions
 // ===============
+// Eg/ sleep(250).then(() => { //here; })
 // (JC, 24/3/2022)
+
 sleep(250).then(() => {  
  
   // write 'tags' into title of tags input field on ticket details
@@ -224,3 +242,5 @@ sleep(250).then(() => {
   $("#CategoryID + .dropdownSelect a.dropdown-toggle").focus();
 
 })
+
+

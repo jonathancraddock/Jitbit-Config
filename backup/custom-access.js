@@ -73,6 +73,16 @@ $('#PriorityID').attr('aria-label', 'press space to open priority dropdown');
 $('#btnAdd').attr('aria-label', 'submit ticket');
 
 
+// ARIA labels on ticket details custom fields
+// ===========================================
+$('tbody#TicketCustomFields button.editButton').each(function() {
+  let selId     = $(this).prop('id');
+  let origTitle = $(this).prop('title');
+  let newLabel  = origTitle.substring(0, origTitle.length-3);
+  $(this).attr('aria-label', 'Change '+newLabel);
+});
+
+
 // Add pseudo-placeholders where missing on <select>
 // =================================================
 //$('#fromDepartmentId').prepend('<option class="selectPlaceholder" value="" disabled selected hidden>department name</option>');
@@ -109,9 +119,10 @@ $('#Subject').focus(function(){
 
 
 // remove font awesome icons from tabindex
-// (was causing double-tab for keyboard only navigation)
+// (prevents 'double-tab' for keyboard only navigation)
 // =====================================================
-$('i.icon').parent('a').attr('tabindex', '-1');
+$('i.icon').parent('a').attr('tabindex', '-1');      // report icons
+$('.kbHeader .fa.fa-search').attr('tabindex', '-1'); // magnif. glass
 
 
 // mark mis-used "layout" tables as ARIA presentation
@@ -146,8 +157,7 @@ $('#btnUser').click( function() {
   { console.log('button exists'); } else {
     console.log('button required');
     $('#divRecent a.graybutton').addClass('logoutButton');
-    $('#divRecent').append('<a class="button graybutton" id="closeButton">Close</a>');
-    $('#btnUser').focus();
+    $('#divRecent').append('<button class="button graybutton" id="closeButton" tabindex="0">Close</button>');
     document.getElementById('btnUser').focus();
   }
 });
@@ -180,7 +190,7 @@ if (e.key.toLowerCase() === 'p' && e.altKey) {
   }
 
 // using <alt>+<q> to 'quit' out of modal/dropdown/trap elements
-// added <Esc> key-press to same rule
+// added <Esc> key-press to same rule (24/3/2022)
 // (simulates a mouse user clicking "away" from the element to close it) 
 if (( e.key.toLowerCase() === 'q' && e.altKey) || e.key === 'Escape' ) {
   $('body').click();
@@ -191,6 +201,14 @@ if (( e.key.toLowerCase() === 'q' && e.altKey) || e.key === 'Escape' ) {
       $('#'+currFocId).next().focus();
     }
   }
+});
+
+
+// Shift focus, category -> subject
+// ================================
+// (JC, 15/3/2022)
+$("#CategoryID").change(function(){
+  $('#Subject').focus();
 });
 
 

@@ -376,6 +376,7 @@ input[type="submit"]:focus, button:focus, a.button:focus {
   border-bottom: 2px #505a5f solid;
   border-width: 0 0 2px 0;
   padding-top: 1px;
+  margin-bottom: 4px;
 }
 
 /* New ticket, advanced fields, correct 1px tag offset */
@@ -409,6 +410,13 @@ table.admintable input[name="btnResetDesign"], table.admintable input[name="btnR
   background-size: 30px;
   background-repeat: no-repeat;
   background-position-x: right;
+}
+
+/* white-space above ticket ID for enhanced clarity */
+/* (JC, 28/3/2022) */
+div.ticketrowMeta .grey2.ticketId {
+  margin-top: 14px;
+  display: block;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - */
@@ -562,8 +570,9 @@ th { color: #444; }
 
 /* increase size of new, upd, etc, ticket badges */
 .badge {
-  font-size: 14px;
-  padding: 2px 4px 5px 4px;
+  font-size: 12px;
+  padding: 1px 3px 2px 3px;
+  line-height: 11px;
 }
 
 /* red colour on a 'new' ticket badge */
@@ -641,6 +650,15 @@ h2.breadcrumbs {
   opacity: .9;
 }
 
+/* Colour of 'tags' in main ticket view sidebar */
+#leftsidebar div.grey span.tag a {
+  color: #1e608d;
+  text-decoration: underline;
+}
+
+#leftsidebar div.grey span.tag {
+  color: #555;
+}
 
 /* - - - - - - - - - */
 /*  Focus indicator  */

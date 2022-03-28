@@ -160,17 +160,19 @@ $(".filterBox td:contains(days)").remove();
 // =================================================
 // (JC, 24/3/2022)
 $('#btnUser').click( function() {
-  if ($('#closeButton').length)
+  if ($('#closeRecent').length)
   { console.log('button exists'); } else {
     console.log('button required');
     $('#divRecent a.graybutton').addClass('logoutButton');
-    $('#divRecent').append('<button class="button graybutton" id="closeButton" tabindex="0">Close</button>');
+    $('#divRecent').append('<button class="button graybutton" id="closeRecent" tabindex="0">Close</button>');
   }
 });
 
-$('#closeButton').click( function() {
-  $('body').click();
-  $('#btnUser').focus();
+//$('#closeRecent').click( function() {
+$('closeRecent').on('click', function() {
+  //$('body').click();
+  $('#divRecent').css('display','none');
+  $('button#btnUser').focus();
   document.getElementById('btnUser').focus();
   console.log('close');
 });
@@ -242,5 +244,3 @@ sleep(250).then(() => {
   $("#CategoryID + .dropdownSelect a.dropdown-toggle").focus();
 
 })
-
-

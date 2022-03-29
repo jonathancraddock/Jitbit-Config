@@ -419,6 +419,71 @@ div.ticketrowMeta .grey2.ticketId {
   display: block;
 }
 
+/* Remove subscriber button */
+/* (JC, 28/3/2022)          */
+.darkbg a {
+  background-color: #d4351c;
+  padding: 1px 5px;
+  color: white;
+  margin-right: 3px;
+  position: relative;
+  top: 1px;
+  left: 4px;
+  border-radius: 30%;
+}
+
+/* the 'stop' button next to ticket timer */
+/* JC, 29/3/2022                          */
+#lblTimeSpent { margin-right: 6px; }
+a#lnkPauseTimer { border: 0; }
+#lnkPauseTimer i {
+  margin: -2px -3px;
+  background-color: #d1e0f7;
+  padding: 4px 7px;
+  border-radius: 33%;
+  border: 1px #888 solid;
+  opacity: 1; }
+#lnkPauseTimer i:focus {
+  background-color: #fd0; }
+
+/* remove due date button, ticket details page */
+/* ticket details pane 'cancel' buttons        */
+#spanEditDueDate a,
+#lblTicketDate + div a span,
+#btnSaveTimeSpent + a span,
+#lblStartDate + div.editor a span,
+#btnSaveCloseDate + a span,
+#btnSavePriority + a span,
+#btnSaveCategory + a span,
+#btnSaveFromUser + a span,
+#btnSaveAssignee + a span,
+tbody#TicketCustomFields a span {
+  background-color: #cecece;
+  color: black !important;
+  opacity: 1;
+  font-size: 14px;
+  line-height: 2em;
+  height: 30px;
+  display: inline-block;
+  border-bottom: 2px solid black;
+  padding: 2px 12px 0 12px;
+  margin: 0 2px 0 -4px;
+  position: relative;
+  top: -1px;
+  font-weight: bold;
+}
+
+/* download to calendar button on ticket details page */
+#lblDueDate a { border: none; }
+#lblDueDate a i {
+  margin: -2px -3px;
+  background-color: #d1e0f7;
+  padding: 4px 5px;
+  border-radius: 33%;
+  border: 1px #888 solid;
+  opacity: 1;
+}
+
 /* - - - - - - - - - - - - - - - - - - - - - - */
 /* From Edge "Accessibility Insights Web" tool */
 /* - - - - - - - - - - - - - - - - - - - - - - */
@@ -493,6 +558,11 @@ div.report-input .required::placeholder {
 /* ticket details, who logged the ticket - under the body */
 a.uPopup {
   color: #226c9d;
+  font-size: 13px;
+}
+
+/* technician name on main ticket grid */
+td.techTd a.uPopup {
   font-size: 12px;
 }
 
@@ -535,6 +605,11 @@ a.ticketLink, a.ticketLink:visited {
   font-weight: bold;
 }
 
+/* overdue ticket subject (originally) presented in bold-red */
+table.horizseparated tr.overdue td a.ticketLink, table.horizseparated tr.overdue td.duedate {
+  color: black;
+}
+
 .categories .treeList li.category a, .categories .treeList li.category a:visited {
   color: #585858;
 }
@@ -556,10 +631,10 @@ a.ticketLink, a.ticketLink:visited {
 /* grey fonts often used in list and field labels        */
 /* (required !important due to same syntax in source CSS */
 .greyer, a.greyer { color: #585858; }
-.grey { color: #444; font-size: 12px !important; }
+.grey { color: #444; font-size: 12px; }
 .grey2 { color: #444; font-size: 12px !important; margin-top: 6px; }
 a.grey2 { color: #444; font-size: 12px !important; }
-table.issueDetails .grey { color: #444; }
+table.issueDetails .grey { color: #444; font-size: 13px; }
 th { color: #444; }
 
 /* stats below the ticket filter */
@@ -857,6 +932,56 @@ a[title="Real-time dashboard"]:focus {
   background-color: #F7F7F7;
   padding: 14px 18px;
 }
+
+/* more (custom status) button dropdown on ticket details */
+/* important due to override by later jQuery CSS          */
+/* JC, 29/3/2022                                          */
+li.customstatus form input:focus, li.customstatus form input:hover {
+  background-color: #fd0 !important;
+  color: black !important;
+}
+
+/* stop timer button on ticket details page */
+/* download to calendar */
+#lnkPauseTimer:focus i, #lblDueDate a:focus i {
+  background-color: #fd0;
+  margin-right: -6px;
+}
+
+/* cancel 'buttons' on ticket details page */
+#spanEditDueDate a:focus,
+#lblTicketDate + div a:focus span,
+#btnSaveTimeSpent + a:focus span,
+#lblStartDate + div.editor a:focus span,
+#btnSaveCloseDate + a:focus span,
+#btnSavePriority + a:focus span,
+#btnSaveCategory + a:focus span,
+#btnSaveFromUser + a:focus span,
+#btnSaveAssignee + a:focus span,
+tbody#TicketCustomFields a:focus span {
+  background-color: #fd0;
+}
+
+/* prevent 'empty' active link showing behind cancel button*/
+#lblTicketDate + div a:focus, #lblTicketDate + div a,
+#btnSaveTimeSpent + a:focus, #btnSaveTimeSpent + a,
+#lblStartDate + div.editor a:focus, #lblStartDate + div.editor a,
+#btnSaveCloseDate + a:focus, #btnSaveCloseDate + a,
+#btnSavePriority + a:focus, #btnSavePriority + a,
+#btnSaveCategory + a:focus, #btnSaveCategory + a,
+#btnSaveFromUser + a:focus, #btnSaveFromUser + a,
+#btnSaveAssignee + a:focus, #btnSaveAssignee + a,
+tbody#TicketCustomFields a:focus, tbody#TicketCustomFields a {
+  border: none;
+  background-color: transparent;
+}
+
+/* prevent 'previous tech' info from extending off the page */
+#prevTech {
+  white-space: initial;
+}
+
+/* - - - - - - - - - - */
 
 /* TEST - add headings to the main ticket view table */
 /* (JC, 14/3/2022) */

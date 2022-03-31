@@ -1,11 +1,39 @@
 // Current Focus/URL
 var currFoc = 'none';
 var url = window.location.href;
+console.log(url);
 
 // provide simple async delay function
 function sleep(milliseconds) {  
   return new Promise(resolve => setTimeout(resolve, milliseconds));  
 }
+
+
+// TEST - mutationobserver
+// missing mandatory fields
+function missedMandatory(mutations) {
+  let errorCount = $('label.error').length;
+  let cat =$('#CategoryID').val();
+  let subj = $('#Subject').text();
+  let body =$('#rteBody').text();
+  console.log('Incomplete! (cat: '+cat+')');
+  //if ( cat == -1 ) {
+  //  $("#CategoryID + label + .dropdownSelect a.dropdown-toggle").focus();
+  //}
+}
+
+if( url.endsWith('/helpdesk/Tickets/New') || url.endsWith('/helpdesk/Tickets/New/') ) { 
+  const newTicketForm = document.querySelector("#new-ticket-form");
+  var watchMandatory = new MutationObserver(missedMandatory);
+  watchMandatory.observe(newTicketForm,{childList:true,subtree:true});
+}
+
+$('#btnAdd').click( function() { 
+  let cat = $('#CategoryID').val();
+  let msg = '(TEST) Category field is OK.';
+  if ( cat == -1 ) { msg = '(TEST) Category field is blank.'; }
+  alert('status: '+msg);
+});
 
 // Insert div for "skip to new ticket"
 // ===================================
@@ -18,12 +46,20 @@ $('#divBigHeader').prepend('<a id="skipNew" href="#newButton" onclick="document.
 if(url.includes('/New')) {
   $('#skipNew').css('display','none');
 }
+// ------------------------------------------------------------
 
 
 // Reverse order of newTicket and divSearch DIV elements
 // =====================================================
 // NOTE: requires a "float: left" in custom CSS above
 $('#newTicket').insertBefore('.divSearch');
+// ------------------------------------------------------------
+
+
+// Reverse order of attach and capture buttons, New Ticket page
+// ============================================================
+// $('#aCapture + div.filelinks.grey').insertBefore('#aCapture');
+// ------------------------------------------------------------
 
 
 // Mark active tab title as H1 for every page
@@ -33,15 +69,17 @@ $('div#divBigHeader ul.tabmenu li.active a').html( function() {
   let innerHtml = value.substring(value.search('</i>')+5,value.length-4);
   let allHtml = value.replace(innerHtml,'<h1>'+innerHtml+'</h1>');
   let newHtml = allHtml.substring(allHtml.search('>')+1,allHtml.length-4);
-  console.log( newHtml );
+  //console.log( newHtml );
   $('div#divBigHeader ul.tabmenu li.active a').html(newHtml);
 });
+// ------------------------------------------------------------
 
 
 // add caption/heading H2 to main ticket table list
 // ================================================
 if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') ) { $('#tblTickets').prepend('<caption><h2>Tickets List</h2></caption>'); 
 $('#maintable > tbody > tr > td:first-child').prepend('<h2>Categories and Filters</h2>'); }
+// ------------------------------------------------------------
 
 
 // shift focus to first ticket after filter is applied
@@ -49,6 +87,7 @@ $('#maintable > tbody > tr > td:first-child').prepend('<h2>Categories and Filter
 if( url.includes('?mode=') && !url.includes('resetFilter=True') ) {
   $('tbody > tr:first-child > td:first-child a.ticketLink').focus();
 }
+// ------------------------------------------------------------
 
 
 // Add missing IDs where required
@@ -58,6 +97,7 @@ $('#logo a').prop('id','logoLink');
 $('#statusId').next().prop('id','statusIdButton');
 $('.dropdownSelect a.dropdown-toggle').prop('id','catDrop');
 $('#toolbar #status li button[title="Reply"]').prop('id','newReply');
+// ------------------------------------------------------------
 
 
 // Set aria labels where missing
@@ -78,6 +118,8 @@ $('#fromDepartmentId').attr('aria-label', 'choose department');
 $('#filterForm select[name="badge"]').attr('aria-label', 'last updated by');
 $('#PriorityID').attr('aria-label', 'press space to open priority dropdown');
 $('#btnAdd').attr('aria-label', 'submit ticket');
+$('#fileUploadLbl').attr('aria-label', 'attach file');
+// ------------------------------------------------------------
 
 
 // ARIA labels on ticket details custom fields
@@ -88,6 +130,7 @@ $('tbody#TicketCustomFields button.editButton').each(function() {
   let newLabel  = origTitle.substring(0, origTitle.length-3);
   $(this).attr('aria-label', 'Change '+newLabel);
 });
+// ------------------------------------------------------------
 
 
 // Add pseudo-placeholders where missing on <select>
@@ -106,6 +149,7 @@ $('#ticketBody').attr('role', 'main');
 // add 'tab' to ticket body text to allow screen reader user to tab
 $('#ticketBody #body').attr('tabindex', '0');
 //$('#btnAdd').attr('role', 'button');
+// ------------------------------------------------------------
 
 
 // set role textbox on ticket/reply body
@@ -123,6 +167,7 @@ $('#Subject').focus(function(){
   $('#rteBody').attr('role', 'textbox');
   $('#rteBody').attr('aria-label', 'ticket body');
 }); // ^- body on new ticket page
+// ------------------------------------------------------------
 
 
 // remove font awesome icons from tabindex
@@ -130,6 +175,7 @@ $('#Subject').focus(function(){
 // =====================================================
 $('i.icon').parent('a').attr('tabindex', '-1');      // report icons
 $('.kbHeader .fa.fa-search').attr('tabindex', '-1'); // magnif glass
+// ------------------------------------------------------------
 
 
 // mark mis-used "layout" tables as ARIA presentation
@@ -140,12 +186,14 @@ $('#filterForm > table.grey').attr('role', 'presentation'); // filters
 $('#divStats').attr('role', 'presentation'); // stats
 $('.rightsidebar > .issueDetails').attr('role', 'presentation'); // details sidebar
 $('#new-ticket-form table').attr('role', 'presentation'); // new ticket
+// ------------------------------------------------------------
 
 
 // add meaningful text labels to buttons
 // =====================================
-$('#toolbar #status li button[title="Reply"]').append('Create Reply');
+$('button[title="Reply"]').append('Reply');
 // ^-reply on ticket details page
+// ------------------------------------------------------------
 
 
 // remove appended 'days' label and replace placeholder
@@ -154,6 +202,7 @@ $('#toolbar #status li button[title="Reply"]').append('Create Reply');
 $('table.grey tbody input[name=dueFilter]').attr('placeholder', 'Days until due');
 $(".filterBox td:contains(days)").prev().attr('colspan',2);
 $(".filterBox td:contains(days)").remove();
+// ------------------------------------------------------------
 
 
 // add 'close' button to user-profile recent tickets
@@ -176,6 +225,7 @@ $('closeRecent').on('click', function() {
   document.getElementById('btnUser').focus();
   console.log('close');
 });
+// ------------------------------------------------------------
 
 
 // Keystroke Shortcuts
@@ -213,21 +263,45 @@ if (( e.key.toLowerCase() === 'q' && e.altKey) || e.key === 'Escape' ) {
     }
   }
 });
+// ------------------------------------------------------------
 
 
-// Shift focus, category -> subject
-// ================================
+// Shift focus, category -> subject on New Ticket screen
+// =====================================================
 // (JC, 15/3/2022)
 $("#CategoryID").change(function(){
   $('#Subject').focus();
 });
+// ------------------------------------------------------------
 
+
+// Custom status "More..." button to be keybaord accessible
+// ========================================================
+// (JC, 29/3/2022)
+
+// add ID and add options to tabindex order
+$('#status button.moreBtnToolbar').prop('id','moreMouseOver');
+$('li.customstatus form input').prop('tabindex','0');
+
+//$('#btnInProcess').click( function() {
+//  console.log('#btnInProcess');
+//  $('#status button.moreBtnToolbar').prop('id','moreMouseOver');
+//});
+
+// trigger 'mouseover' when clicked
+$('#status button.moreBtnToolbar').click( function() {  
+  console.log('#moreMouseOver');
+  $('#status button.moreBtnToolbar').prop('id','moreMouseOver');
+  var elementButton = document.getElementById('moreMouseOver');
+  var eventTrig = new MouseEvent('mouseover', {'view': window,'bubbles': true,'cancelable': true});
+  elementButton.dispatchEvent(eventTrig);
+});
+// ------------------------------------------------------------
 
 
 //$('#filterForm button[type="submit"]').click(function(){
 //  $('tbody > tr:first-child > td:first-child a.ticketLink').focus();
 //});
-
 
 
 // Delayed Actions
@@ -244,3 +318,4 @@ sleep(250).then(() => {
   $("#CategoryID + .dropdownSelect a.dropdown-toggle").focus();
 
 })
+// ------------------------------------------------------------

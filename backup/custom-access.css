@@ -401,6 +401,38 @@ table.admintable input[name="btnResetDesign"], table.admintable input[name="btnR
   border-width: 0 0 2px 0;
 }
 
+#fileUploadLbl {
+  color: black;
+}
+
+.fileupload a {
+  height: 26px;
+  background-color: #cecece;
+  padding: 9px 14px 0 8px;
+  margin: -3px -8px 0 0;
+  margin-right: -8px;
+  border-bottom: 2px solid #505a5f;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+}
+
+#aCapture {
+  height: 23px;
+  background-color: #cecece;
+  padding: 6px 6px 3px 8px;
+  border-bottom: 2px solid #505a5f;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+/*HIDING THIS SCREEN CAPTURE BUTTON FOR NOW*/
+  display: none;
+}
+
+.fileupload a:focus, #aCapture:focus {
+  background-color: #fd0;
+}
+
 /* - - - - - */
 
 /* Add date-picker icon to date field text boxes */
@@ -465,7 +497,7 @@ tbody#TicketCustomFields a span {
   line-height: 2em;
   height: 30px;
   display: inline-block;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #505a5f;
   padding: 2px 12px 0 12px;
   margin: 0 2px 0 -4px;
   position: relative;
@@ -668,6 +700,11 @@ th { color: #444; }
 /* blue on comment for tech only badge */
 .badge.fortech-badge {
   background-color: #457896;
+}
+
+/* additional space for badge on knowledge base articles list */
+.articleslist .fortech-badge {
+  margin-left: 10px;
 }
 
 /* orange colour on 'cust' badge */

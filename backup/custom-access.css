@@ -425,7 +425,8 @@ table.admintable input[name="btnResetDesign"], table.admintable input[name="btnR
   font-size: 14px;
   font-weight: bold;
   color: black;
-/*HIDING THIS SCREEN CAPTURE BUTTON FOR NOW*/
+/*HIDING THIS SCREEN-CAPTURE BUTTON FOR NOW*/
+/*display: block;*/
   display: none;
 }
 

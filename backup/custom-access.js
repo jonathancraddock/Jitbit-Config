@@ -14,9 +14,9 @@ function sleep(milliseconds) {
 function missedMandatory(mutations) {
   let errorCount = $('label.error').length;
   let cat =$('#CategoryID').val();
-  let subj = $('#Subject').text();
+  let subj = $('#Subject').val();
   let body =$('#rteBody').text();
-  console.log('Incomplete! (cat: '+cat+')');
+  console.log('Incomplete! (cat: '+cat+', subj: '+subj+')');
   //if ( cat == -1 ) {
   //  $("#CategoryID + label + .dropdownSelect a.dropdown-toggle").focus();
   //}
@@ -29,10 +29,25 @@ if( url.endsWith('/helpdesk/Tickets/New') || url.endsWith('/helpdesk/Tickets/New
 }
 
 $('#btnAdd').click( function() { 
-  let cat = $('#CategoryID').val();
-  let msg = '(TEST) Category field is OK.';
-  if ( cat == -1 ) { msg = '(TEST) Category field is blank.'; }
-  alert('status: '+msg);
+
+sleep(100).then(() => { console.log('wait for update'); 
+
+  let errorCount = $('label.error').length;
+  let cat  = $('#CategoryID').val();
+  let subj = $('#Subject').val();
+  let body = $('#rteBody').text().length;
+  let msg  = '';
+  let errors = $('label.error:visible').length;
+  if ( errors > 0 ) {
+    msg = 'cat='+cat+'\nsubj='+subj+'\nbody='+body;
+    alert('There are '+errors+' missing fields:\n\n'+msg);
+    sleep(250).then(() => {
+    $("#CategoryID + label + .dropdownSelect a.dropdown-toggle").focus();
+    })
+  }
+
+});
+
 });
 
 // Insert div for "skip to new ticket"
@@ -97,6 +112,9 @@ $('#logo a').prop('id','logoLink');
 $('#statusId').next().prop('id','statusIdButton');
 $('.dropdownSelect a.dropdown-toggle').prop('id','catDrop');
 $('#toolbar #status li button[title="Reply"]').prop('id','newReply');
+// file upload button did not respond to tab...enter in Edge
+$('#fileUploadLbl').parent().prop('id','attachFile');
+$('#fileUploadLbl').parent().attr('onclick','this.firstChild.click()');
 // ------------------------------------------------------------
 
 
@@ -118,7 +136,7 @@ $('#fromDepartmentId').attr('aria-label', 'choose department');
 $('#filterForm select[name="badge"]').attr('aria-label', 'last updated by');
 $('#PriorityID').attr('aria-label', 'press space to open priority dropdown');
 $('#btnAdd').attr('aria-label', 'submit ticket');
-$('#fileUploadLbl').attr('aria-label', 'attach file');
+$('#fileUploadLbl').parent().attr('aria-label', 'attach file');
 // ------------------------------------------------------------
 
 
@@ -149,6 +167,7 @@ $('#ticketBody').attr('role', 'main');
 // add 'tab' to ticket body text to allow screen reader user to tab
 $('#ticketBody #body').attr('tabindex', '0');
 //$('#btnAdd').attr('role', 'button');
+$('#fileUploadLbl').parent().attr('role', 'button');
 // ------------------------------------------------------------
 
 
@@ -309,7 +328,7 @@ $('#status button.moreBtnToolbar').click( function() {
 // Eg/ sleep(250).then(() => { //here; })
 // (JC, 24/3/2022)
 
-sleep(250).then(() => {  
+sleep(200).then(() => {  
  
   // write 'tags' into title of tags input field on ticket details
   $('#tbTags_tag').attr('title', 'tags');

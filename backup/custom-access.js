@@ -15,6 +15,11 @@ function sleep(milliseconds) {
 $('#btnAdd').click( function() { 
   sleep(100).then(() => { console.log('missing new ticket fields'); 
 
+  // display error notification *before* the field, not after
+  $('#Subject-error').insertBefore('#Subject');
+  $('#Body-error').parents('td').prop('id','bodytd');
+  $('#Body-error').insertBefore('#bodytd>div');
+
   // define variables and messages
   let cat        = $('#CategoryID').val();
   let subj       = $('#Subject').val();
@@ -344,3 +349,8 @@ sleep(200).then(() => {
 
 })
 // ------------------------------------------------------------
+
+//notes
+//$('#Subject-error').insertBefore('#Subject');
+//$('#Body-error').parents('td').prop('id','bodytd');
+//$('#Body-error').insertBefore('#bodytd>div');

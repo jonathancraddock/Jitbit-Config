@@ -29,20 +29,35 @@ if( url.endsWith('/helpdesk/Tickets/New') || url.endsWith('/helpdesk/Tickets/New
 }
 
 $('#btnAdd').click( function() { 
+  sleep(100).then(() => { console.log('missing new ticket fields'); 
 
-sleep(100).then(() => { console.log('wait for update'); 
-
+  // define variables and messages
   let errorCount = $('label.error').length;
-  let cat  = $('#CategoryID').val();
-  let subj = $('#Subject').val();
-  let body = $('#rteBody').text().length;
-  let msg  = '';
-  let errors = $('label.error:visible').length;
+  let cat        = $('#CategoryID').val();
+  let subj       = $('#Subject').val();
+  let body       = $('#rteBody').text().length;
+  let msg        = '';
+  let customList = '';
+  let errors     = $('label.error:visible').length;
+
+  // get list of missing/required custom fields
+  $('[id^="CustomFieldValue"].required.error').each(function() {
+    //let field  = $('label[for"'+ $(this).attr('id') +'"]');
+    let label  = $(this).prev('label').text();
+    let field  = label.replace('*','').trim();
+    console.log(label+' / '+field);
+    customList += field+", ";
+  });
+
+  // write errors to 'alert' DIV
   if ( errors > 0 ) {
+    if (errors>1) {pInd=" are"} else {pInd=" is"}; // pres indicative
     msg = 'cat='+cat+'\nsubj='+subj+'\nbody='+body;
-    alert('There are '+errors+' missing fields:\n\n'+msg);
+    $('#mandatoryAlert').html('This ticket category includes MANDATORY fields and '+errors+pInd+' missing.<br />Fields: '+customList);
+    $('#mandatoryAlert').css({'display':'block'});
     sleep(250).then(() => {
-    $("#CategoryID + label + .dropdownSelect a.dropdown-toggle").focus();
+      $("a.dropdown-toggle").focus();
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
     })
   }
 
@@ -71,9 +86,9 @@ $('#newTicket').insertBefore('.divSearch');
 // ------------------------------------------------------------
 
 
-// Reverse order of attach and capture buttons, New Ticket page
-// ============================================================
-// $('#aCapture + div.filelinks.grey').insertBefore('#aCapture');
+// Prepare missing fields 'alert' div on New Ticket page
+// =====================================================
+$('#new-ticket-form tbody').prepend('<tr><td><div id="mandatoryAlert" role="alert">DO NOT READ THIS!</div></td></tr>');
 // ------------------------------------------------------------
 
 
@@ -289,6 +304,8 @@ if (( e.key.toLowerCase() === 'q' && e.altKey) || e.key === 'Escape' ) {
 // =====================================================
 // (JC, 15/3/2022)
 $("#CategoryID").change(function(){
+  // hide mandatory field alert when category is changed
+  $('#mandatoryAlert').css({'display':'none'});
   $('#Subject').focus();
 });
 // ------------------------------------------------------------

@@ -8,59 +8,48 @@ function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));  
 }
 
-
-// TEST - mutationobserver
-// missing mandatory fields
-function missedMandatory(mutations) {
-  let errorCount = $('label.error').length;
-  let cat =$('#CategoryID').val();
-  let subj = $('#Subject').val();
-  let body =$('#rteBody').text();
-  console.log('Incomplete! (cat: '+cat+', subj: '+subj+')');
-  //if ( cat == -1 ) {
-  //  $("#CategoryID + label + .dropdownSelect a.dropdown-toggle").focus();
-  //}
-}
-
-if( url.endsWith('/helpdesk/Tickets/New') || url.endsWith('/helpdesk/Tickets/New/') ) { 
-  const newTicketForm = document.querySelector("#new-ticket-form");
-  var watchMandatory = new MutationObserver(missedMandatory);
-  watchMandatory.observe(newTicketForm,{childList:true,subtree:true});
-}
-
+// Missing "New Ticket" mandatory fields
+// =====================================
+// provide (JAWS) alert for missing mandatory fields
+// (JC, 1/4/2022)
 $('#btnAdd').click( function() { 
   sleep(100).then(() => { console.log('missing new ticket fields'); 
 
   // define variables and messages
-  let errorCount = $('label.error').length;
   let cat        = $('#CategoryID').val();
   let subj       = $('#Subject').val();
-  let body       = $('#rteBody').text().length;
+  let bodyLength = $('#Body').val().length;
+
   let msg        = '';
   let customList = '';
-  let errors     = $('label.error:visible').length;
+  let errors     = $('label.error:visible').length; // count
+
+  // new ticket default mandatory fields, warnings
+  if (cat==-1) {msg += 'Ticket Category, '};
+  if (subj.length==0) {msg += 'Subject, '};
+  if (bodyLength==0) {msg += 'Body, '};
 
   // get list of missing/required custom fields
   $('[id^="CustomFieldValue"].required.error').each(function() {
-    //let field  = $('label[for"'+ $(this).attr('id') +'"]');
     let label  = $(this).prev('label').text();
-    let field  = label.replace('*','').trim();
-    console.log(label+' / '+field);
+    let field  = label.replace('*','').trim(); // remove '*' and tabs
     customList += field+", ";
   });
+
+  // combine warnings, and trim trailing comma
+  mfWarn = msg+customList;
+  mfWarn = mfWarn.substring(0,mfWarn.length-2);
 
   // write errors to 'alert' DIV
   if ( errors > 0 ) {
     if (errors>1) {pInd=" are"} else {pInd=" is"}; // pres indicative
-    msg = 'cat='+cat+'\nsubj='+subj+'\nbody='+body;
-    $('#mandatoryAlert').html('This ticket category includes MANDATORY fields and '+errors+pInd+' missing.<br />Fields: '+customList);
-    $('#mandatoryAlert').css({'display':'block'});
+    $('#mandatoryAlert').html('This ticket category includes mandatory fields and '+errors+pInd+' missing.<br />The missing fields are: '+mfWarn);
+    $('#mandatoryAlert').css({'display':'block'}); // show
     sleep(250).then(() => {
       $("a.dropdown-toggle").focus();
-      $('html, body').animate({ scrollTop: 0 }, 'fast');
+      $('html, body').scrollTop();
     })
   }
-
 });
 
 });
@@ -305,7 +294,7 @@ if (( e.key.toLowerCase() === 'q' && e.altKey) || e.key === 'Escape' ) {
 // (JC, 15/3/2022)
 $("#CategoryID").change(function(){
   // hide mandatory field alert when category is changed
-  $('#mandatoryAlert').css({'display':'none'});
+  $('#mandatoryAlert').css({'display':'none'}); // hide
   $('#Subject').focus();
 });
 // ------------------------------------------------------------

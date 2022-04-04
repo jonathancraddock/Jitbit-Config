@@ -37,6 +37,19 @@
   display: none;
 }
 
+/* Hide the missing mandatory field alert */
+/* (JC, 4/4/2022) */
+#mandatoryAlert {
+  display: none;
+  /* style when visible */
+  padding: 12px 18px;
+  background-color: #1d70b8;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.8em;
+}
+
 /* - - - - - */
 
 /* Use gov.uk blue (#1d70b8) for menu bar */
@@ -515,6 +528,14 @@ tbody#TicketCustomFields a span {
   border-radius: 33%;
   border: 1px #888 solid;
   opacity: 1;
+}
+
+/* move "attach a file..." button next to submit/advanced */
+/* (JC, 04/04/2022)                                       */
+#trNewTicketTools + tr div.filelinks, #trNewTicketTools + tr input.topbutton, #trNewTicketTools + tr button.graybutton,
+#trCustomFields + tr div.filelinks, #trCustomFields + tr input.topbutton, #trCustomFields + tr button.graybutton
+ {
+  float: left;
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - */

@@ -15,10 +15,15 @@ function sleep(milliseconds) {
 $('#btnAdd').click( function() { 
   sleep(100).then(() => { console.log('missing new ticket fields'); 
 
-  // display error notification *before* the field, not after
+  // display errors *before* default fields
   $('#Subject-error').insertBefore('#Subject');
   $('#Body-error').parents('td').prop('id','bodytd');
   $('#Body-error').insertBefore('#bodytd>div');
+
+  // display errors *before* custom fields
+  $('label[id^="CustomFieldValue"].error').each(function() {
+    $(this).insertBefore('#'+$(this).attr('for'));
+  });
 
   // define variables and messages
   let cat        = $('#CategoryID').val();
@@ -36,7 +41,7 @@ $('#btnAdd').click( function() {
 
   // get list of missing/required custom fields
   $('[id^="CustomFieldValue"].required.error').each(function() {
-    let label  = $(this).prev('label').text();
+    let label  = $(this).prev('label').prev('label').text();
     let field  = label.replace('*','').trim(); // remove '*' and tabs
     customList += field+", ";
   });
@@ -52,7 +57,8 @@ $('#btnAdd').click( function() {
     $('#mandatoryAlert').css({'display':'block'}); // show
     sleep(250).then(() => {
       $("a.dropdown-toggle").focus();
-      $('html, body').scrollTop();
+      //$('html, body').scrollTop();
+      $(window).scrollTop(0);
     })
   }
 });
@@ -301,6 +307,18 @@ $("#CategoryID").change(function(){
   // hide mandatory field alert when category is changed
   $('#mandatoryAlert').css({'display':'none'}); // hide
   $('#Subject').focus();
+});
+// ------------------------------------------------------------
+
+
+// Shift focus, advanced -> Subsribers_tag on New Ticket screen
+// ============================================================
+// (JC, 7/4/2022)
+$("#lnkAdvanced").click(function(){
+  console.log('click on advanced');
+  //sleep(200).then(() => {
+    $('#Subscribers_tag').focus();
+  //})
 });
 // ------------------------------------------------------------
 

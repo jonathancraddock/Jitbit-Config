@@ -52,8 +52,13 @@ $('#btnAdd').click( function() {
 
   // write errors to 'alert' DIV
   if ( errors > 0 ) {
-    if (errors>1) {pInd=" are"} else {pInd=" is"}; // pres indicative
-    $('#mandatoryAlert').html('This ticket category includes mandatory fields and '+errors+pInd+' missing.<br />The missing fields are: '+mfWarn);
+    // set appropriate present indicative for error message
+    if (errors>1) {
+      pInd=" are"; 
+      plur="fields are"; } else {
+      pInd=" is";
+      plur="field is"; };
+    $('#mandatoryAlert').html('This ticket category includes mandatory fields and '+errors+pInd+' missing.<br />The missing '+plur+': '+mfWarn);
     $('#mandatoryAlert').css({'display':'block'}); // show
     sleep(250).then(() => {
       $("a.dropdown-toggle").focus();
@@ -64,6 +69,7 @@ $('#btnAdd').click( function() {
 });
 
 });
+
 
 // Insert div for "skip to new ticket"
 // ===================================
@@ -347,11 +353,6 @@ $('#status button.moreBtnToolbar').click( function() {
 // ------------------------------------------------------------
 
 
-//$('#filterForm button[type="submit"]').click(function(){
-//  $('tbody > tr:first-child > td:first-child a.ticketLink').focus();
-//});
-
-
 // Delayed Actions
 // ===============
 // Eg/ sleep(250).then(() => { //here; })
@@ -367,6 +368,7 @@ sleep(200).then(() => {
 
 })
 // ------------------------------------------------------------
+
 
 //notes
 //$('#Subject-error').insertBefore('#Subject');

@@ -408,16 +408,23 @@ input[type="submit"]:focus, button:focus, a.button:focus {
 }
 
 /* New ticket, advanced fields, correct 1px tag offset */
-/* (radius was being overridden by jquery style)       */
+/* (radius/overflow/height was being overridden by jquery style) */
 .tagsinput {
   margin-top: 0; /*was -1px ?*/
+  margin-bottom: 8px;
   border-radius: 0 !important;
   border: 1px #bbb solid;
   display: inline-block;
   vertical-align: top;
   margin-right: 5px;
   overflow: unset !important;
-  height: 34px !important;
+  min-height: 34px !important;
+}
+
+/* New ticket, advanced fields, email names/tags */
+/* (margin overridden by jquery CSS) */
+.tag {
+  margin: 3px 0 0 4px !important;
 }
 
 /* reset button on general settings, and reset templates */

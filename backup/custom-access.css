@@ -96,7 +96,9 @@
 /* (JC, 18/3/2022)                                       */
 /* ----------------------------------------------------- */
 
-#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a {
+/* :not(uPopup) - do not change appearance on ticket grid page */
+
+#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup) {
   color: #1d70b8;
   outline: 0;
   padding: 0 2px;
@@ -104,18 +106,20 @@
   border-bottom: 1px solid #1d70b8;
 }
 
-#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover {
+#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover, .grey2 a:hover:not(.uPopup, .cPopup) {
   color: #003078;
   border-bottom: 2px solid #003078;
 }
 
-#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus {
-  color: #000;
+/* !important due to text colour CSS override on details page */
+
+#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus, .grey2 a:focus:not(.uPopup, .cPopup) {
+  color: #000 !important;
   background-color: #fd0;
   border-bottom: 2px solid #555;
 }
 
-#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active {
+#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup) {
   color: #000;
   background-color: #fd0;
   border-bottom: 1px solid #555;
@@ -281,6 +285,13 @@ input[type="text"], input[type="number"], input[type="password"], input[type="em
   border-radius: 0;
 }
 
+/* Retain original height of checkbox in filter panel */
+/* (JC, 19/4/2022) */
+.filterBox input[type="checkbox"] {
+  margin-right: 4px;
+  height: 12px;
+}
+
 .filterBox .ui-multiselect {
   height: 23px;
   width: 100% !important;
@@ -300,10 +311,12 @@ input[type="text"], input[type="number"], input[type="password"], input[type="em
   border-radius: 0 !important;
 }
 
-/* yellow focus highlight */
+/* yellow focus highlight                                    */
 /* (use of '!important' due to override by jquery css styles */
-/* (JC, 15/3/2022) */
-.dropdownSelect .dropdown-toggle:focus, select#PriorityID:focus, input#Subject.required:focus, div.richeditor div[contenteditable="true"]:focus {
+/* (JC, 15/3/2022)                                           */
+/* added 'on behalf of user' textbox                         */
+/* (JC, 19/4/2022)                                           */
+.dropdownSelect .dropdown-toggle:focus, select#PriorityID:focus, input#Subject.required:focus, div.richeditor div[contenteditable="true"]:focus, input#OnBehalfUserId_txt:focus {
   outline: 3px solid #fd0;
   outline-offset: 0;
   box-shadow: inset 0 0 0 2px #000 !important;
@@ -938,13 +951,17 @@ select#ddlSortBy:focus = ?
   border-radius: 4px;
 }
 
-/* Fields with focus when filter panel is open */
-/* JC, 5/3/22 */
-#filterForm table.grey input:focus, #filterForm table.grey select:focus, #filterForm table.grey button:focus, .ui-corner-all:focus {
-    outline: 3px solid #fd0;
-    outline-offset: 0;
-    box-shadow: inset 0 0 0 2px #000;
-    border-radius: 0;
+/* Fields with focus when filter panel is open                  */
+/* JC, 5/3/22                                                   */
+/* jQuery UI 'fields' are 'buttons' - so added white background */
+/* but excluding *actual* submit button                         */
+/* JC, 19/4/22                                                  */
+#filterForm table.grey input:focus, #filterForm table.grey select:focus, #filterForm table.grey button:focus:not([type="submit"]), .ui-corner-all:focus {
+  outline: 3px solid #fd0;
+  background-color: white;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
 }
 
 /* Focus on "report" screen */
@@ -1080,6 +1097,21 @@ tbody#TicketCustomFields a:focus, tbody#TicketCustomFields a {
   white-space: initial;
 }
 
+/* Radio-button focus indicator */
+/* (JC, 19/4/22) */
+.onoffcontainer input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px black !important;
+  outline: 3px #fd0 solid;
+  outline-offset: 2px;
+  transition: none;
+}
+
+/* Radio-button focus indicator - disable slow fade on exit */
+/* (JC, 19/4/22) */
+.onoffcontainer input[type="checkbox"] {
+  transition: none;
+}
+
 /* - - - - - - - - - - */
 
 /* TEST - add headings to the main ticket view table */
@@ -1178,11 +1210,17 @@ td.techTd a.uPopup:focus {
   margin-bottom: -2px;
 }
 
-.ticketrowMeta + a:focus {
+/* space after +/- sub ticket toggle, when not in focus */
+/* JC, 19/4/2022 */
+.ticketrowMeta + a.fa {
+  margin-right: 4px;
+}
+
+.ticketrowMeta + a:focus, .ticketLink.tooltipstered:focus {
   border-bottom: 2px black solid;
   padding: 1px 3px;
   background-color: #fd0;
-  margin: -1px -3px 7px -3px;
+  margin: -1px 1px 7px -3px;
   color: black;
 }
 

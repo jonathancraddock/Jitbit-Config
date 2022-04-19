@@ -8,6 +8,35 @@ function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));  
 }
 
+// ===
+
+// TEST - label +/- toggle on row with sub-tickets
+
+// mutation observer for page update event, new tickets, etc
+if( $('#tblTickets').length != 0 ) {
+  const ticketGrid = document.querySelector("#tblTickets");
+  var watchTicketGrid = new MutationObserver(subticketToggle);
+  watchTicketGrid.observe(ticketGrid,{childList:true,subtree:true});
+}
+
+// action on update event
+function subticketToggle(mutations) {
+  $('.ticketrowMeta+a.fa-plus-square-o').attr('aria-label', 'show sub tickets');
+  $('.ticketrowMeta+a.fa-minus-square-o').attr('aria-label', 'hide sub tickets');
+}
+
+// target specific element by on-click trigger
+$('.ticketrowMeta+a.fa').click( function() { 
+  if ( $(this).hasClass('fa-plus-square-o') == true ) {
+    $(this).attr('aria-label', 'show sub tickets'); } 
+  else if ( $(this).hasClass('fa-minus-square-o') == true ) {
+    $(this).attr('aria-label', 'hide sub tickets');
+  }
+});
+
+
+// ===
+
 // Missing "New Ticket" mandatory fields
 // =====================================
 // provide (JAWS) alert for missing mandatory fields
@@ -69,7 +98,6 @@ $('#btnAdd').click( function() {
 });
 
 });
-
 
 // Insert div for "skip to new ticket"
 // ===================================
@@ -158,6 +186,7 @@ $('#filterForm select[name="badge"]').attr('aria-label', 'last updated by');
 $('#PriorityID').attr('aria-label', 'press space to open priority dropdown');
 $('#btnAdd').attr('aria-label', 'submit ticket');
 $('#fileUploadLbl').parent().attr('aria-label', 'attach file');
+$('#thTicketDate').attr('aria-label', 'Sort by Ticket Date');
 // ------------------------------------------------------------
 
 
@@ -294,6 +323,7 @@ if (e.key.toLowerCase() === 'p' && e.altKey) {
 // added <Esc> key-press to same rule (24/3/2022)
 // (simulates a mouse user clicking "away" from the element to close it) 
 if (( e.key.toLowerCase() === 'q' && e.altKey) || e.key === 'Escape' ) {
+//if (( e.key.toLowerCase() === 'q' && e.altKey) ) {
   $('body').click();
   $('.datepick').datetimepicker('hide');
   // if the user is in a multiselect combo, close it and return the focus
@@ -353,6 +383,11 @@ $('#status button.moreBtnToolbar').click( function() {
 // ------------------------------------------------------------
 
 
+//$('#filterForm button[type="submit"]').click(function(){
+//  $('tbody > tr:first-child > td:first-child a.ticketLink').focus();
+//});
+
+
 // Delayed Actions
 // ===============
 // Eg/ sleep(250).then(() => { //here; })
@@ -368,7 +403,6 @@ sleep(200).then(() => {
 
 })
 // ------------------------------------------------------------
-
 
 //notes
 //$('#Subject-error').insertBefore('#Subject');

@@ -10,7 +10,9 @@ function sleep(milliseconds) {
 
 // ===
 
-// TEST - label +/- toggle on row with sub-tickets
+// Add ARIA label to +/- toggle on row with sub-tickets
+// ----------------------------------------------------
+// (JC, 19/4/22)
 
 // mutation observer for page update event, new tickets, etc
 if( $('#tblTickets').length != 0 ) {
@@ -122,7 +124,7 @@ $('#newTicket').insertBefore('.divSearch');
 
 // Prepare missing fields 'alert' div on New Ticket page
 // =====================================================
-$('#new-ticket-form tbody').prepend('<tr><td><div id="mandatoryAlert" role="alert">DO NOT READ THIS!</div></td></tr>');
+$('#new-ticket-form tbody').prepend('<tr><td><div id="mandatoryAlert" role="alert"></div></td></tr>');
 // ------------------------------------------------------------
 
 
@@ -141,7 +143,7 @@ $('div#divBigHeader ul.tabmenu li.active a').html( function() {
 
 // add caption/heading H2 to main ticket table list
 // ================================================
-if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') ) { $('#tblTickets').prepend('<caption><h2>Tickets List</h2></caption>'); 
+if( url.endsWith('/helpdesk') || url.endsWith('/helpdesk/') || url.includes('/helpdesk?') || url.includes('/helpdesk/?') ) { $('#tblTickets').prepend('<caption><h2>Tickets List</h2></caption>'); 
 $('#maintable > tbody > tr > td:first-child').prepend('<h2>Categories and Filters</h2>'); }
 // ------------------------------------------------------------
 
@@ -265,6 +267,28 @@ $('button[title="Reply"]').append('Reply');
 // ------------------------------------------------------------
 
 
+
+// TEST - update "reply" text on ticket details update
+// ---------------------------------------------------
+// (JC, 21/4/22)
+
+// mutation observer for status change, takeover, reply, etc
+if( $('div.outerroundedbox > #toolbar #status').length != 0 ) {
+  const replyButtons = document.querySelector("#toolbar");
+  var watchReplyButtons = new MutationObserver(updateButtons);
+  watchReplyButtons.observe(replyButtons,{attributes: true,
+    attributeFilter: ['style'], childList:true, subtree:true});
+}
+
+// action if ticket details page is changed/updated
+function updateButtons(mutations) {
+  console.log('updateButtons');
+  if ( $('button[title="Reply"]').text() == "" ) {
+  $('button[title="Reply"]').append('Reply'); }
+}
+
+
+
 // remove appended 'days' label and replace placeholder
 // ====================================================
 // (filter panel, better use of placeholder for keyboard navigation)
@@ -281,8 +305,10 @@ $('#btnUser').click( function() {
   if ($('#closeRecent').length)
   { console.log('button exists'); } else {
     console.log('button required');
-    $('#divRecent a.graybutton').addClass('logoutButton');
-    $('#divRecent').append('<button class="button graybutton" id="closeRecent" tabindex="0">Close</button>');
+    sleep(200).then(() => { 
+      $('#divRecent a.graybutton').addClass('logoutButton');
+      $('#divRecent').append('<button class="button graybutton" id="closeRecent" tabindex="0">Close</button>');
+    })
   }
 });
 
@@ -373,13 +399,13 @@ $('li.customstatus form input').prop('tabindex','0');
 //});
 
 // trigger 'mouseover' when clicked
-$('#status button.moreBtnToolbar').click( function() {  
-  console.log('#moreMouseOver');
-  $('#status button.moreBtnToolbar').prop('id','moreMouseOver');
-  var elementButton = document.getElementById('moreMouseOver');
-  var eventTrig = new MouseEvent('mouseover', {'view': window,'bubbles': true,'cancelable': true});
-  elementButton.dispatchEvent(eventTrig);
-});
+//$('#status button.moreBtnToolbar').click( function() {  
+//  console.log('#moreMouseOver');
+//  $('#status button.moreBtnToolbar').prop('id','moreMouseOver');
+//  var elementButton = document.getElementById('moreMouseOver');
+//  var eventTrig = new MouseEvent('mouseover', {'view': //window,'bubbles': true,'cancelable': true});
+//  elementButton.dispatchEvent(eventTrig);
+//});
 // ------------------------------------------------------------
 
 

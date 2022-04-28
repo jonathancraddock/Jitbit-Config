@@ -96,38 +96,53 @@
 /* (JC, 18/3/2022)                                       */
 /* ----------------------------------------------------- */
 
-/* :not(uPopup) - do not change appearance on ticket grid page */
+/* :not(uPopup...) - do not change appearance on ticket grid page */
 
-#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup) {
+#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, 
+#divStats a) {
   color: #1d70b8;
   outline: 0;
   padding: 0 2px;
-  margin: 0 -2px;
+  margin: 0;
   border-bottom: 1px solid #1d70b8;
 }
 
-#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover, .grey2 a:hover:not(.uPopup, .cPopup) {
+#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover, .grey2 a:hover:not(.uPopup, .cPopup, 
+#divStats a), #tblSubTickets a:not(.fa) {
   color: #003078;
   border-bottom: 2px solid #003078;
 }
 
 /* !important due to text colour CSS override on details page */
 
-#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus, .grey2 a:focus:not(.uPopup, .cPopup) {
+#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus, .grey2 a:focus:not(.uPopup, .cPopup, 
+#divStats a), #tblSubTickets a:not(.fa):focus {
   color: #000 !important;
   background-color: #fd0;
   border-bottom: 2px solid #555;
 }
 
-#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup) {
+#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup, #divStats a), #tblSubTickets a:not(.fa):active {
   color: #000;
   background-color: #fd0;
   border-bottom: 1px solid #555;
 }
 
+/* ensures user (uPopup) tab-position doesn't vanish when blank */
+/* (JC, 21/4/22)                                                */
+#tblSubTickets .grey2.uPopup {
+  padding: 0 8px 0 2px;
+}
+
 /* needs a darker blue "a" link colour due to grey background */
 #fileUploadLbl, #aCapture {
   color: #2679af;
+}
+
+/* remove margin (causing line-wrap) from comment date */
+/* (JC, 21/4/22)                                       */
+.commentDate a.grey2 {
+  margin: 0;
 }
 
 /* Remove shaded gradient from blue menu bar */
@@ -1098,7 +1113,7 @@ tbody#TicketCustomFields a:focus, tbody#TicketCustomFields a {
 }
 
 /* Radio-button focus indicator */
-/* (JC, 19/4/22) */
+/* (JC, 19/4/22)                */
 .onoffcontainer input[type="checkbox"]:focus {
   box-shadow: 0 0 0 3px black !important;
   outline: 3px #fd0 solid;
@@ -1107,10 +1122,20 @@ tbody#TicketCustomFields a:focus, tbody#TicketCustomFields a {
 }
 
 /* Radio-button focus indicator - disable slow fade on exit */
-/* (JC, 19/4/22) */
+/* (JC, 19/4/22)                                            */
 .onoffcontainer input[type="checkbox"] {
   transition: none;
 }
+
+/* Delete sub-ticket linkage (x icon) */
+/* (JC, 21/4/22)                      */
+#tblSubTickets a.fa:focus {
+  box-shadow: 0 0 0 3px black !important;
+  outline: 3px #fd0 solid;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
 
 /* - - - - - - - - - - */
 
@@ -1267,3 +1292,7 @@ textarea#CustomJS, textarea#CustomCSS {
   height: 440px;
   line-height: 1.2em;
 }
+
+/* TEMP (25/4/2022) hide name on screen capture */
+#divBigHeader .topheader #userinfo {color: #34383E;}
+#spanLoggedIn > .grey {display: none;}

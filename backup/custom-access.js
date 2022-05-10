@@ -1,3 +1,6 @@
+// VERSION TRACKER
+// 1.03 - test new ticket submit 'alert' DIV (9/5/2022)
+
 // Current Focus/URL
 var currFoc = 'none';
 var url = window.location.href;
@@ -126,6 +129,12 @@ $('#newTicket').insertBefore('.divSearch');
 // =====================================================
 $('#new-ticket-form tbody').prepend('<tr><td><div id="mandatoryAlert" role="alert"></div></td></tr>');
 // ------------------------------------------------------------
+
+
+// Prepare subscribe notification 'alert' div on New Ticket page
+// =============================================================
+$('tr#trNewTicketTools + tr > td').prepend('<div id="subscribeAlert" role="alert"></div>');
+// -------------------------------------------------------------
 
 
 // Mark active tab title as H1 for every page
@@ -266,10 +275,8 @@ $('button[title="Reply"]').append('Reply');
 // ^-reply on ticket details page
 // ------------------------------------------------------------
 
-
-
-// TEST - update "reply" text on ticket details update
-// ---------------------------------------------------
+// update "reply" text on ticket details update
+// --------------------------------------------
 // (JC, 21/4/22)
 
 // mutation observer for status change, takeover, reply, etc
@@ -279,14 +286,12 @@ if( $('div.outerroundedbox > #toolbar #status').length != 0 ) {
   watchReplyButtons.observe(replyButtons,{attributes: true,
     attributeFilter: ['style'], childList:true, subtree:true});
 }
-
 // action if ticket details page is changed/updated
 function updateButtons(mutations) {
   console.log('updateButtons');
   if ( $('button[title="Reply"]').text() == "" ) {
   $('button[title="Reply"]').append('Reply'); }
 }
-
 
 
 // remove appended 'days' label and replace placeholder
@@ -321,6 +326,7 @@ $('closeRecent').on('click', function() {
   console.log('close');
 });
 // ------------------------------------------------------------
+
 
 
 // Keystroke Shortcuts
@@ -429,6 +435,27 @@ sleep(200).then(() => {
 
 })
 // ------------------------------------------------------------
+
+// TEST - live services section, notify test
+// =========================================
+// JC, 10/5/2022
+
+$('#CategoryID').change(function() { //new ticket, change of category
+let currCat=$('#CategoryID').val();
+if (currCat=="515452") {
+  sleep(250).then(() => {
+    $('#CustomFieldValue48430').change(function() {
+      let currType=$('#CustomFieldValue48430').val();
+      if (currType=="307460") { 
+        $('#subscribeAlert').html('All new and modifications to existing case admin user accounts must be authorised.<br />Use <em>Advanced</em> > <em>Add Subscribers</em> to include your line manager in this request.');
+        $('#subscribeAlert').css({'display':'block'}); // show
+      } else { $('#subscribeAlert').css({'display':'none'}); }
+    });
+  });
+}
+});
+// -----------------------------------------
+
 
 //notes
 //$('#Subject-error').insertBefore('#Subject');

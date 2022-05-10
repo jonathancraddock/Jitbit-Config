@@ -1,5 +1,5 @@
 /* VERSION TRACKER */
-/* 1.01 - updates to knowledge base focus highlights (9/5/2022) */
+/* 1.02 - fixes to user/time highlighting ticket details (9/5/2022) */
 
 /* Adjust alignment of "Helpdesk Title". */
 /* (JC, 24.9.2021) */
@@ -116,13 +116,15 @@
   border-bottom: 2px solid #003078;
 }
 
-/* !important due to text colour CSS override on details page */
+/* !important */
+/* 1. due to text colour CSS override on details page */
+/* 2. can't find the overriding 'border' rule?        */
 
 #ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus, .grey2 a:focus:not(.uPopup, .cPopup, 
 #divStats a), #tblSubTickets a:not(.fa):focus {
   color: #000 !important;
   background-color: #fd0;
-  border-bottom: 2px solid #555;
+  border-bottom: 2px solid #555 !important;
 }
 
 #ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup, #divStats a), #tblSubTickets a:not(.fa):active {
@@ -135,6 +137,14 @@
 /* (JC, 21/4/22)                                                */
 #tblSubTickets .grey2.uPopup {
   padding: 0 8px 0 2px;
+}
+
+/* reply from name on ticket details page */
+/* (JC, 10/5/2022) */
+a.uPopup:focus {
+  color: #000;
+  background-color: #fd0;
+  border-bottom: 2px solid #555;
 }
 
 /* needs a darker blue "a" link colour due to grey background */

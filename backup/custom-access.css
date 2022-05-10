@@ -1,3 +1,6 @@
+/* VERSION TRACKER */
+/* 1.01 - updates to knowledge base focus highlights (9/5/2022) */
+
 /* Adjust alignment of "Helpdesk Title". */
 /* (JC, 24.9.2021) */
 #divBigHeader .topheader #logo #spanTitle {
@@ -242,7 +245,7 @@ caption {
 
 /* modify custom field label */
 .report-settings div.report-input label {
-  width: 20em;
+  width: 50em;
   margin-right: 5em;
   font-size: 12px;
   margin-bottom: 5px;
@@ -879,7 +882,8 @@ h2.breadcrumbs {
 /* Yellow/Black border highlight for plain fields and text buttons */
 /* JC, 6/3/22 */
 /* JC, 7/4/22, added for new-ticket advanced 'tags' */
-#btnUser:focus, #btnUser:focus-visible,#divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus, #Subscribers_tag:focus, #Tags_tag:focus, #DueDate:focus {
+/* JC, 9/5/22, plain text - as per knowledgebase, etc */
+input[type="text"]:focus, #btnUser:focus, #btnUser:focus-visible,#divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus, #Subscribers_tag:focus, #Tags_tag:focus, #DueDate:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px #000;
@@ -1044,6 +1048,15 @@ select:focus {
   background-color: #F7F7F7;
 }
 
+/* Focus on Knowledge Base 'quick' links at top of page */
+/* JC, 9/5/2022 */
+div.kbHeader div > a:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
+}
+
 /* apply a CSS filter to make the "divStats" icons appear darker */
 /* (JC, 17/3/2022) */
 #leftsidebar img {
@@ -1136,6 +1149,13 @@ tbody#TicketCustomFields a:focus, tbody#TicketCustomFields a {
   border-radius: 50%;
 }
 
+/* h2 link text on ideas forum / kb   */
+/* (JC, 9/5/22)                       */
+h1 a:focus {
+  background-color: #fd0;
+  color: black;
+}
+
 
 /* - - - - - - - - - - */
 
@@ -1147,7 +1167,7 @@ tbody#TicketCustomFields a:focus, tbody#TicketCustomFields a {
   float: left;
 }
 
-/* match H1 to defaul tab text */
+/* match H1 to default tab text */
 h1 {
   font-size: 13px;
   padding-bottom: 0;
@@ -1293,6 +1313,6 @@ textarea#CustomJS, textarea#CustomCSS {
   line-height: 1.2em;
 }
 
-/* TEMP (25/4/2022) hide name on screen capture */
+/* TEMP (25/4/2022) hide name on screen capture
 #divBigHeader .topheader #userinfo {color: #34383E;}
-#spanLoggedIn > .grey {display: none;}
+#spanLoggedIn > .grey {display: none;}  */

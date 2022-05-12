@@ -1,3 +1,17 @@
+# Notes
+
+## Colours
+
+* Header background color: 34383E (was F0F0F0)
+* Menu-bar background color: 1D70B8 (was 8A4695)
+* Active tab text color: FFFFFF (was FFFFFF)
+* Header text color: FFFFFF (was 000000)
+* Menu-bar tab text color: E4F4FF (was C7D4E2)
+
+-----
+
+## Javascript Tests
+
 Testing use of a mutation observer:
 ```javascript
 // TEST - mutationobserver

@@ -6,7 +6,7 @@
 * Menu-bar background color: 1D70B8 (was 8A4695)
 * Active tab text color: FFFFFF (was FFFFFF)
 * Header text color: FFFFFF (was 000000)
-* Menu-bar tab text color: E4F4FF (was C7D4E2)
+* Menu-bar tab text color: E4F4FF (was C7D4E2 on live, or C7D4E2 on training)
 
 -----
 

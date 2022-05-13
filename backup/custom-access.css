@@ -1,5 +1,5 @@
 /* VERSION TRACKER */
-/* 1.03 - fix button (input) :hover behaviour (9/5/2022) */
+/* 1.04 - focus highlights on login/reset screens (13/5/2022) */
 
 /* Adjust alignment of "Helpdesk Title". */
 /* (JC, 24.9.2021) */
@@ -114,9 +114,9 @@
 /* ----------------------------------------------------- */
 
 /* :not(uPopup...) - do not change appearance on ticket grid page */
+/* table.grey a - link on password reset page                     */
 
-#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, 
-#divStats a) {
+#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, #divStats a), table.grey a {
   color: #1d70b8;
   outline: 0;
   padding: 0 2px;
@@ -125,7 +125,7 @@
 }
 
 #ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover, .grey2 a:hover:not(.uPopup, .cPopup, 
-#divStats a), #tblSubTickets a:not(.fa) {
+#divStats a), #tblSubTickets a:not(.fa), table.grey a:hover {
   color: #003078;
   border-bottom: 2px solid #003078;
 }
@@ -135,13 +135,13 @@
 /* 2. can't find the overriding 'border' rule?        */
 
 #ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus, .grey2 a:focus:not(.uPopup, .cPopup, 
-#divStats a), #tblSubTickets a:not(.fa):focus {
+#divStats a), #tblSubTickets a:not(.fa):focus, table.grey a:focus {
   color: #000 !important;
   background-color: #fd0;
   border-bottom: 2px solid #555 !important;
 }
 
-#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup, #divStats a), #tblSubTickets a:not(.fa):active {
+#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup, #divStats a), #tblSubTickets a:not(.fa):active, table.grey a:active {
   color: #000;
   background-color: #fd0;
   border-bottom: 1px solid #555;
@@ -269,7 +269,7 @@ caption {
 
 /* modify custom field label */
 .report-settings div.report-input label {
-  width: 50em;
+  width: 48.7em;
   margin-right: 5em;
   font-size: 12px;
   margin-bottom: 5px;
@@ -907,7 +907,7 @@ h2.breadcrumbs {
 /* JC, 6/3/22 */
 /* JC, 7/4/22, added for new-ticket advanced 'tags' */
 /* JC, 9/5/22, plain text - as per knowledgebase, etc */
-input[type="text"]:focus, #btnUser:focus, #btnUser:focus-visible,#divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus, #Subscribers_tag:focus, #Tags_tag:focus, #DueDate:focus {
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, #btnUser:focus, #btnUser:focus-visible,#divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus, #Subscribers_tag:focus, #Tags_tag:focus, #DueDate:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px #000;
@@ -1015,7 +1015,7 @@ select:focus {
     box-shadow: inset 0 0 0 2px #000;
 }
 
-.ui-multiselect-checkboxes label input:focus {
+.ui-multiselect-checkboxes label input:focus, input#rememberMe:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px #000;
@@ -1339,6 +1339,6 @@ textarea#CustomJS, textarea#CustomCSS {
   line-height: 1.2em;
 }
 
-/* TEMP (25/4/2022) hide name on screen capture
+/* TEMP (25/4/2022) hide name on screen capture */
 #divBigHeader .topheader #userinfo {color: #34383E;}
-#spanLoggedIn > .grey {display: none;}  */
+#spanLoggedIn > .grey {display: none;} 

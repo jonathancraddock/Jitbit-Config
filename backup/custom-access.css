@@ -1,5 +1,5 @@
 /* VERSION TRACKER */
-/* 1.04 - focus highlights on login/reset screens (13/5/2022) */
+/* 1.05 - disabled new-ticket video screen capture changes (19/5/2022) */
 
 /* Adjust alignment of "Helpdesk Title". */
 /* (JC, 24.9.2021) */
@@ -114,9 +114,9 @@
 /* ----------------------------------------------------- */
 
 /* :not(uPopup...) - do not change appearance on ticket grid page */
-/* table.grey a - link on password reset page                     */
+/* table.grey.center a - link on password reset page                     */
 
-#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, #divStats a), table.grey a {
+#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, #divStats a), table.grey.center a {
   color: #1d70b8;
   outline: 0;
   padding: 0 2px;
@@ -125,7 +125,7 @@
 }
 
 #ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover, .grey2 a:hover:not(.uPopup, .cPopup, 
-#divStats a), #tblSubTickets a:not(.fa), table.grey a:hover {
+#divStats a), #tblSubTickets a:not(.fa), table.grey.center a:hover {
   color: #003078;
   border-bottom: 2px solid #003078;
 }
@@ -135,13 +135,13 @@
 /* 2. can't find the overriding 'border' rule?        */
 
 #ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus, .grey2 a:focus:not(.uPopup, .cPopup, 
-#divStats a), #tblSubTickets a:not(.fa):focus, table.grey a:focus {
+#divStats a), #tblSubTickets a:not(.fa):focus, table.grey.center a:focus {
   color: #000 !important;
   background-color: #fd0;
   border-bottom: 2px solid #555 !important;
 }
 
-#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup, #divStats a), #tblSubTickets a:not(.fa):active, table.grey a:active {
+#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup, #divStats a), #tblSubTickets a:not(.fa):active, table.grey.center a:active {
   color: #000;
   background-color: #fd0;
   border-bottom: 1px solid #555;
@@ -1015,11 +1015,20 @@ select:focus {
     box-shadow: inset 0 0 0 2px #000;
 }
 
-.ui-multiselect-checkboxes label input:focus, input#rememberMe:focus {
+.ui-multiselect-checkboxes label input:focus {
     outline: 3px solid #fd0;
     outline-offset: 0;
     box-shadow: inset 0 0 0 2px #000;
     border-radius: 0;
+}
+
+/* remember me checkbox on login screen */
+/* (JC, 13/5/2022)                      */
+input#rememberMe:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #000;
+  border-radius: 0;
 }
 
 /* Left sidebar category list, with focus */
@@ -1339,6 +1348,6 @@ textarea#CustomJS, textarea#CustomCSS {
   line-height: 1.2em;
 }
 
-/* TEMP (25/4/2022) hide name on screen capture */
+/* TEMP (25/4/2022) hide name on screen capture
 #divBigHeader .topheader #userinfo {color: #34383E;}
-#spanLoggedIn > .grey {display: none;} 
+#spanLoggedIn > .grey {display: none;} */

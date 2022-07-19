@@ -1,5 +1,5 @@
 // VERSION TRACKER
-// 1.03 - test new ticket submit 'alert' DIV (9/5/2022)
+// 1.04 - assign button, jump to dropdown (19/7/2022)
 
 // Current Focus/URL
 var currFoc = 'none';
@@ -327,7 +327,11 @@ $('closeRecent').on('click', function() {
 });
 // ------------------------------------------------------------
 
-
+// Assign button, shift focus to dropdown
+$('#btnAssign').click( function() {
+  $('#selTechId').focus();
+  document.getElementById('selTechId').focus();
+});
 
 // Keystroke Shortcuts
 // ===================

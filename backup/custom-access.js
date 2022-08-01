@@ -1,5 +1,5 @@
 // VERSION TRACKER
-// 1.04 - assign button, jump to dropdown (19/7/2022)
+// 1.06 - pre-pend ticket ref in recent tickets (1/8/2022)
 
 // Current Focus/URL
 var currFoc = 'none';
@@ -304,13 +304,23 @@ $(".filterBox td:contains(days)").remove();
 
 
 // add 'close' button to user-profile recent tickets
+// pre-pend ticket ref (1/8/22)
 // =================================================
-// (JC, 24/3/2022)
+// (JC, 1/8/2022)
 $('#btnUser').click( function() {
   if ($('#closeRecent').length)
   { console.log('button exists'); } else {
     console.log('button required');
-    sleep(200).then(() => { 
+    sleep(250).then(() => { 
+    // prepend ticket ref
+    $('#divRecent li a').each(function() {
+      let refUrl=$(this).attr('href');
+      let refId=refUrl.substring(8,99).trim();
+      let refHtml=$(this).html();
+      console.log(refId+', '+refHtml);
+      $(this).html(refId+': '+refHtml);
+    });
+    // add a close button button
       $('#divRecent a.graybutton').addClass('logoutButton');
       $('#divRecent').append('<button class="button graybutton" id="closeRecent" tabindex="0">Close</button>');
     })

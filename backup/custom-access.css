@@ -1,5 +1,5 @@
-/* VERSION TRACKER */
-/* 1.06 - AT/Theme updates, Sprint-26 (19/7/2022) */
+/* VERSION TRACKER                        */
+/* 1.07 - canned / close-exit (23/8/2022) */
 
 /* Adjust alignment of "Helpdesk Title". */
 /* (JC, 24.9.2021) */
@@ -116,7 +116,7 @@
 /* :not(uPopup...) - do not change appearance on ticket grid page */
 /* table.grey.center a - link on password reset page                     */
 
-#ticketBody a, .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, #divStats a), table.grey.center a {
+#ticketBody a:not(a.imgLink,a[href^="https://www.youtube.com"]), .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, #divStats a), table.grey.center a {
   color: #1d70b8;
   outline: 0;
   padding: 0 2px;
@@ -226,6 +226,30 @@ table.horizseparated tr.overdue td {
     line-height: 9px;
     margin: -3px -5px -1px 0;
     float: right;
+}
+
+/* Disabled 'canned response' save button */
+/* (JC, 9/8/2022) */
+#templateEdit button[onclick='SaveTemplate()']:disabled {
+  background: #00703c85;
+  color: #00000075 !important;
+  text-decoration: line-through;
+  border-bottom-color: #ff0000ab;
+}
+
+/* 'canned response' notification */
+/* (JC, 10/8/2022) */
+#cannedWarn {
+  background: #ffff0026;
+  line-height: 1.4em;
+  font-weight: bold;
+}
+
+/* Delete 'canned response' button */
+/* (JC, 10/8/2022) */
+#templateDelete {
+  background: #d4351c;
+  color: white;
 }
 
 /* Highlight user profile name in gov.uk blue           */
@@ -371,6 +395,22 @@ input[type="text"], input[type="number"], input[type="password"], input[type="em
   outline-offset: 0;
   box-shadow: inset 0 0 0 2px #000 !important;
   border-radius: 0;
+}
+
+/* AT remediation, tooltip on new ticket      */
+/* (JC, 29/7/2022)                            */
+.my-custom-theme .tooltipster-content {
+    color: #212121;
+    background: #fffbe4;
+    font-size: 12px;
+    border: solid 1px grey;
+}
+
+/* Darker 'triangle' point on tooltip        */
+/* style="border-color:rgb(250, 250, 250);"  */
+/* (JC, 1/8/2022)                            */
+.tooltipster-arrow-right span, .tooltipster-arrow-right .tooltipster-arrow-border {
+    border-color: rgb(127 127 127) !important;
 }
 
 /* visible tables inside richeditor */

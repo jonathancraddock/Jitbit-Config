@@ -1,17 +1,122 @@
 // VERSION TRACKER
-// 1.06 - pre-pend ticket ref in recent tickets (1/8/2022)
+// 1.08 - Switch new ticket to 'source' before submit (12/9/2022)
 
-// Current Focus/URL
+// Display JitBit deployment/config info in footer
+// eg/ "v1.12"
+var currConfig = "1.12";
+
+// Current Focus/URL/referrer
 var currFoc = 'none';
-var url = window.location.href;
-console.log(url);
+var url     = window.location.href;
+var pageRef = document.referrer;
+var prevUrl = "window.location.href='/';";
 
-// provide simple async delay function
+// navigation 'back' logic for close/exit button
+// (JC, 23/8/22)
+if ( pageRef.includes('helpdesk') && !pageRef.includes('/Tickets/New') ) { prevUrl = 'history.go(-1);' }
+
+// provide a simple async delay function
 function sleep(milliseconds) {  
   return new Promise(resolve => setTimeout(resolve, milliseconds));  
 }
 
-// ===
+// ====================================================
+
+
+
+
+// TEST--Don't save global canned responses
+// (JC, 9/8/2022)
+// ----------------------------------------------------
+
+sleep(250).then(() => { //1
+// wait until page load/modification completed
+  $('#newTemplate').click( function() { blockGlobalCanned(); } );
+
+// TEST2--click pencil?
+$('#selTemplates > button').click( function() {
+  console.log('canned button');
+  sleep(250).then(() => { //1a
+  //target the 'edit' pencil icon...
+  //$('a.edit').click( function() { blockGlobalCanned(); } );
+  $('li.cResponse > a.edit').on('click', function() { blockGlobalCanned(); } );
+  }) //1a
+});
+
+}) //1
+
+// ====================================================
+
+// TEST - switch to 'source' before save
+sleep(50).then(() => {
+  $('#btnAdd').on('click', function() {
+    //let errors = $('label.error:visible').length;
+    if ($('label.error:visible').length==0) {
+      $('#Body').wswgEditor('switchEditor');
+    }
+  });
+});
+
+// ====================================================
+
+
+// TEST1--looking for change of visibility...
+const checkElement = async selector => {
+  while ( document.querySelector(selector) === null) {
+    await new Promise( resolve =>  requestAnimationFrame(resolve) )
+  }
+  return document.querySelector(selector); 
+};
+checkElement('#templateEdit').then((selector) => {
+  console.log(selector);
+});
+// (note, checks if it exists, not its visibility...)
+
+
+
+function blockGlobalCanned() {
+console.log('new template');
+
+sleep(250).then(() => { //2
+  //wait until dropdowns have been added
+  let currCats = $('#templateEdit button span.ui-icon+span').html();
+  console.log('new template and canned='+currCats);
+  $('#templateEdit button span.ui-icon+span').attr('id','canCat');
+  //append warning text, if it's not already added
+  if ( $('#cannedWarn').length < 1 ) {
+  $('#templateEdit div.grey2').append('. <span id="cannedWarn"><br />You cannot save a canned response unless you select one or more categories.</span>');
+  }
+  // check if 'global' list of categories
+  if (currCats == 'ALL') {
+    console.log('ALL set');
+    $("#templateEdit button[onclick='SaveTemplate()']").attr('disabled',true);
+  } 
+
+  // create the mutation observer
+  const cannedCategory = document.querySelector("#canCat");
+  var watchCannedCategory = new MutationObserver(allowCanSave);
+  watchCannedCategory.observe(cannedCategory,{childList:true,subtree:true});
+
+// monitor for any changes to the state of #canCat
+function allowCanSave(mutations) {
+  console.log('currCats - toggle');
+  let currCats = $('#templateEdit button span.ui-icon+span').html();
+  if (currCats !== 'ALL') {
+    console.log('ALL not set');
+    $("#templateEdit button[onclick='SaveTemplate()']").removeAttr('disabled');
+  } else {
+    $("#templateEdit button[onclick='SaveTemplate()']").attr('disabled',true);
+  }
+
+} 
+
+}) //2
+
+}
+
+
+
+
 
 // Add ARIA label to +/- toggle on row with sub-tickets
 // ----------------------------------------------------
@@ -24,7 +129,7 @@ if( $('#tblTickets').length != 0 ) {
   watchTicketGrid.observe(ticketGrid,{childList:true,subtree:true});
 }
 
-// action on update event
+// add ARIA labels to +/- toggle on update event
 function subticketToggle(mutations) {
   $('.ticketrowMeta+a.fa-plus-square-o').attr('aria-label', 'show sub tickets');
   $('.ticketrowMeta+a.fa-minus-square-o').attr('aria-label', 'hide sub tickets');
@@ -39,8 +144,16 @@ $('.ticketrowMeta+a.fa').click( function() {
   }
 });
 
+// ====================================================
 
-// ===
+
+// Append JitBit internal deplyment/config to footer
+// =================================================
+// (JC, 5/8/2022)
+$('div.footer').prepend('<div class="footerVersion"><a href="https://helpdesk.jitbit.cr.probation.service.justice.gov.uk/KB/Category/179-">JitBit Case Admin: config v'+currConfig+'</a></div>');
+
+// ====================================================
+
 
 // Missing "New Ticket" mandatory fields
 // =====================================
@@ -103,6 +216,7 @@ $('#btnAdd').click( function() {
 });
 
 });
+
 
 // Insert div for "skip to new ticket"
 // ===================================
@@ -273,11 +387,26 @@ $('#new-ticket-form table').attr('role', 'presentation'); // new ticket
 // =====================================
 $('button[title="Reply"]').append('Reply');
 // ^-reply on ticket details page
+$('#btnInProcess').append('&nbsp;In Progress');
+// ^-in progress 'icon' button on ticket details page
 // ------------------------------------------------------------
 
+
+// replace confusing 'close' button with an 'exit' button
+// ======================================================
+$('#btnClose').hide();
+$('<li><button title="Exit" id="btnExit" onClick="'+prevUrl+'"><i class="fa fa-x"></i>Exit</button></li>').insertAfter('#toolbar > ul#status > li:first-child');
+// ^- hide and append an 'exit' button
+// ------------------------------------------------------------
+
+
 // update "reply" text on ticket details update
+// update "in progress" text (22-aug-22)
+// hide "close" button (22-aug-22)
+// append "exit" button (22-aug-22)
+// correct navigation logic on exit button (23-aug-22)
 // --------------------------------------------
-// (JC, 21/4/22)
+// (JC, 23/08/22)
 
 // mutation observer for status change, takeover, reply, etc
 if( $('div.outerroundedbox > #toolbar #status').length != 0 ) {
@@ -289,8 +418,18 @@ if( $('div.outerroundedbox > #toolbar #status').length != 0 ) {
 // action if ticket details page is changed/updated
 function updateButtons(mutations) {
   console.log('updateButtons');
+  // the REPLY button
   if ( $('button[title="Reply"]').text() == "" ) {
   $('button[title="Reply"]').append('Reply'); }
+  // the IN PROGRESS button
+  if ( $('#btnInProcess').text() == "" ) {
+  $('#btnInProcess').append('&nbsp;In Progress'); }
+  // hide CLOSE button
+  $('#btnClose').hide();
+  // append EXIT button
+  if( $('#btnExit').length == 0 ) {
+    $('<li><button title="Exit" id="btnExit" onClick="history.go(-1);"><i class="fa fa-x"></i>Exit</button></li>').insertAfter('#toolbar > ul#status > li:first-child');
+  } //exit
 }
 
 
@@ -315,7 +454,7 @@ $('#btnUser').click( function() {
     // prepend ticket ref
     $('#divRecent li a').each(function() {
       let refUrl=$(this).attr('href');
-      let refId=refUrl.substring(8,99).trim();
+      let refId=refUrl.substring(refUrl.lastIndexOf('/')+1,99).trim();
       let refHtml=$(this).html();
       console.log(refId+', '+refHtml);
       $(this).html(refId+': '+refHtml);

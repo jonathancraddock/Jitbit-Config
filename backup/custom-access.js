@@ -1,9 +1,10 @@
 // VERSION TRACKER
-// 1.08 - Switch new ticket to 'source' before submit (12/9/2022)
+// 1.07 - canned / close-exit (23/8/2022)
+// 1.08 - bugfix/workaround for checkbox state (27/9/22)
 
 // Display JitBit deployment/config info in footer
 // eg/ "v1.12"
-var currConfig = "1.12";
+var currConfig = "1.13b";
 
 // Current Focus/URL/referrer
 var currFoc = 'none';
@@ -13,7 +14,7 @@ var prevUrl = "window.location.href='/';";
 
 // navigation 'back' logic for close/exit button
 // (JC, 23/8/22)
-if ( pageRef.includes('helpdesk') && !pageRef.includes('/Tickets/New') ) { prevUrl = 'history.go(-1);' }
+if ( pageRef.includes('helpdesk') ) { prevUrl = 'history.go(-1);' }
 
 // provide a simple async delay function
 function sleep(milliseconds) {  
@@ -48,17 +49,15 @@ $('#selTemplates > button').click( function() {
 // ====================================================
 
 // TEST - switch to 'source' before save
-sleep(50).then(() => {
-  $('#btnAdd').on('click', function() {
-    //let errors = $('label.error:visible').length;
-    if ($('label.error:visible').length==0) {
-      $('#Body').wswgEditor('switchEditor');
-    }
-  });
+$('#btnAdd').on('click', function() {
+  //let errors = $('label.error:visible').length;
+  if ($('label.error:visible').length==0) {
+    $('#Body').wswgEditor('switchEditor');
+    $('#Body').wswgEditor('switchEditor');
+  }
 });
 
 // ====================================================
-
 
 // TEST1--looking for change of visibility...
 const checkElement = async selector => {

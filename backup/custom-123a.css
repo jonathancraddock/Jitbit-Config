@@ -1,0 +1,1600 @@
+/* VERSION TRACKER                                    */
+/* 1.07 - canned / close-exit (23/8/2022)             */
+/* 1.08 - colour of new ticket subscriber (16/9/2022) */
+/* 1.09 - CRN alert                                   */
+/* 1.10 - predictive category dropdown                */
+
+/* Adjust alignment of "Helpdesk Title". */
+/* (JC, 24.9.2021) */
+#divBigHeader .topheader #logo #spanTitle {
+    font-family: sans-serif;
+    margin-left: -14px;
+    position: relative;
+    top: 2px;
+}
+
+/* "Skip to New Ticket" tab shortcut above header */
+/* (JC, 8/3/2022) */
+
+/* Yellow 'skip' bar at top of page */
+#skipNew:focus {
+  background: #ffdd00;
+  color: #000;
+  font-weight: 700;
+  padding: 8px 16px;
+  font-size: large;
+  display: block;
+  position: relative;
+}
+
+/* Hidden when not in focus */
+#skipNew {
+  position: absolute;
+}
+
+/* Skip to New Ticket - text link */
+#skipNew:focus span {
+  display: block;
+  text-decoration: underline;
+}
+
+/* Hide when <a> not in focus */
+#skipNew span {
+  display: none;
+}
+
+/* Hide the missing mandatory field alert */
+/* (JC, 4/4/2022) */
+#mandatoryAlert {
+  display: none;
+  /* style when visible */
+  padding: 12px 18px;
+  background-color: #1d70b8;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.8em;
+}
+
+/* Hide the subscribe your manager alert */
+/* (JC, 10/5/2022) */
+#subscribeAlert {
+  display: none;
+  /* style when visible */
+  padding: 12px 18px;
+  margin-bottom: 18px;
+  background-color: #1d70b8;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.8em;
+}
+
+/* error on missing mandatory field */
+/* (JC, 5/4/2022) */
+.error {
+  display: block;
+  color: #fff !important;
+  background-color: #d4351c;
+  margin-top: 3px;
+  padding: 2px 8px 4px 8px;
+  border-radius: 3px;
+  width: fit-content;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+select.error {
+  color: #000 !important;
+}
+
+/* - - - - - */
+
+/* Use gov.uk blue (#1d70b8) for menu bar */
+/* (JC, 24.9.2021) */
+/* (JC, 3.3.2022) - darker, for improved contrast ratio */
+.tabmenu2, .tabmenu li.active a, .blueheader {
+    background-color: #1d70b8;
+    box-shadow: none;
+}
+
+.tabmenu {
+  height: 38px;
+}
+
+/* red (warn) colour on logout button */
+/* (JC, 24/3/2022) */
+#divRecent a.button.graybutton.logoutButton {
+  background-color: #d4351c;
+  color: white;
+}
+#divRecent a.button.graybutton.logoutButton:focus {
+  background-color: #fd0;
+  color: black;
+}
+
+
+/* ----------------------------------------------------- */
+/* default link colours and decoration in 'body' text    */
+/* https://design-system.service.gov.uk/styles/colour/   */
+/* (JC, 18/3/2022)                                       */
+/* ----------------------------------------------------- */
+
+/* :not(uPopup...) - do not change appearance on ticket grid page */
+/* table.grey.center a - link on password reset page                     */
+
+#ticketBody a:not(a.imgLink,a[href^="https://www.youtube.com"]), .articleslist a, #articles a, #divIdeas a, .issueDetails a, .grey2 a:not(.uPopup, .cPopup, #divStats a), table.grey.center a {
+  color: #1d70b8;
+  outline: 0;
+  padding: 0 2px;
+  margin: 0;
+  border-bottom: 1px solid #1d70b8;
+}
+
+#ticketBody a:hover, .articleslist a:hover, #articles a:hover, #divIdeas a:hover, .issueDetails a:hover, .grey2 a:hover:not(.uPopup, .cPopup, 
+#divStats a), #tblSubTickets a:not(.fa), table.grey.center a:hover {
+  color: #003078;
+  border-bottom: 2px solid #003078;
+}
+
+/* !important */
+/* 1. due to text colour CSS override on details page */
+/* 2. can't find the overriding 'border' rule?        */
+
+#ticketBody a:focus, .articleslist a:focus, #articles a:focus, #divIdeas a:focus, .issueDetails a:focus, .grey2 a:focus:not(.uPopup, .cPopup, 
+#divStats a), #tblSubTickets a:not(.fa):focus, table.grey.center a:focus {
+  color: #000 !important;
+  background-color: #fd0;
+  border-bottom: 2px solid #555 !important;
+}
+
+#ticketBody a:active, .articleslist a:active, #articles a:active, #divIdeas a:active, .issueDetails a:active, .grey2 a:active:not(.uPopup, .cPopup, #divStats a), #tblSubTickets a:not(.fa):active, table.grey.center a:active {
+  color: #000;
+  background-color: #fd0;
+  border-bottom: 1px solid #555;
+}
+
+/* ensures user (uPopup) tab-position doesn't vanish when blank */
+/* (JC, 21/4/22)                                                */
+#tblSubTickets .grey2.uPopup {
+  padding: 0 8px 0 2px;
+}
+
+/* reply from name on ticket details page */
+/* (JC, 10/5/2022) */
+a.uPopup:focus {
+  color: #000;
+  background-color: #fd0;
+  border-bottom: 2px solid #555;
+}
+
+/* needs a darker blue "a" link colour due to grey background */
+#fileUploadLbl, #aCapture {
+  color: #2679af;
+}
+
+/* remove margin (causing line-wrap) from comment date */
+/* (JC, 21/4/22)                                       */
+.commentDate a.grey2 {
+  margin: 0;
+}
+
+/* Remove shaded gradient from blue menu bar */
+/* (JC, 5.11.2021) */
+.tabmenu2 {
+    background-image: none;
+}
+
+/* Highlight the Section>Category in main list view */
+/* (JC, 24.9.2021) */
+span.categoryName {
+    color: #12659d;
+    font-weight: 900;
+}
+
+/* Reduce left-margin beside "folder" icon shown in ticket list */
+/* (JC, 14/3/2022) */
+.fa-folder-open::before {
+  content: "\f07c";
+  margin-left: -6px;
+}
+
+/* Display the Section>Category in main list view on new-line */
+/* (JC, 14/3/22) */
+.ticketAttr a.cPopup::after {
+  display: block;
+  content: '\A';
+  margin-top: 4px;
+}
+
+/* Change pale-pink "overdue" row highlight to a yellow/orange */
+/* (JC, 4.11.2021) */
+table.horizseparated tr.overdue td {
+    background-color: #fff7ccaa;
+}
+
+/* Present "updated by tech" for Case Admin staff */
+/* Hide default badge and position it 'relative' */
+/* (JC, 1.10.2021) */
+.badge.tech-badge {
+    background-color: #70c45c;
+    position: relative;
+    visibility: hidden;
+}
+
+/* Append 'upd by admin' badge */
+/* (JC, 1.10.2021) */
+.badge.tech-badge::after {
+    visibility: visible;
+    content: "upd by admin";
+    background-color: #5fa44f;
+    padding: 2px 4px 5px 4px;
+    border-radius: 3px;
+    line-height: 9px;
+    margin: -3px -5px -1px 0;
+    float: right;
+}
+
+/* Disabled 'canned response' save button */
+/* (JC, 9/8/2022) */
+#templateEdit button[onclick='SaveTemplate()']:disabled {
+  background: #00703c85;
+  color: #00000075 !important;
+  text-decoration: line-through;
+  border-bottom-color: #ff0000ab;
+}
+
+/* 'canned response' notification */
+/* (JC, 10/8/2022) */
+#cannedWarn {
+  background: #ffff0026;
+  line-height: 1.4em;
+  font-weight: bold;
+}
+
+/* Delete 'canned response' button */
+/* (JC, 10/8/2022) */
+#templateDelete {
+  background: #d4351c;
+  color: white;
+}
+
+/* Highlight user profile name in gov.uk blue           */
+/* (JC, 19.11.2021)                                     */
+/* #divBigHeader .topheader #userinfo button            */
+/* ^- !important needed to override source specificity? */
+#btnUser {
+    border: 1px solid #1f6fb8 !important;
+}
+
+/* Align table captions to left */
+/* (JC, 17/3/2022) */
+caption {
+  text-align: left;
+}
+
+/* Space before "reply" text inserted into reply button */
+/* (JC, 17/3/2022) */
+.fa.fa-reply {
+  margin-right: 8px;
+}
+
+/* Better contrast for expander '>' in category list */
+/* (JC, 19/7/2022 */
+.categories .treeList .expander {
+  opacity: 1;
+  cursor: context-menu;
+  font-weight: 900;
+  filter: brightness(90%) contrast(110%);
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+/* Design edit to stack custom fields vertically */
+/* (JC, 15.11.2021)                              */
+/* - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* outer pale-grey box for custom fields */
+/* (removed grey effects for better contrast, 15/2/2022) */
+#trCustomFields td .outerroundedbox {
+  box-shadow: none;
+  border: 0;
+  padding: 2px 2px 32px 2px;
+}
+
+/* display custom fields on separate lines */
+.report-settings div.report-input {
+  width: 100%;
+}
+
+/* modify custom field label */
+.report-settings div.report-input label {
+  width: 48.7em;
+  margin-right: 5em;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: block;
+  margin-top: 10px;
+}
+
+/* match the widths of all custom fields */
+/* (JC, 15.11.2021) */
+/* (JC, 22.11.2021 - edit line height, 2 -> 1.5em) */
+.report-settings div.report-input input[type="text"], div.report-input input[type="number"], .report-settings div.report-input select, div.report-input textarea {
+  width: 100%;
+  line-height: 1.5em;
+  padding-left: 8px;
+  min-width: 300px;
+  max-width: 600px;
+  height: 34px;
+  background-color: white;
+}
+
+/* use gov.uk style highlighting on custom field with focus */
+[id^="CustomFieldValue"]:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
+}
+
+/* width override for multiline text fields */
+div.report-settings div.report-input textarea {
+  width: 100% !important;
+  height: 180px;
+}
+
+/* - - - - - - - - - - - - - - */
+/* -  ticket default fields  - */
+/* - - - - - - - - - - - - - - */
+
+/* darker (square) border for input fields */
+/* (JC, 15/3/2022) */
+input[type="text"], input[type="number"], input[type="password"], input[type="email"], input[type="file"], input[type="url"], select, textarea, input.ac_input {
+  border: 1px solid #bbb;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  height: 34px;
+  line-height: 2em;
+  font-size: 14px;
+}
+
+/* tighter formating for 'filter' dropdown pane */
+/* (JC, 18/3/2022) */
+.filterBox input {
+  height: 23px;
+  border-radius: 0;
+}
+
+/* Retain original height of checkbox in filter panel */
+/* (JC, 19/4/2022) */
+.filterBox input[type="checkbox"] {
+  margin-right: 4px;
+  height: 12px;
+}
+
+.filterBox .ui-multiselect {
+  height: 23px;
+  width: 100% !important;
+  border-radius: 0;
+}
+
+/* ticket category select toggle/dropdown */
+/* (use of '!important' due to override by jquery css styles */
+/* (JC, 15/3/2022) */
+.dropdownSelect .dropdown-toggle {
+  font-size: 14px !important;
+  line-height: 2em !important;
+  height: 32px !important;
+  border: 1px solid #bbb !important;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 !important;
+}
+
+/* yellow focus highlight                                    */
+/* (use of '!important' due to override by jquery css styles */
+/* (JC, 15/3/2022)                                           */
+/* added 'on behalf of user' textbox                         */
+/* (JC, 19/4/2022)                                           */
+.dropdownSelect .dropdown-toggle:focus, select#PriorityID:focus, input#Subject.required:focus, div.richeditor div[contenteditable="true"]:focus, input#OnBehalfUserId_txt:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000 !important;
+  border-radius: 0;
+}
+
+/* AT remediation, tooltip on new ticket      */
+/* (JC, 29/7/2022)                            */
+.my-custom-theme .tooltipster-content {
+    color: #212121;
+    background: #fffbe4;
+    font-size: 12px;
+    border: solid 1px grey;
+}
+
+/* Darker 'triangle' point on tooltip        */
+/* style="border-color:rgb(250, 250, 250);"  */
+/* (JC, 1/8/2022)                            */
+.tooltipster-arrow-right span, .tooltipster-arrow-right .tooltipster-arrow-border {
+    border-color: rgb(127 127 127) !important;
+}
+
+/* Warn if CRN does not follow usual format */
+/* (JC, 29/9/2022)                          */
+span#crnWarn {
+  font-size: 1.2em;
+  background: #ffd399c7;
+  color: #444;
+  padding: 2px 5px;
+  margin: 1px 0 0 124px;
+  display: inline-block;
+}
+
+/* visible tables inside richeditor */
+/* (JC, 19/7/2022) */
+.richeditor table, .richeditor td, .richeditor th {
+  border: 1px solid #000000;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+/* Tag box on ticket details page */
+#tbTags_tag {
+  border: 1px solid #bbb;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  height: 34px;
+  line-height: 2em;
+  font-size: 14px;
+  margin: 2px 1px 2px 4px;
+  padding: 0 6px;
+  width: 100%;
+}
+#tbTags_tag:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000 !important;
+  margin: 2px 1px 2px 4px;
+  padding: 0 6px;
+  width: 100%;
+}
+
+/* match priority dropdown to style of custom fields */
+/* (JC, 15/3/2022) */
+select#PriorityID {
+  height: 34px;
+  padding-left: 4px;
+}
+
+/* match subject line input box to style of custom fields */
+/* (JC, 15/3/2022) */
+input#Subject.required {
+  line-height: 2em;
+  box-shadow: none;
+}
+
+/* pad sides of body to match custom fields */
+#rteBody {
+  padding: 6px 10px;
+}
+
+/* submit button on new ticket screen */
+/* exclude 'dot-dot-dot' edit button from this rule */
+/* (JC, 15/3/2022) */
+input[type="submit"], button:not(.editButton, .graybutton, .redbutton, .ui-widget), a.button {
+  font-size: 14px;
+  line-height: 2em;
+  height: 34px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid black;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  color: #fff;
+  padding: 0 12px;
+  background: #00703c;
+}
+
+.redbutton, input[type="submit"].redbutton, a.redbutton {
+  font-size: 16px;
+  line-height: 2em;
+  height: 34px;
+  padding: 0 10px;
+  border-bottom: 2px #505a5f solid;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  color: #fff;
+  background-color: #d4351c;
+}
+
+/* submit button on new ticket screen - with focus */
+/* (JC, 15/3/2022) */
+input[type="submit"]:focus, button:focus, a.button:focus {
+  color: #000;
+  background: #fd0;
+}
+
+/* advanced button on new ticket screen */
+/* (JC, 15/3/2022) */
+.graybutton, input[type="submit"].graybutton, a.graybutton {
+  font-size: 14px;
+  line-height: 2em;
+  height: 34px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background-color: #cecece;
+  color: #000;
+  border-bottom: 2px #505a5f solid;
+  border-width: 0 0 2px 0;
+  padding-top: 1px;
+  margin-bottom: 4px;
+}
+
+/* New ticket, advanced fields, correct 1px tag offset */
+/* (radius/overflow/height was being overridden by jquery style) */
+.tagsinput {
+  margin-top: 0; /*was -1px ?*/
+  margin-bottom: 8px;
+  border-radius: 0 !important;
+  border: 1px #bbb solid;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  overflow: unset !important;
+  min-height: 34px !important;
+}
+
+/* New ticket, advanced fields, email names/tags */
+/* (margin overridden by jquery CSS) */
+.tag {
+  margin: 3px 0 0 4px !important;
+}
+
+/* subscriber listed in new ticket */
+/* JC, 15/9/2022                   */
+div#Subscribers_tagsinput span.tag {
+  background: #a8d8c2;
+  border: 1px #00703c solid;
+color: black;
+}
+
+div.tagsinput span.tag a.remove {
+    font-weight: 900;
+    color: white !important;
+    background: #d4351c;
+    font-size: 14px;
+    width: 12px;
+    display: inline-block;
+    padding-left: 5px;
+    padding-bottom: 2px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    border-radius: 20%;
+}
+
+/* --------------------------------------- */
+/* Custom catPred category predictive text */
+
+/* TEST, JC 15/11/2022 */
+/* Category input, with predictive type ahead */
+#catPred {
+  vertical-align: bottom;
+  width: 512px;
+}
+
+/* tick cofirmation mark */
+#catCheck {
+  position: absolute;
+  left: 488px;
+  top: 3px;
+  font-size: large;
+  color: darkgreen;
+  display: none;
+}
+
+#catPredList {
+  background: #fafafa;
+  position: absolute;
+  width: 510px;
+  height: 242px;
+  z-index: 99;
+  font-size: 14px;
+  border: 1px solid lightgray;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-indent: 6px;
+}
+
+#catPredList li a {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid lightgrey;
+  display: block;
+  color: #000;
+}
+
+/* hide single row from list */
+#catPredList li a.hide {
+  display: none;
+}
+
+#catPredList li a:focus, #catPredList li a:hover, #catPredList li a:active {
+  background: #e0f0e0;
+}
+
+/* Hide default category select */
+.dropdownSelect .dropdown-toggle {
+  display: none !important;
+}
+
+/* --------------------------------------- */
+
+/* - - - - - - - - - - */
+
+/* reset button on general settings, and reset templates */
+/* (JC, 15/3/2022) */
+table.admintable input[name="btnResetDesign"], table.admintable input[name="btnResetTemplate"] {
+  font-size: 14px;
+  line-height: 2em;
+  height: 34px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background-color: #d4351c;
+  color: #FFF;
+  border-bottom: 2px solid black;
+  border-width: 0 0 2px 0;
+}
+
+#fileUploadLbl {
+  color: black;
+}
+
+/* more specific selector and inline-block, prevent kb full-width */
+/* (JC, 19/7/2022) */
+.fileupload a#attachFile {
+  height: 26px;
+  background-color: #cecece;
+  padding: 9px 14px 0 8px;
+  margin: -3px -8px 0 0;
+  margin-right: -8px;
+  border-bottom: 2px solid #505a5f;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.fileupload a#attachFile:hover {
+    filter: brightness(90%) contrast(110%);
+}
+
+#aCapture {
+  height: 23px;
+  background-color: #cecece;
+  padding: 6px 6px 3px 8px;
+  border-bottom: 2px solid #505a5f;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+/*HIDING THIS SCREEN-CAPTURE BUTTON FOR NOW*/
+/*display: block;*/
+  display: none;
+}
+
+.fileupload a:focus, #aCapture:focus {
+  background-color: #fd0;
+}
+
+/* - - - - - */
+
+/* Add date-picker icon to date field text boxes */
+/* (JC, 22.11.2021) 
+.report-settings div.report-input input.datepick {
+  background-image: url(/images/calendar.png);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position-x: right;
+} */
+
+/* old method above, no longer functioning from 10.8 */
+
+/* Add date-picker icon to custom field date/time */
+/* (JC, 06.03.2023) */
+.report-settings div.report-input label + i {
+    position: absolute;
+    font-size: large;
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.report-settings div.report-input input.datepick {
+    padding-left: 32px;
+}
+
+/* white-space above ticket ID for enhanced clarity */
+/* (JC, 28/3/2022) */
+div.ticketrowMeta .grey2.ticketId {
+  margin-top: 14px;
+  display: block;
+}
+
+/* Remove subscriber button */
+/* (JC, 28/3/2022)          */
+.darkbg a {
+  background-color: #d4351c;
+  padding: 1px 5px;
+  color: white;
+  margin-right: 3px;
+  position: relative;
+  top: 1px;
+  left: 4px;
+  border-radius: 30%;
+}
+
+/* the 'stop' button next to ticket timer */
+/* JC, 29/3/2022                          */
+#lblTimeSpent { margin-right: 6px; }
+a#lnkPauseTimer { border: 0; }
+#lnkPauseTimer i {
+  margin: -2px -3px;
+  background-color: #d1e0f7;
+  padding: 4px 7px;
+  border-radius: 33%;
+  border: 1px #888 solid;
+  opacity: 1; }
+#lnkPauseTimer i:focus {
+  background-color: #fd0; }
+
+/* remove due date button, ticket details page */
+/* ticket details pane 'cancel' buttons        */
+#spanEditDueDate a,
+#lblTicketDate + div a span,
+#btnSaveTimeSpent + a span,
+#lblStartDate + div.editor a span,
+#btnSaveCloseDate + a span,
+#btnSavePriority + a span,
+#btnSaveCategory + a span,
+#btnSaveFromUser + a span,
+#btnSaveAssignee + a span,
+tbody#TicketCustomFields a span {
+  background-color: #cecece;
+  color: black !important;
+  opacity: 1;
+  font-size: 14px;
+  line-height: 2em;
+  height: 30px;
+  display: inline-block;
+  border-bottom: 2px solid #505a5f;
+  padding: 2px 12px 0 12px;
+  margin: 0 2px 0 -4px;
+  position: relative;
+  top: -1px;
+  font-weight: bold;
+}
+
+/* download to calendar button on ticket details page */
+#lblDueDate a { border: none; }
+#lblDueDate a i {
+  margin: -2px -3px;
+  background-color: #d1e0f7;
+  padding: 4px 5px;
+  border-radius: 33%;
+  border: 1px #888 solid;
+  opacity: 1;
+}
+
+/* move "attach a file..." button next to submit/advanced */
+/* (JC, 04/04/2022)                                       */
+#trNewTicketTools + tr div.filelinks, #trNewTicketTools + tr input.topbutton, #trNewTicketTools + tr button.graybutton,
+#trCustomFields + tr div.filelinks, #trCustomFields + tr input.topbutton, #trCustomFields + tr button.graybutton
+ {
+  float: left;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - */
+/* From Edge "Accessibility Insights Web" tool */
+/* - - - - - - - - - - - - - - - - - - - - - - */
+
+/* improve contrast of placeholders to meet WCAG tool guide */
+/* (JC, 15/3/2022) */
+/*
+::placeholder:not(.required), .selectPlaceholder:not(.required) {
+  color: #555 !important;
+  font-style: italic;
+}
+*/
+
+/* JC TEST - prevent placeholder being overridden with #a2a2a2 ?? 
+input[id^="CustomFieldValue"]::placeholder {
+  color: #555;
+}
+*/
+
+#divAdvanced input::placeholder {
+  color: #555;
+}
+
+/* JC TEST3 - test with "placeholder-shown" in Edge ?? */
+:placeholder-shown {
+    color: #555;
+}
+
+/* testing additional cross-browser placeholder syntax */
+/* (JC, 21/3/2022) */
+input[id^="CustomFieldValue"]::-webkit-input-placeholder { color: #555 !important; }
+input[id^="CustomFieldValue"]::-moz-placeholder { color: #555 !important; }
+input[id^="CustomFieldValue"]:-ms-input-placeholder { color: #555 !important; }
+input[id^="CustomFieldValue"]::-ms-input-placeholder { color: #555 !important; }
+
+#Subject::placeholder {
+  color: #555;
+  opacity: 1;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* custom placeholders used in 'body' of ticket */
+/* (JC, 15/3/2022) */
+#placeholderspan {
+  color: #555 !important;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* use red placeholder text for 'required' fields */
+div.report-input .required::placeholder {
+  color: #555;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* use red placeholder text for 'required' dropdown fields */
+/* (JC, 24/3/2022) */
+.report-settings div.report-input select.required[style="color:#aaa;"] {
+  color: #d4351c !important;
+  opacity: 1;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* ticket details, who logged the ticket */
+#lnkFrom, #lnkFromCompany {
+  color: #2679af;
+}
+
+/* ticket details, who logged the ticket - under the body */
+a.uPopup {
+  color: #226c9d;
+  font-size: 13px;
+}
+
+/* technician name on main ticket grid */
+td.techTd a.uPopup {
+  font-size: 12px;
+}
+
+/* ticket details, date - under the body/reply */
+span.commentDate a {
+    color: #555;
+}
+
+#noTicketsMessage > a[href$="New"] {
+  color: #2679af;
+}
+
+#divBigHeader .divSearch input {
+  background-color: #fff;
+  color: #555;
+  height: 32px;
+  font-size: 14px;
+}
+
+#divBigHeader .divSearch input:focus {
+  background-color: #fff;
+  color: #333;
+}
+
+/* position search 'icon' centre */
+/* (JC, 15/3/2022) */
+/* (JC, 10/11/2022) */
+#divBigHeader .divSearch .fa {
+  margin-left: 3px;
+}
+
+a.ticketLink, a.ticketLink:visited {
+  color: #269;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#tblTickets th a, #tblTickets th a:visited {
+  color: #686868;
+  font-sixe: 13px;
+  font-weight: bold;
+}
+
+/* overdue ticket subject (originally) presented in bold-red */
+table.horizseparated tr.overdue td a.ticketLink, table.horizseparated tr.overdue td.duedate {
+  color: black;
+}
+
+.categories .treeList li.category a, .categories .treeList li.category a:visited {
+  color: #585858;
+}
+
+/* selected category in treelist */
+/* (JC, 14/3/2022) */
+.categories .treeList li > a.selected {
+  background: #3b8719;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* selected category ticket-count in treelist */
+/* (JC, 14/3/2022) */
+.categories .treeList li > a.selected span.catCount {
+  background-color: #112e49;
+}
+
+/* grey fonts often used in list and field labels        */
+/* (required !important due to same syntax in source CSS */
+.greyer, a.greyer { color: #585858; }
+.grey { color: #444; font-size: 12px; }
+.grey2 { color: #444; font-size: 12px !important; margin-top: 6px; }
+a.grey2 { color: #444; font-size: 12px !important; }
+table.issueDetails .grey { color: #444; font-size: 13px; }
+th { color: #444; }
+
+/* stats below the ticket filter */
+/* (JC, 11/3/22) */
+#divStats a {
+  color: #555;
+}
+
+/* increase size of new, upd, etc, ticket badges */
+.badge {
+  font-size: 12px;
+  padding: 1px 3px 2px 3px;
+  line-height: 11px;
+}
+
+/* red colour on a 'new' ticket badge */
+.badge.new-badge {
+  background-color: #c64f4f;
+}
+
+/* grey colour on 'closed' ticket badge */
+.badge.closed-badge {
+  background-color: #737373;
+}
+
+/* green on 'tech' badge */
+.badge.tech-badge {
+  background-color: #5fa44f;
+}
+
+/* blue on comment for tech only badge */
+.badge.fortech-badge {
+  background-color: #457896;
+}
+
+/* additional space for badge on knowledge base articles list */
+.articleslist .fortech-badge {
+  margin-left: 10px;
+}
+
+/* orange colour on 'cust' badge */
+.badge.cust-badge {
+  background-color: #986944;
+}
+
+/* orange/white link colour on 'cust' badge */
+.badge.cust-badge a {
+  color: #fff;
+}
+
+/* Move newTicket DIV/button left of search input */
+/* NOTE: see jquery 'insertbefore' method in custom js below */
+/* JC, 5/2/22 */
+#divBigHeader #newTicket {
+  float: left;
+}
+
+/* jQueryUI dropdown placeholder text */
+/* (JC, 17/3/2022) */
+.dropdown-text {
+  color: #555;
+}
+
+/* footer links on cloud  trial */
+#anchorHelp, .poweredBy a {
+  color: #226c9d;
+}
+
+/* footer version                                   */
+/* (JC, 22/09/2022) version number, right of footer */
+.footerVersion {
+    float: right;
+    margin-right: 30px;
+}
+
+/* header link on cloud  trial */
+#spanLoggedIn > .grey {
+  color: #acacac;
+}
+
+/* header link on cloud  trial */
+#spanLoggedIn > .grey a {
+  color: #acacac;
+  text-decoration: underline;
+}
+
+/* links on report and admin page */
+table.outerroundedbox.menulist div a {
+    color: #2679af;
+}
+
+/* headings on admin page */
+h2.breadcrumbs {
+    text-align: center;
+    color: #555;
+}
+
+/* Add contrast to font awesome icons */
+.fa {
+  opacity: .9;
+}
+
+/* Colour of 'tags' in main ticket view sidebar */
+#leftsidebar div.grey span.tag a {
+  color: #1e608d;
+  text-decoration: underline;
+}
+
+#leftsidebar div.grey span.tag {
+  color: #555;
+}
+
+/* JC, 9/1/23 */
+#leftsidebar > #divSavedFilters > div:first-child {
+    background: #1d70b8;
+    color: #fff;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    position: relative;
+    height: 14px;
+    font-size: 11px;
+    padding: 11px 12px !important;
+    margin-bottom: 12px;
+    text-transform: none;
+}
+
+/* red 'delete' cross on saved filters */
+.treeList .category a.catCount.fa.fa-times-circle {
+    color: red;
+    font-size: large;
+}
+
+.treeList .category a.catCount.fa.fa-times-circle:hover, .treeList .category a.catCount.fa.fa-times-circle:focus, .treeList .category a.catCount.fa.fa-times-circle:active {
+    background-color: #fd0;
+    padding: 6px;
+    margin-top: -6px;
+    border: 1px solid black;
+}
+
+/* Style 'categories' text to match moved filter panel */
+/* !imp due to inline style on jibit html */
+/* JC, 11/11/22 */
+.blueheader span {
+    opacity: 1 !important;
+}
+
+/* - - - - - - - - - */
+/*  Focus indicator  */
+/* - - - - - - - - - */
+
+/* Add yellow highlight to logo/title */
+/* JC, 4/3/22 */
+#divBigHeader .topheader #logo > a:focus {
+  outline: 3px solid transparent;
+  background-color: #fd0;
+  padding: 15px 4px 4px 4px;
+  margin-left: -4px;
+}
+
+/* Invert colour of Crown logo when it has focus */
+/* JC, 5/3/22 */
+#divBigHeader .topheader #logo a:focus img {
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+/* Invert colour of Title span when logo link has focus */
+/* JC, 4/3/22 */
+#divBigHeader .topheader #logo > a:focus span {
+  color: #34383E !important;
+}
+
+/* Yellow/Black border highlight for plain fields and text buttons */
+/* JC, 6/3/22 */
+/* JC, 7/4/22, added for new-ticket advanced 'tags' */
+/* JC, 9/5/22, plain text - as per knowledgebase, etc */
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, #btnUser:focus, #btnUser:focus-visible,#divBigHeader .divSearch input:focus, select#ddlSortBy:focus, #spanLoggedIn span.grey a:focus, #Subscribers_tag:focus, #Tags_tag:focus, #DueDate:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+/* Fix offset that was hiding yellow 'focus' border */
+/* !important due to override by jQuery CSS */
+/* (JC, 7/4/2022) */
+div.tagsinput input {
+  top: -3px;
+  position: relative;
+  top: -2px;
+  position: relative;
+}
+
+
+/* New ticket button */
+/* (JC, 15/3/22) */
+#divBigHeader #newTicket a.button {
+  background-color: #00703c;
+  color: #fff;
+  border-bottom: 1px #d2d2d2 solid;
+  border-radius: 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  height: 33px;
+  padding: 2px 20px 0 20px;
+  line-height: 2em;
+  font-size: 14px;
+}
+
+/* Active new ticket button */
+/* (JC, 15/3/22) */
+#divBigHeader #newTicket a.button:focus {
+  color: black !important;
+  background-color: #fd0;
+  border-bottom: 2px #fff solid;
+  border-radius: 0;
+}
+
+/* User profile button, match to style of new/search */
+/* (JC, 03/04/23) */
+#divBigHeader .topheader #userinfo button {
+    font-size: 13px;
+    height: 33px;
+}
+
+/*
+#divBigHeader .topheader #userinfo button:focus = "user profile" button
+#divBigHeader .divSearch input:focus = "search" input text box
+select#ddlSortBy:focus = ?
+#spanLoggedIn span.grey a:focus = "upgrade" text link
+*/
+
+/* TEST - bell/alert icon */
+/* JC, 13/1/2023          */
+span#caAlert i.fa.fa-bell {
+    color: #f82423;
+    font-size: 21px;
+    rotate: 10deg;
+    opacity: 1;
+    text-shadow: -2px 2px 10px #ffffff33;
+    margin: 3px -12px 0 10px;
+    padding: 4px;
+    display: inline-block;
+}
+
+span#caAlert a:focus {
+    background-color: transparent;
+}
+
+/* Primary tabs, eg/ Tickets, Knowledge Base */
+/* JC, 4/3/22 */
+.tabmenu li a:focus {
+    color: black !important;
+    outline: 3px solid transparent;
+    background-color: #fd0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Primary tabs, prevent left-tab moving when focus lost */
+/* JC, 4/3/22 */
+.tabmenu li:first-child>a {
+    padding-left: 15px;
+}
+
+/* Secondary menu tabs, unclosed, unanswered, etc */
+/* JC, 4/3/22 */
+.tabmenu2 li a:focus {
+    color: black !important;
+    outline: 3px solid transparent;
+    background-color: #fd0;
+    padding: 13px;
+    margin: -13px;
+    display: block;
+}
+
+/* Target the "funnel" filter when it has focus */
+/* JC, 4/3/22 */
+/* JC, 15/3/2022 reapply radius */
+#toggleFilter:focus {
+  color: black !important;
+  outline: 3px solid transparent;
+  background-color: #fd0;
+  border-radius: 4px;
+}
+
+/* Fields with focus when filter panel is open                  */
+/* JC, 5/3/22                                                   */
+/* jQuery UI 'fields' are 'buttons' - so added white background */
+/* but excluding *actual* submit button                         */
+/* JC, 19/4/22                                                  */
+#filterForm table.grey input:focus, #filterForm table.grey select:focus, #filterForm table.grey button:focus:not([type="submit"]), .ui-corner-all:focus {
+  outline: 3px solid #fd0;
+  background-color: white;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
+}
+
+/* Focus on "report" screen */
+/* (JC 21/3/22, check rule above, why separated on #filterForm?) */
+select:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px #000;
+}
+
+.ui-multiselect-checkboxes label input:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+/* remember me checkbox on login screen */
+/* (JC, 13/5/2022)                      */
+input#rememberMe:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #000;
+  border-radius: 0;
+}
+
+/* Left sidebar category list, with focus */
+/* JC, 4/3/22 */
+.categories .treeList li>a:focus {
+    color: black !important;
+    outline: 3px solid transparent;
+    background-color: #fd0;
+}
+
+/* Target the A-Z sort filter when it has focus */
+/* JC, 4/3/22 */
+#sorting span.outerroundedborder a:focus {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+    padding: 3px 3px;
+    margin: 0 -2px;
+}
+/* Rule below corrects a small offset */
+#sorting span.outerroundedborder a {
+  margin-left: 1px;
+}
+
+/* Small grey text label at bottom of filter panel */
+#sorting div a.grey2:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px #8a8a8a;
+  border-radius: 0;
+  padding: 0 5px;
+  margin-right: -5px;
+}
+
+/* Grey 'quick' filters below main filter panel */
+/* first rule corrects small offset */
+#divStats a {
+  display: block;
+  padding: 4px;
+}
+
+/* second rule below applies the yellow/black outline style */
+#divStats.grey2 a:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px #8a8a8a;
+  border-radius: 0;
+  display: block;
+  background-color: #F7F7F7;
+}
+
+/* Focus on Knowledge Base 'quick' links at top of page */
+/* JC, 9/5/2022 */
+div.kbHeader div > a:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000;
+  border-radius: 0;
+}
+
+/* apply a CSS filter to make the "divStats" icons appear darker */
+/* (JC, 17/3/2022) */
+#leftsidebar img {
+    filter: brightness(20%);
+}
+
+a[title="Real-time dashboard"] {
+  margin-top: -14px;
+}
+
+a[title="Real-time dashboard"]:focus {
+  outline: 2px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px #8a8a8a;
+  border-radius: 0;
+  display: inline-block;
+  background-color: #F7F7F7;
+  padding: 14px 18px;
+}
+
+/* more (custom status) button dropdown on ticket details */
+/* important due to override by later jQuery CSS          */
+/* JC, 29/3/2022                                          */
+/* JC, 10/5/2022, temp disabling :hover rule for further testing */
+/*    , li.customstatus form input:hover   */
+li.customstatus form input:focus {
+  background-color: #fd0 !important;
+  color: black !important;
+}
+
+/* stop timer button on ticket details page */
+/* download to calendar */
+#lnkPauseTimer:focus i, #lblDueDate a:focus i {
+  background-color: #fd0;
+  margin-right: -6px;
+}
+
+/* cancel 'buttons' on ticket details page */
+#spanEditDueDate a:focus,
+#lblTicketDate + div a:focus span,
+#btnSaveTimeSpent + a:focus span,
+#lblStartDate + div.editor a:focus span,
+#btnSaveCloseDate + a:focus span,
+#btnSavePriority + a:focus span,
+#btnSaveCategory + a:focus span,
+#btnSaveFromUser + a:focus span,
+#btnSaveAssignee + a:focus span,
+tbody#TicketCustomFields a:focus span {
+  background-color: #fd0;
+}
+
+/* prevent 'empty' active link showing behind cancel button*/
+#lblTicketDate + div a:focus, #lblTicketDate + div a,
+#btnSaveTimeSpent + a:focus, #btnSaveTimeSpent + a,
+#lblStartDate + div.editor a:focus, #lblStartDate + div.editor a,
+#btnSaveCloseDate + a:focus, #btnSaveCloseDate + a,
+#btnSavePriority + a:focus, #btnSavePriority + a,
+#btnSaveCategory + a:focus, #btnSaveCategory + a,
+#btnSaveFromUser + a:focus, #btnSaveFromUser + a,
+#btnSaveAssignee + a:focus, #btnSaveAssignee + a,
+tbody#TicketCustomFields a:focus, tbody#TicketCustomFields a {
+  border: none;
+  background-color: transparent;
+}
+
+/* prevent 'previous tech' info from extending off the page */
+#prevTech {
+  white-space: initial;
+}
+
+/* Radio-button focus indicator */
+/* (JC, 19/4/22)                */
+.onoffcontainer input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 3px black !important;
+  outline: 3px #fd0 solid;
+  outline-offset: 2px;
+  transition: none;
+}
+
+/* Radio-button focus indicator - disable slow fade on exit */
+/* (JC, 19/4/22)                                            */
+.onoffcontainer input[type="checkbox"] {
+  transition: none;
+}
+
+/* Delete sub-ticket linkage (x icon) */
+/* (JC, 21/4/22)                      */
+#tblSubTickets a.fa:focus {
+  box-shadow: 0 0 0 3px black !important;
+  outline: 3px #fd0 solid;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* h2 link text on ideas forum / kb   */
+/* (JC, 9/5/22)                       */
+h1 a:focus {
+  background-color: #fd0;
+  color: black;
+}
+
+
+/* - - - - - - - - - - */
+
+/* TEST - add headings to the main ticket view table */
+/* (JC, 14/3/2022) */
+#tblTickets caption h1 {
+  font-size: 24px;
+  padding-bottom: 8px;
+  float: left;
+}
+
+/* match H1 to default tab text */
+h1 {
+  font-size: 13px;
+  padding-bottom: 0;
+  display: inline-block;
+}
+
+h2 {
+  font-size: 17px;
+}
+
+#maintable h2 {
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: #000;
+  margin-top: 6px;
+}
+
+/* focus highlight on reports and admin page */
+/* (JC, 17/3/2022) */
+table.outerroundedbox.menulist div a:focus {
+  background-color: #fd0;
+  color: black;
+  padding: 2px 8px 1px 8px;
+  margin: -2px -8px -1px -8px;
+  border-bottom: 2px solid black;
+}
+
+/* Highlight body of ticket on details page, while in focus */
+/* (JC, 18/3/22) */
+#ticketBody #body:focus-visible {
+  border: 2px green dashed;
+  outline: none;
+  padding: 5px;
+  margin: -7px;
+}
+
+/* link focus on user profile / divRecent */
+/* (JC, 25/3/2022) */
+#divRecent li a:focus, #divRecent h2 a:focus {
+  background-color: #fd0;
+  display: inline-block !important;
+  color: black;
+  border-bottom: 1px solid black;
+  margin-bottom: -5px;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - */
+/* tabs/focus points within ticket grid view */
+/* - - - - - - - - - - - - - - - - - - - - - */
+
+/* (JC, 8/3/2022) */
+span.categoryName:focus, #tblTickets th a:focus {
+  border-bottom: 2px black solid;
+  padding: 9px 6px 6px 10px;
+  float: left;
+  background-color: #fd0;
+  margin: -9px -6px -8px -10px;
+  color: black;
+}
+
+.ticketAttr a.uPopup {
+  margin-right: 6px;
+}
+
+.ticketAttr a.uPopup:focus {
+  border-bottom: 2px black solid;
+  background-color: #fd0;
+  margin-right: 6px;
+  color: black;
+}
+
+.ticketAttr a.cPopup:focus {
+  border-bottom: 2px black solid;
+  background-color: #fd0;
+  color: black;
+}
+
+td.techTd a.uPopup:focus {
+  border-bottom: 2px black solid;
+  background-color: #fd0;
+  color: black;
+  min-width: 33px;
+  min-height: 15px;
+  display: inline-block;
+  margin-bottom: -2px;
+}
+
+/* space after +/- sub ticket toggle, when not in focus */
+/* JC, 19/4/2022 */
+.ticketrowMeta + a.fa {
+  margin-right: 4px;
+}
+
+.ticketrowMeta + a:focus, .ticketLink.tooltipstered:focus {
+  border-bottom: 2px black solid;
+  padding: 1px 3px;
+  background-color: #fd0;
+  margin: -1px 1px 7px -3px;
+  color: black;
+}
+
+#tblTickets input[type="checkbox"]:focus {
+  opacity: 1;
+  outline: 2px #fd0 solid;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #444 !important;
+}
+
+/* search results in ticket grid */
+/* (JC, 15/3/2022) */
+#searchQuery {
+  height: 34px;
+  font-size: 14px;
+  line-height: 2em;
+}
+
+#searchQuery:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px #000 !important;
+}
+
+/* - - - - - - -  */
+/* Ticket Details */
+/* - - - - - - -  */
+
+table.issueDetails .editButton {
+  box-shadow: none;
+}
+
+table.issueDetails .editButton:focus {
+  background-color: #fd0;
+  box-shadow: none;
+}
+
+/* Make table cell borders visible in saved comments */
+/* JC, 21/3/2023                                     */
+.commentDiv .ticketComment div.commentBody table td {
+    border: dashed grey 1px;
+}
+
+
+
+/* - - - - - - -  */
+/* Admin          */
+/* - - - - - - -  */
+
+textarea#CustomJS, textarea#CustomCSS {
+  height: 440px;
+  line-height: 1.2em;
+}

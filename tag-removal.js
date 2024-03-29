@@ -1,38 +1,38 @@
 // test - track removal of a tag
-// JC, 29/3/2024 *(PERSONAL)*
-
 // track number of tags in current ticket
-var tagsCount = 0; 
+var tagsCount = 0;
+var lastTag = '';
 
 // watch ticket details 'tags' section for any updates
 const tagsObserver = new MutationObserver((mutations, obs) => {
-
   const removeLinks = $('#tbTags_tagsinput span.tag a.remove');
   if (removeLinks !== null && removeLinks.length > 0) {
     tagsCount = removeLinks.length; //current number of tags
+    console.log('current tags = ' + tagsCount);
   // identify the removal of a tag
   $('#tbTags_tagsinput span.tag a.remove').click(function() {
-    let removedTag = $(this).prev('a').text();
-    console.log("tag removed: "+ removedTag);
+
+  // get the current user's ID, log to console
+  let removedTag = $(this).prev('a').text();
+  let remainingTags = $('#tbTags_tagsinput span.tag a.remove').length;
+
+  if ( remainingTags !== null && remainingTags !== tagsCount && removedTag !== lastTag ) {
+
+  initializeCurrentUser().then(currentUser => {
+    console.log("tag removed: "+ removedTag + ', by ' + currentUser.userId + ', remaining ' + remainingTags + ', count '+ tagsCount +'.');
     tagsCount -= 1;
+    lastTag = removedTag;
   });
 
-  // debug test, not needed
-  let remainingTags = $('#tbTags_tagsinput span.tag a.remove').length;
-  if ( remainingTags !== null && remainingTags !== tagsCount ) {
-    console.log('[IF] Tags: '+ tagsCount + ', remaining=' + remainingTags );
-  } else {
-    console.log('[ELSE] Tags: '+ tagsCount + ', remaining=' + remainingTags );
-  }
-    
-  //obs.disconnect(); (commented, observer needs to remain active as there may be multiple changes)
+  } // if(end)
+
+  });
   return;
   } 
 }); // const tagsObserver(end)
 
+// initialise the observer
 tagsObserver.observe(document, {
   childList: true,
   subtree: true
 });
-
-
